@@ -13,7 +13,7 @@ function limit(ip) {
   if (r.d >= PER_DAY) return 'Daily limit reached.';
   r.m.push(now); r.d++; ips.set(ip, r); global++; return null;
 }
-const SYS = `You convert a plain-English computer task into shell commands. Reply ONLY with JSON: {"powershell":{"cmd":"","why":""},"cmd":{"cmd":"","why":""},"bash":{"cmd":"","why":""},"zsh_macos":{"cmd":"","why":""},"fish":{"cmd":"","why":""}}. "cmd" = a correct, ready-to-run command (one line if possible; use placeholders like <text> only when the user gave no value). "why" = one short line explaining it. bash = Linux GNU tools; zsh_macos = macOS BSD tools. If the request isn't a computer task, put a short note in every "why" and empty "cmd".`;
+const SYS = `You convert a plain-English computer task into shell commands. Reply ONLY with JSON: {"powershell":{"cmd":"","why":""},"cmd":{"cmd":"","why":""},"bash":{"cmd":"","why":""},"zsh_macos":{"cmd":"","why":""}}. "cmd" = a correct, ready-to-run command (one line if possible; use placeholders like <text> only when the user gave no value). "why" = one short line explaining it. bash = Linux GNU tools; zsh_macos = macOS BSD tools. If the request isn't a computer task, put a short note in every "why" and empty "cmd".`;
 const json = (s, o) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json' } });
 export async function onRequestPost({ request, env }) {
   let q; try { q = String((await request.json()).q || '').trim(); } catch { return json(400, { error: 'Bad request' }); }

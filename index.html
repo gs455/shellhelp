@@ -16,7 +16,7 @@ h2{font:bold 20px Georgia,serif;margin:10px 0 4px}ul{margin:0;padding-left:18px;
 <p class=tag>describe a task in plain english to get the command for each shell</p>
 <div class=g id=g></div>
 <form id=f><label>task</label><input id=q maxlength=500 autofocus placeholder="e.g. find files with 'invoice' in the name"><button>EXPLAIN</button></form>
-<div id=m></div><details id=fd><summary>fish (optional)</summary><div class=b id=fish></div></details>
+<div id=m></div>
 <h2>examples</h2><ul id=ex></ul>
 <details id=xp><summary>what's the difference? shells vs terminals</summary>
 <h3>terminal vs shell</h3><p>The <b>terminal</b> is the window that shows text and takes keystrokes (Windows Terminal, macOS Terminal, iTerm2, GNOME Terminal). The <b>shell</b> is the program inside it that reads your command, interprets it and runs it. One terminal can host any shell.</p>
@@ -41,7 +41,7 @@ h2{font:bold 20px Georgia,serif;margin:10px 0 4px}ul{margin:0;padding-left:18px;
 const E=["find files with 'invoice' in the name","find files containing 'api_key'","show disk space","list running processes","kill whatever is on port 8080","find the 10 largest files in a folder","show my IP address","rename all .txt files to .md"];
 const esc=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const box=x=>`<code>${esc(x&&x.cmd)}</code>${x&&x.cmd?`<button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied'">copy</button>`:''}<span class=x>${esc(x&&x.why)}</span>`;
-const draw=(d={})=>{g.innerHTML=S.map(([k,n])=>`<div><div class=b>${box(d[k])}</div><div class=lb>${n}</div></div>`).join('');fish.innerHTML=box(d.fish)};draw();
+const draw=(d={})=>{g.innerHTML=S.map(([k,n])=>`<div><div class=b>${box(d[k])}</div><div class=lb>${n}</div></div>`).join('')};draw();
 ex.innerHTML=E.map(e=>`<li><a>${esc(e)}</a></li>`).join('');ex.onclick=e=>{if(e.target.tagName=='A'){q.value=e.target.textContent;f.requestSubmit()}};
 f.onsubmit=async e=>{e.preventDefault();if(!q.value.trim())return;m.textContent='thinking…';draw();try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q.value})});const d=await r.json();
 if(!r.ok){m.textContent=d.error;return}m.textContent='';draw(d)}catch{m.textContent='network error'}};</script></body></html>

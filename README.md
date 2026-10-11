@@ -1,6 +1,6 @@
 # ShellHelp
 
-Type a plain-English task ("search my whole PC for files with invoice in the name") and get the command for **PowerShell, cmd, Linux (bash), macOS (zsh)** and **fish** (collapsible), each with a copy button and a one-line explanation. Answers come from a cheap LLM via [OpenRouter](https://openrouter.ai), asked for strict JSON.
+Type a plain-English task ("search my whole PC for files with invoice in the name") and get the command for **PowerShell, cmd, Linux (bash) and macOS (zsh)**, each with a copy button and a one-line explanation. Answers come from a cheap LLM via [OpenRouter](https://openrouter.ai), asked for strict JSON.
 
 ## Structure
 | Path | Purpose |
@@ -10,7 +10,7 @@ Type a plain-English task ("search my whole PC for files with invoice in the nam
 | `server.js` | Equivalent Node server (no deps, Node 18+) for local use or Render. Serves `index.html` + `/api/ask`. |
 | `start.sh` | Box helper: starts `server.js` + a cloudflared quick tunnel in the background. |
 
-API response: `{"powershell":{"cmd","why"},"cmd":{...},"bash":{...},"zsh_macos":{...},"fish":{...}}`, or `{"error": "..."}` with 4xx/5xx.
+API response: `{"powershell":{"cmd","why"},"cmd":{...},"bash":{...},"zsh_macos":{...}}`, or `{"error": "..."}` with 4xx/5xx.
 
 ## Safeguards
 - 500-character input cap.
