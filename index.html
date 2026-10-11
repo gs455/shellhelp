@@ -1,12 +1,27 @@
-<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>ShellHelp</title>
-<style>body{background:#111;color:#ddd;font:13px/1.3 system-ui,sans-serif;margin:0;padding:8px;max-width:900px}h1{font-size:14px;margin:0 0 6px}
-form{display:flex;gap:4px}input{flex:1;background:#1c1c1c;color:#eee;border:1px solid #333;padding:5px;font:inherit}button{background:#2a2a2a;color:#ddd;border:1px solid #444;padding:3px 8px;cursor:pointer;font:inherit}
-.r{display:grid;grid-template-columns:90px 1fr auto;gap:2px 6px;align-items:start;border-bottom:1px solid #222;padding:3px 0}.l{color:#8ab;font-weight:600}
-code{font:12px ui-monospace,Consolas,monospace;color:#9e9;white-space:pre-wrap;word-break:break-all}.w{grid-column:2;color:#888;font-size:12px}#m{color:#c88;margin:4px 0}details summary{cursor:pointer;color:#8ab;padding:3px 0}</style></head><body>
-<h1>ShellHelp — task → PowerShell / cmd / bash / macOS / fish</h1>
-<form id=f><input id=q maxlength=500 placeholder="e.g. search my whole PC for files with invoice in the name" autofocus><button>Go</button></form><div id=m></div><div id=o></div>
-<script>const L=[['powershell','PowerShell'],['cmd','cmd'],['bash','Linux bash'],['zsh_macos','macOS zsh']];
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>shellhelp</title>
+<style>body{background:#fff;color:#222;font:13px/1.35 Verdana,sans-serif;margin:0;padding:10px}.w{max-width:900px;margin:0 auto}
+.logo{text-align:center;margin:4px 0 2px}.logo h1{display:inline;font:bold 44px Georgia,'Times New Roman',serif;letter-spacing:-1px}.logo h1 span{color:#5b9bea}
+.logo a{color:#333;vertical-align:middle;margin-left:6px}.tag{text-align:center;font:12px monospace;color:#444;margin:0 0 10px}
+.g{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.b{border:3px solid #000;min-height:120px;padding:6px;display:flex;flex-direction:column;gap:4px}
+.b code{font:12px Consolas,monospace;color:#0a5;white-space:pre-wrap;word-break:break-all;flex:1}.b .x{color:#555;font-size:11px}
+.b button{align-self:flex-start;font:10px monospace;border:1px solid #aaa;background:#f4f4f4;cursor:pointer;padding:1px 6px}
+.lb{text-align:center;font-weight:bold;font-size:15px;margin-top:3px}
+form{display:flex;margin:12px 0 4px;border:1px solid #ccc;border-radius:3px}form label{background:#eee;padding:5px 8px;font:11px monospace;border-right:1px solid #ccc}
+form input{flex:1;border:0;padding:5px;font:13px monospace;outline:0}form button{border:0;border-left:1px solid #ccc;background:#f4f4f4;font:11px monospace;padding:0 12px;cursor:pointer}
+#m{color:#b33;font:12px monospace;min-height:14px}details{font:12px monospace;margin:4px 0}details .b{min-height:0;max-width:60%}
+h2{font:bold 20px Georgia,serif;margin:10px 0 4px}ul{margin:0;padding-left:18px;font:12px monospace}li{margin:3px 0}li a{color:#222;cursor:pointer}li a:hover{color:#5b9bea}
+@media(max-width:700px){.g{grid-template-columns:1fr 1fr}}</style></head><body><div class=w>
+<div class=logo><h1><span>shell</span>help</h1><a href="https://github.com/gs455/shellhelp" title="GitHub"><svg width=16 height=16 viewBox="0 0 16 16" fill=currentColor><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div>
+<p class=tag>describe a task in plain english to get the command for each shell</p>
+<div class=g id=g></div>
+<form id=f><label>task</label><input id=q maxlength=500 autofocus placeholder="e.g. find files with 'invoice' in the name"><button>EXPLAIN</button></form>
+<div id=m></div><details id=fd><summary>fish (optional)</summary><div class=b id=fish></div></details>
+<h2>examples</h2><ul id=ex></ul></div>
+<script>const S=[['powershell','powershell'],['cmd','cmd'],['bash','linux bash'],['zsh_macos','macOS zsh']];
+const E=["find files with 'invoice' in the name","find files containing 'api_key'","show disk space","list running processes","kill whatever is on port 8080","find the 10 largest files in a folder","show my IP address","rename all .txt files to .md"];
 const esc=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const row=(k,n,d)=>{const x=d[k]||{};return `<div class=r><span class=l>${n}</span><code>${esc(x.cmd)}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='✓'">copy</button><span class=w>${esc(x.why)}</span></div>`};
-f.onsubmit=async e=>{e.preventDefault();m.textContent='…';o.innerHTML='';try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q.value})});const d=await r.json();
-if(!r.ok){m.textContent=d.error;return}m.textContent='';o.innerHTML=L.map(([k,n])=>row(k,n,d)).join('')+`<details><summary>fish</summary>${row('fish','fish',d)}</details>`}catch{m.textContent='Network error'}};</script></body></html>
+const box=x=>`<code>${esc(x&&x.cmd)}</code>${x&&x.cmd?`<button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied'">copy</button>`:''}<span class=x>${esc(x&&x.why)}</span>`;
+const draw=(d={})=>{g.innerHTML=S.map(([k,n])=>`<div><div class=b>${box(d[k])}</div><div class=lb>${n}</div></div>`).join('');fish.innerHTML=box(d.fish)};draw();
+ex.innerHTML=E.map(e=>`<li><a>${esc(e)}</a></li>`).join('');ex.onclick=e=>{if(e.target.tagName=='A'){q.value=e.target.textContent;f.requestSubmit()}};
+f.onsubmit=async e=>{e.preventDefault();if(!q.value.trim())return;m.textContent='thinking…';draw();try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q.value})});const d=await r.json();
+if(!r.ok){m.textContent=d.error;return}m.textContent='';draw(d)}catch{m.textContent='network error'}};</script></body></html>
