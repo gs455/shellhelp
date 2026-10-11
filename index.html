@@ -44,4 +44,4 @@ const box=x=>`<code>${esc(x&&x.cmd)}</code>${x&&x.cmd?`<button onclick="navigato
 const draw=(d={})=>{g.innerHTML=S.map(([k,n])=>`<div><div class=b>${box(d[k])}</div><div class=lb>${n}</div></div>`).join('')};draw();
 ex.innerHTML=E.map(e=>`<li><a>${esc(e)}</a></li>`).join('');ex.onclick=e=>{if(e.target.tagName=='A'){q.value=e.target.textContent;f.requestSubmit()}};
 f.onsubmit=async e=>{e.preventDefault();if(!q.value.trim())return;m.textContent='thinking…';draw();try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q.value})});const d=await r.json();
-if(!r.ok){m.textContent=d.error;return}m.textContent='';draw(d)}catch{m.textContent='network error'}};</script></body></html>
+if(!r.ok){m.textContent=d.error;return}m.textContent='';draw(d);const x=d._meta;if(x&&/debug/.test(location.search))m.textContent=`${x.model} · ${x.prompt} in + ${x.completion} out = ${x.total} tokens · $${x.cost!=null?Number(x.cost).toFixed(6):'?'}`}catch{m.textContent='network error'}};</script></body></html>
