@@ -8,11 +8,11 @@ function limit(ip){const d=new Date().toDateString();if(d!==day){day=d;global=0;
  const now=Date.now(),r=ips.get(ip)||{m:[],d:0};r.m=r.m.filter(t=>now-t<60000);
  if(r.m.length>=PER_MIN)return'Too many requests, wait a minute.';if(r.d>=PER_DAY)return'Daily limit reached.';
  r.m.push(now);r.d++;ips.set(ip,r);global++;return null;}
-const SYS=`You convert a plain-English computer task into shell commands. Reply ONLY with JSON: {"powershell":{"cmd":"","why":""},"cmd":{"cmd":"","why":""},"bash":{"cmd":"","why":""},"zsh_macos":{"cmd":"","why":""}}. "cmd" = a correct, ready-to-run command (one line if possible; use placeholders like <text> only when the user gave no value). "why" = one short line explaining it. bash = Linux GNU tools; zsh_macos = macOS BSD tools. If the request isn't a computer task, put a short note in every "why" and empty "cmd".`;
-async function ask(q){const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+KEY,'Content-Type':'application/json'},
- body:JSON.stringify({model:MODEL,temperature:0.1,max_tokens:900,response_format:{type:'json_object'},usage:{include:true},messages:[{role:'system',content:SYS},{role:'user',content:q}]})});
+const SYS=`You convert a plain-English computer task into shell commands. Reply ONLY with JSON: {"powershell":{"cmd":"","why":""},"cmd":{"cmd":"","why":""},"bash":{"cmd":"","why":""},"zsh_macos":{"cmd":"","why":""}}. "cmd" = a correct, ready-to-run command (one line if possible; use placeholders like <text> only when the user gave no value). "why" = one short line explaining it. bash = Linux GNU tools; zsh_macos = macOS BSD tools. cmd: never use wmic (deprecated/removed on Windows 11); prefer built-ins like fsutil, dir, tasklist, netstat, ipconfig, or call powershell -c only if no cmd way exists. If the request isn't a computer task, put a short note in every "why" and empty "cmd".`;
+async function ask(q,retry){const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+KEY,'Content-Type':'application/json'},
+ body:JSON.stringify({model:MODEL,temperature:0.1,max_tokens:900,response_format:{type:'json_object'},usage:{include:true},messages:[{role:'system',content:SYS},{role:'user',content:retry?q+'\n(Do not use wmic in cmd; it does not exist on Windows 11. Use fsutil, dir, tasklist, systeminfo, etc.)':q}]})});
  const j=await r.json();if(!r.ok)throw new Error('upstream '+r.status);let t=j.choices[0].message.content.trim().replace(/^```(json)?|```$/g,'');
- return {result:JSON.parse(t),usage:j.usage,model:j.model};}
+ const o=JSON.parse(t);if(!retry&&/\bwmic\b/i.test(o.cmd&&o.cmd.cmd||''))return ask(q,true);return {result:o,usage:j.usage,model:j.model};}
 http.createServer((req,res)=>{
  if(req.method==='GET'&&(req.url==='/'||req.url==='/index.html')){res.writeHead(200,{'Content-Type':'text/html'});return res.end(html);}
  if(req.method==='POST'&&req.url==='/api/ask'){let b='';req.on('data',c=>{b+=c;if(b.length>4000)req.destroy();});
