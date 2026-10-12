@@ -659,8 +659,8 @@
    "why": "Lists all drives with their free space in bytes."
   },
   "cmd": {
-   "cmd": "powershell -NoProfile -c \"Get-PSDrive -PSProvider FileSystem\"",
-   "why": "Uses PowerShell from cmd: Lists all drives with their free space."
+   "cmd": "fsutil volume diskfree C:",
+   "why": "Shows total, free and available bytes on drive C: (change the letter for other drives)."
   },
   "bash": {
    "cmd": "df -h",
@@ -870,8 +870,8 @@
    "why": "Lists all mounted filesystems."
   },
   "cmd": {
-   "cmd": "powershell -NoProfile -c \"Get-PSDrive -PSProvider FileSystem\"",
-   "why": "Uses PowerShell from cmd: Lists mounted drives."
+   "cmd": "fsutil volume diskfree C:",
+   "why": "Shows total, free and available bytes on drive C: (change the letter for other drives)."
   },
   "bash": {
    "cmd": "mount | column -t",
