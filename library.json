@@ -1,0 +1,6083 @@
+[
+ {
+  "id": "arch-append-zip",
+  "phrases": [
+   "add file to existing zip",
+   "update zip archive",
+   "append to zip",
+   "add file to zip",
+   "insert file into zip",
+   "put file into existing zip"
+  ],
+  "powershell": {
+   "cmd": "Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::Open('<file>.zip', 'Update'); [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($z, '<file-to-add>', '<name-in-zip>'); $z.Dispose()",
+   "why": "Uses .NET ZipFileExtensions to add a file to an existing zip."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::Open('<file>.zip', 'Update'); [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($z, '<file-to-add>', '<name-in-zip>'); $z.Dispose()\"",
+   "why": "Uses PowerShell from cmd: add file to zip."
+  },
+  "bash": {
+   "cmd": "zip -u <file>.zip <file-to-add>",
+   "why": "Updates or adds file to existing zip."
+  },
+  "zsh_macos": {
+   "cmd": "zip -u <file>.zip <file-to-add>",
+   "why": "Updates or adds file to existing zip."
+  }
+ },
+ {
+  "id": "arch-compress-xz",
+  "phrases": [
+   "compress with xz",
+   "make xz file",
+   "xz compression",
+   "compress file xz",
+   "create xz archive",
+   "pack file using xz"
+  ],
+  "powershell": {
+   "cmd": "tar -cJf <file>.tar.xz <file>",
+   "why": "Native tar on Windows 10+ supports xz compression."
+  },
+  "cmd": {
+   "cmd": "tar -cJf <file>.tar.xz <file>",
+   "why": "Native tar on Windows 10+ supports xz compression."
+  },
+  "bash": {
+   "cmd": "xz -k <file>",
+   "why": "Compresses file to xz format, keeping the original."
+  },
+  "zsh_macos": {
+   "cmd": "xz -k <file>",
+   "why": "Compresses file to xz format, keeping the original."
+  }
+ },
+ {
+  "id": "arch-create-tar-bz2",
+  "phrases": [
+   "create tar bz2",
+   "compress to bzip2",
+   "make a tbz file",
+   "tar and bzip2 folder",
+   "bundle folder as bz2",
+   "pack directory with bzip2"
+  ],
+  "powershell": {
+   "cmd": "tar -cjvf <file>.tar.bz2 <folder>",
+   "why": "Native tar utility supports bzip2."
+  },
+  "cmd": {
+   "cmd": "tar -cjvf <file>.tar.bz2 <folder>",
+   "why": "Native tar utility supports bzip2."
+  },
+  "bash": {
+   "cmd": "tar -cjvf <file>.tar.bz2 <folder>",
+   "why": "Creates a bzip2 compressed tar archive."
+  },
+  "zsh_macos": {
+   "cmd": "tar -cjvf <file>.tar.bz2 <folder>",
+   "why": "Creates a bzip2 compressed tar archive."
+  }
+ },
+ {
+  "id": "arch-create-tar-gz",
+  "phrases": [
+   "create tar gz",
+   "compress folder to tarball",
+   "make a tgz file",
+   "tar and gzip a directory",
+   "archive folder as tar gz"
+  ],
+  "powershell": {
+   "cmd": "tar -czvf <file>.tar.gz <folder>",
+   "why": "Native tar utility to create compressed archives."
+  },
+  "cmd": {
+   "cmd": "tar -czvf <file>.tar.gz <folder>",
+   "why": "Native tar utility to create compressed archives."
+  },
+  "bash": {
+   "cmd": "tar -czvf <file>.tar.gz <folder>",
+   "why": "Creates a gzipped tar archive."
+  },
+  "zsh_macos": {
+   "cmd": "tar -czvf <file>.tar.gz <folder>",
+   "why": "Creates a gzipped tar archive."
+  }
+ },
+ {
+  "id": "arch-create-tar-xz",
+  "phrases": [
+   "create tar xz",
+   "compress to xz",
+   "make a txz file",
+   "tar and xz folder",
+   "bundle folder as xz",
+   "pack directory with xz"
+  ],
+  "powershell": {
+   "cmd": "tar -cJvf <file>.tar.xz <folder>",
+   "why": "Native tar utility supports xz."
+  },
+  "cmd": {
+   "cmd": "tar -cJvf <file>.tar.xz <folder>",
+   "why": "Native tar utility supports xz."
+  },
+  "bash": {
+   "cmd": "tar -cJvf <file>.tar.xz <folder>",
+   "why": "Creates an xz compressed tar archive."
+  },
+  "zsh_macos": {
+   "cmd": "tar -cJvf <file>.tar.xz <folder>",
+   "why": "Creates an xz compressed tar archive."
+  }
+ },
+ {
+  "id": "arch-create-zip",
+  "phrases": [
+   "create a zip file",
+   "compress folder to zip",
+   "make a zip archive",
+   "zip up a directory",
+   "package files into zip"
+  ],
+  "powershell": {
+   "cmd": "Compress-Archive -Path <source> -DestinationPath <file>.zip",
+   "why": "Native cmdlet to create zip archives."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Compress-Archive -Path <source> -DestinationPath <file>.zip\"",
+   "why": "Uses PowerShell from cmd: standard way to create zip on Windows."
+  },
+  "bash": {
+   "cmd": "zip -r <file>.zip <source>",
+   "why": "Recursively compress directory into a zip file."
+  },
+  "zsh_macos": {
+   "cmd": "zip -r <file>.zip <source>",
+   "why": "Recursively compress directory into a zip file."
+  }
+ },
+ {
+  "id": "arch-decompress-xz",
+  "phrases": [
+   "decompress xz",
+   "extract xz file",
+   "unxz file",
+   "unpack xz",
+   "open xz file",
+   "expand xz archive"
+  ],
+  "powershell": {
+   "cmd": "tar -xJf <file>.tar.xz",
+   "why": "Native tar on Windows 10+ supports xz decompression."
+  },
+  "cmd": {
+   "cmd": "tar -xJf <file>.tar.xz",
+   "why": "Native tar on Windows 10+ supports xz decompression."
+  },
+  "bash": {
+   "cmd": "unxz <file>.xz",
+   "why": "Decompresses xz file in place."
+  },
+  "zsh_macos": {
+   "cmd": "unxz <file>.xz",
+   "why": "Decompresses xz file in place."
+  }
+ },
+ {
+  "id": "arch-delete-from-zip",
+  "phrases": [
+   "remove file from zip",
+   "delete file in zip",
+   "delete from archive",
+   "remove from zip",
+   "strip file from zip",
+   "purge entry from zip"
+  ],
+  "powershell": {
+   "cmd": "Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::Open('<file>.zip', 'Update'); $entry = $zip.GetEntry('<name-in-zip>'); if ($entry) { $entry.Delete() }; $zip.Dispose()",
+   "why": "Uses .NET to remove an entry from a zip archive."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Add-Type -AssemblyName System.IO.Compression.FileSystem; $zip = [System.IO.Compression.ZipFile]::Open('<file>.zip', 'Update'); $entry = $zip.GetEntry('<name-in-zip>'); if ($entry) { $entry.Delete() }; $zip.Dispose()\"",
+   "why": "Uses PowerShell from cmd: remove file from zip."
+  },
+  "bash": {
+   "cmd": "zip -d <file>.zip <name-in-zip>",
+   "why": "Deletes file from zip archive."
+  },
+  "zsh_macos": {
+   "cmd": "zip -d <file>.zip <name-in-zip>",
+   "why": "Deletes file from zip archive."
+  }
+ },
+ {
+  "id": "arch-extract-single-file",
+  "phrases": [
+   "extract one file from zip",
+   "get specific file from zip",
+   "extract single file",
+   "unzip specific file",
+   "pull one file from archive",
+   "unzip just one file"
+  ],
+  "powershell": {
+   "cmd": "Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::OpenRead('<file>.zip'); [System.IO.Compression.ZipFileExtensions]::ExtractToFile($z.GetEntry('<name-in-zip>'), '<destination>'); $z.Dispose()",
+   "why": "Uses .NET ZipFileExtensions to extract a single entry."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Add-Type -AssemblyName System.IO.Compression.FileSystem; $z = [System.IO.Compression.ZipFile]::OpenRead('<file>.zip'); [System.IO.Compression.ZipFileExtensions]::ExtractToFile($z.GetEntry('<name-in-zip>'), '<destination>'); $z.Dispose()\"",
+   "why": "Uses PowerShell from cmd: extract single file from zip."
+  },
+  "bash": {
+   "cmd": "unzip <file>.zip <name-in-zip> -d <folder>",
+   "why": "Extracts only the specified file."
+  },
+  "zsh_macos": {
+   "cmd": "unzip <file>.zip <name-in-zip> -d <folder>",
+   "why": "Extracts only the specified file."
+  }
+ },
+ {
+  "id": "arch-extract-tar",
+  "phrases": [
+   "extract tar file",
+   "unpack tar archive",
+   "untar a file",
+   "open tar archive",
+   "decompress tar"
+  ],
+  "powershell": {
+   "cmd": "tar -xf <file>.tar",
+   "why": "Native tar utility to extract."
+  },
+  "cmd": {
+   "cmd": "tar -xf <file>.tar",
+   "why": "Native tar utility to extract."
+  },
+  "bash": {
+   "cmd": "tar -xvf <file>.tar",
+   "why": "Extracts a standard tar archive."
+  },
+  "zsh_macos": {
+   "cmd": "tar -xvf <file>.tar",
+   "why": "Extracts a standard tar archive."
+  }
+ },
+ {
+  "id": "arch-extract-tar-bz2",
+  "phrases": [
+   "extract tar bz2",
+   "unpack bzip2 tarball",
+   "untar bz2 file",
+   "extract tbz archive",
+   "decompress tar bz2"
+  ],
+  "powershell": {
+   "cmd": "tar -xjf <file>.tar.bz2",
+   "why": "Native tar utility supports bzip2."
+  },
+  "cmd": {
+   "cmd": "tar -xjf <file>.tar.bz2",
+   "why": "Native tar utility supports bzip2."
+  },
+  "bash": {
+   "cmd": "tar -xjvf <file>.tar.bz2",
+   "why": "Extracts bzip2 compressed tar archive."
+  },
+  "zsh_macos": {
+   "cmd": "tar -xjvf <file>.tar.bz2",
+   "why": "Extracts bzip2 compressed tar archive."
+  }
+ },
+ {
+  "id": "arch-extract-tar-gz",
+  "phrases": [
+   "extract tar gz",
+   "unpack tarball",
+   "untar gzipped file",
+   "extract tgz archive",
+   "decompress tar gz"
+  ],
+  "powershell": {
+   "cmd": "tar -xf <file>.tar.gz",
+   "why": "Modern Windows versions include tar natively."
+  },
+  "cmd": {
+   "cmd": "tar -xf <file>.tar.gz",
+   "why": "Native tar utility available in modern Windows."
+  },
+  "bash": {
+   "cmd": "tar -xzvf <file>.tar.gz",
+   "why": "Extracts gzipped tar archive with verbose output."
+  },
+  "zsh_macos": {
+   "cmd": "tar -xzvf <file>.tar.gz",
+   "why": "Extracts gzipped tar archive with verbose output."
+  }
+ },
+ {
+  "id": "arch-extract-tar-xz",
+  "phrases": [
+   "extract tar xz",
+   "unpack xz archive",
+   "untar xz",
+   "extract txz",
+   "decompress tar.xz",
+   "open xz tarball"
+  ],
+  "powershell": {
+   "cmd": "tar -xJf <file>.tar.xz",
+   "why": "Native tar utility supports xz."
+  },
+  "cmd": {
+   "cmd": "tar -xJf <file>.tar.xz",
+   "why": "Native tar utility supports xz."
+  },
+  "bash": {
+   "cmd": "tar -xJvf <file>.tar.xz",
+   "why": "Extracts xz compressed tar archive."
+  },
+  "zsh_macos": {
+   "cmd": "tar -xJvf <file>.tar.xz",
+   "why": "Extracts xz compressed tar archive."
+  }
+ },
+ {
+  "id": "arch-extract-to-dir",
+  "phrases": [
+   "extract to specific folder",
+   "unpack into directory",
+   "unzip to path",
+   "untar to folder",
+   "decompress into directory",
+   "extract archive to location"
+  ],
+  "powershell": {
+   "cmd": "Expand-Archive -Path <file>.zip -DestinationPath <path>",
+   "why": "Native cmdlet with destination parameter."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Expand-Archive -Path <file>.zip -DestinationPath <path>\"",
+   "why": "Uses PowerShell from cmd: extract to specific path."
+  },
+  "bash": {
+   "cmd": "tar -xvf <file>.tar.gz -C <path>",
+   "why": "Extracts archive into specified directory."
+  },
+  "zsh_macos": {
+   "cmd": "tar -xvf <file>.tar.gz -C <path>",
+   "why": "Extracts archive into specified directory."
+  }
+ },
+ {
+  "id": "arch-extract-zip",
+  "phrases": [
+   "unzip a file",
+   "extract zip archive",
+   "open zip folder",
+   "unpack zip file",
+   "decompress a zip"
+  ],
+  "powershell": {
+   "cmd": "Expand-Archive -Path <file>.zip -DestinationPath <folder>",
+   "why": "Native cmdlet to extract zip contents."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Expand-Archive -Path <file>.zip -DestinationPath <folder>\"",
+   "why": "Uses PowerShell from cmd: standard way to extract zip on Windows."
+  },
+  "bash": {
+   "cmd": "unzip <file>.zip -d <folder>",
+   "why": "Standard utility to extract zip archives."
+  },
+  "zsh_macos": {
+   "cmd": "unzip <file>.zip -d <folder>",
+   "why": "Standard utility to extract zip archives."
+  }
+ },
+ {
+  "id": "arch-gunzip-file",
+  "phrases": [
+   "gunzip a file",
+   "decompress gz file",
+   "extract gz archive",
+   "uncompress gzip file",
+   "unzip gz"
+  ],
+  "powershell": {
+   "cmd": "$fs = [System.IO.File]::OpenRead('<file>.gz'); $out = [System.IO.File]::Create('<file>'); $gz = New-Object System.IO.Compression.GZipStream($fs, [System.IO.Compression.CompressionMode]::Decompress); $gz.CopyTo($out); $gz.Dispose(); $out.Dispose(); $fs.Dispose()",
+   "why": "Uses .NET GZipStream to decompress a gz file natively."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"$fs = [System.IO.File]::OpenRead('<file>.gz'); $out = [System.IO.File]::Create('<file>'); $gz = New-Object System.IO.Compression.GZipStream($fs, [System.IO.Compression.CompressionMode]::Decompress); $gz.CopyTo($out); $gz.Dispose(); $out.Dispose(); $fs.Dispose()\"",
+   "why": "Uses PowerShell from cmd: .NET GZipStream to decompress a gz file."
+  },
+  "bash": {
+   "cmd": "gunzip <file>.gz",
+   "why": "Decompresses a gzip file."
+  },
+  "zsh_macos": {
+   "cmd": "gunzip <file>.gz",
+   "why": "Decompresses a gzip file."
+  }
+ },
+ {
+  "id": "arch-gzip-file",
+  "phrases": [
+   "gzip a file",
+   "compress single file with gzip",
+   "make a gz file",
+   "compress file using gzip",
+   "create gz archive"
+  ],
+  "powershell": {
+   "cmd": "$fs = [System.IO.File]::OpenRead('<file>'); $out = [System.IO.File]::Create('<file>.gz'); $gz = New-Object System.IO.Compression.GZipStream($out, [System.IO.Compression.CompressionMode]::Compress); $fs.CopyTo($gz); $gz.Dispose(); $out.Dispose(); $fs.Dispose()",
+   "why": "Uses .NET GZipStream to compress a file natively."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"$fs = [System.IO.File]::OpenRead('<file>'); $out = [System.IO.File]::Create('<file>.gz'); $gz = New-Object System.IO.Compression.GZipStream($out, [System.IO.Compression.CompressionMode]::Compress); $fs.CopyTo($gz); $gz.Dispose(); $out.Dispose(); $fs.Dispose()\"",
+   "why": "Uses PowerShell from cmd: .NET GZipStream to compress a file."
+  },
+  "bash": {
+   "cmd": "gzip <file>",
+   "why": "Compresses a file using gzip."
+  },
+  "zsh_macos": {
+   "cmd": "gzip <file>",
+   "why": "Compresses a file using gzip."
+  }
+ },
+ {
+  "id": "arch-list-tar",
+  "phrases": [
+   "list tar contents",
+   "view tarball files",
+   "show files in tar archive",
+   "what is in a tar file",
+   "inspect tar without extracting"
+  ],
+  "powershell": {
+   "cmd": "tar -tf <file>.tar",
+   "why": "Native tar utility to list contents."
+  },
+  "cmd": {
+   "cmd": "tar -tf <file>.tar",
+   "why": "Native tar utility to list contents."
+  },
+  "bash": {
+   "cmd": "tar -tvf <file>.tar",
+   "why": "Lists contents of a tar archive verbosely."
+  },
+  "zsh_macos": {
+   "cmd": "tar -tvf <file>.tar",
+   "why": "Lists contents of a tar archive verbosely."
+  }
+ },
+ {
+  "id": "arch-list-zip",
+  "phrases": [
+   "list zip contents",
+   "show files in zip",
+   "view zip archive contents",
+   "what is inside a zip file",
+   "peek inside zip without extracting"
+  ],
+  "powershell": {
+   "cmd": "Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::OpenRead('<file>.zip').Entries.FullName",
+   "why": "Uses .NET framework to list zip contents."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::OpenRead('<file>.zip').Entries.FullName\"",
+   "why": "Uses PowerShell from cmd: lists files inside a zip."
+  },
+  "bash": {
+   "cmd": "unzip -l <file>.zip",
+   "why": "Lists contents of a zip file without extracting."
+  },
+  "zsh_macos": {
+   "cmd": "unzip -l <file>.zip",
+   "why": "Lists contents of a zip file without extracting."
+  }
+ },
+ {
+  "id": "arch-test-zip",
+  "phrases": [
+   "test zip integrity",
+   "check if zip is broken",
+   "verify zip file",
+   "is zip corrupted",
+   "validate zip archive",
+   "check zip for errors"
+  ],
+  "powershell": {
+   "cmd": "Add-Type -AssemblyName System.IO.Compression.FileSystem; try { [System.IO.Compression.ZipFile]::OpenRead('<file>.zip').Dispose(); Write-Host 'OK' } catch { Write-Host 'Corrupt' }",
+   "why": "Uses .NET to verify zip file structure."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Add-Type -AssemblyName System.IO.Compression.FileSystem; try { [System.IO.Compression.ZipFile]::OpenRead('<file>.zip').Dispose(); Write-Host 'OK' } catch { Write-Host 'Corrupt' }\"",
+   "why": "Uses PowerShell from cmd: verify zip integrity."
+  },
+  "bash": {
+   "cmd": "unzip -t <file>.zip",
+   "why": "Tests zip file integrity."
+  },
+  "zsh_macos": {
+   "cmd": "unzip -t <file>.zip",
+   "why": "Tests zip file integrity."
+  }
+ },
+ {
+  "id": "disk-check-bad-sectors",
+  "phrases": [
+   "check for bad sectors",
+   "scan disk for errors",
+   "verify disk surface",
+   "check drive integrity",
+   "find bad blocks"
+  ],
+  "powershell": {
+   "cmd": "Repair-Volume -DriveLetter <letter> -Scan",
+   "why": "Scans the volume for errors."
+  },
+  "cmd": {
+   "cmd": "chkdsk <letter>:",
+   "why": "Checks the disk for errors using chkdsk."
+  },
+  "bash": {
+   "cmd": "sudo badblocks -v <device>",
+   "why": "Scans a device for bad blocks."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil verifyVolume <device>",
+   "why": "Verifies the structure of a volume on macOS."
+  }
+ },
+ {
+  "id": "disk-check-disk-health",
+  "phrases": [
+   "check disk health",
+   "is my drive failing",
+   "check smart status",
+   "verify disk integrity",
+   "check drive status"
+  ],
+  "powershell": {
+   "cmd": "Get-PhysicalDisk | Select-Object FriendlyName, HealthStatus",
+   "why": "Checks the health status of physical disks."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-PhysicalDisk | Select-Object FriendlyName, HealthStatus\"",
+   "why": "Uses PowerShell from cmd: Checks disk health."
+  },
+  "bash": {
+   "cmd": "sudo smartctl -a <device>",
+   "why": "Displays SMART health information for a drive."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil info <device> | grep SMART",
+   "why": "Checks the SMART status of a disk on macOS."
+  }
+ },
+ {
+  "id": "disk-check-disk-latency",
+  "phrases": [
+   "check disk latency",
+   "is disk slow",
+   "check disk performance",
+   "measure disk speed",
+   "check i/o wait"
+  ],
+  "powershell": {
+   "cmd": "Get-Counter '\\PhysicalDisk(*)\\% Disk Time'",
+   "why": "Monitors disk activity time."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Counter '\\PhysicalDisk(*)\\% Disk Time'\"",
+   "why": "Uses PowerShell from cmd: Monitors disk activity time."
+  },
+  "bash": {
+   "cmd": "iostat -x 1 5",
+   "why": "Reports extended disk I/O statistics."
+  },
+  "zsh_macos": {
+   "cmd": "iostat -d 1",
+   "why": "Reports disk I/O statistics on macOS."
+  }
+ },
+ {
+  "id": "disk-check-file-system-type",
+  "phrases": [
+   "what file system is this",
+   "check drive format",
+   "is it ntfs or fat32",
+   "check partition format",
+   "identify filesystem",
+   "list all filesystems",
+   "show all volumes",
+   "list drives and partitions",
+   "view all storage",
+   "list mounted volumes"
+  ],
+  "powershell": {
+   "cmd": "Get-Volume -DriveLetter <letter> | Select-Object FileSystem",
+   "why": "Identifies the filesystem type of a drive."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Volume -DriveLetter <letter> | Select-Object FileSystem\"",
+   "why": "Uses PowerShell from cmd: Checks filesystem type."
+  },
+  "bash": {
+   "cmd": "lsblk -f",
+   "why": "Lists block devices with their filesystem types."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil info <device> | grep 'File System'",
+   "why": "Displays the filesystem type on macOS."
+  }
+ },
+ {
+  "id": "disk-check-free-space",
+  "phrases": [
+   "how much disk space is left",
+   "check available storage",
+   "show disk usage",
+   "how much space on drive",
+   "check free space",
+   "check disk space",
+   "how much free space is left",
+   "check storage on all drives",
+   "how full is my hard drive",
+   "check drive usage",
+   "show free disk space",
+   "disk capacity remaining"
+  ],
+  "powershell": {
+   "cmd": "Get-PSDrive -PSProvider FileSystem",
+   "why": "Lists all drives with their free space in bytes."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-PSDrive -PSProvider FileSystem\"",
+   "why": "Uses PowerShell from cmd: Lists all drives with their free space."
+  },
+  "bash": {
+   "cmd": "df -h",
+   "why": "Displays disk space usage in human-readable format."
+  },
+  "zsh_macos": {
+   "cmd": "df -h",
+   "why": "Displays disk space usage in human-readable format."
+  }
+ },
+ {
+  "id": "disk-clear-temp-files",
+  "phrases": [
+   "clear temp files",
+   "delete temporary files",
+   "clean up disk",
+   "remove temp data",
+   "free up space"
+  ],
+  "powershell": {
+   "cmd": "Remove-Item -Path $env:TEMP\\* -Recurse -Force",
+   "why": "Deletes all files in the user's temporary folder."
+  },
+  "cmd": {
+   "cmd": "del /q /s %TEMP%\\*",
+   "why": "Deletes files in the temporary directory using standard cmd."
+  },
+  "bash": {
+   "cmd": "sudo rm -rf /tmp/*",
+   "why": "Clears the system temporary directory."
+  },
+  "zsh_macos": {
+   "cmd": "sudo rm -rf /private/tmp/*",
+   "why": "Clears the system temporary directory on macOS."
+  }
+ },
+ {
+  "id": "disk-create-partition",
+  "phrases": [
+   "create partition",
+   "make new partition",
+   "partition disk",
+   "add new volume",
+   "create drive partition"
+  ],
+  "powershell": {
+   "cmd": "New-Partition -DiskNumber <number> -UseMaximumSize -AssignDriveLetter",
+   "why": "Creates a new partition on the specified disk."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"New-Partition -DiskNumber <number> -UseMaximumSize -AssignDriveLetter\"",
+   "why": "Uses PowerShell from cmd: Creates a partition."
+  },
+  "bash": {
+   "cmd": "sudo fdisk <device>",
+   "why": "Opens the fdisk utility to create partitions."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil partitionDisk <device> 1 GPT JHFS+ <name> 100%",
+   "why": "Partitions a disk on macOS."
+  }
+ },
+ {
+  "id": "disk-find-large-files",
+  "phrases": [
+   "find large files",
+   "show biggest files",
+   "search for files over 100mb",
+   "find heavy files",
+   "what is taking up space",
+   "find largest files",
+   "list files by size descending",
+   "find files taking most space"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse -File | Sort-Object Length -Descending | Select-Object -First 10",
+   "why": "Lists the 10 largest files in the current directory tree."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-ChildItem -Recurse -File | Sort-Object Length -Descending | Select-Object -First 10\"",
+   "why": "Uses PowerShell from cmd: Finds the 10 largest files."
+  },
+  "bash": {
+   "cmd": "find . -type f -exec du -h {} + | sort -rh | head -n 10",
+   "why": "Finds and sorts the 10 largest files in the current directory."
+  },
+  "zsh_macos": {
+   "cmd": "find . -type f -exec du -sh {} + | sort -rh | head -n 10",
+   "why": "Finds and sorts the 10 largest files in the current directory."
+  }
+ },
+ {
+  "id": "disk-folder-size",
+  "phrases": [
+   "how big is this folder",
+   "check directory size",
+   "size of folder",
+   "calculate folder size",
+   "how much space does this folder take"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse | Measure-Object -Property Length -Sum",
+   "why": "Calculates the total size of files in the current directory."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-ChildItem -Recurse | Measure-Object -Property Length -Sum).Sum / 1MB\"",
+   "why": "Uses PowerShell from cmd: Returns folder size in MB."
+  },
+  "bash": {
+   "cmd": "du -sh <folder>",
+   "why": "Summarizes disk usage for the specified directory."
+  },
+  "zsh_macos": {
+   "cmd": "du -sh <folder>",
+   "why": "Summarizes disk usage for the specified directory."
+  }
+ },
+ {
+  "id": "disk-format-drive",
+  "phrases": [
+   "format drive",
+   "format partition",
+   "wipe drive",
+   "initialize disk",
+   "format volume"
+  ],
+  "powershell": {
+   "cmd": "Format-Volume -DriveLetter <letter> -FileSystem NTFS",
+   "why": "Formats a volume with the NTFS filesystem."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Format-Volume -DriveLetter <letter> -FileSystem NTFS\"",
+   "why": "Uses PowerShell from cmd: Formats a drive."
+  },
+  "bash": {
+   "cmd": "sudo mkfs.ext4 <device>",
+   "why": "Formats a partition with the ext4 filesystem."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil eraseDisk JHFS+ <name> <device>",
+   "why": "Formats a disk on macOS."
+  }
+ },
+ {
+  "id": "disk-get-drive-serial",
+  "phrases": [
+   "get drive serial number",
+   "find disk serial",
+   "check hardware serial",
+   "get drive id",
+   "view disk serial"
+  ],
+  "powershell": {
+   "cmd": "Get-PhysicalDisk | Select-Object FriendlyName, SerialNumber",
+   "why": "Retrieves the serial number of physical disks."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-PhysicalDisk | Select-Object FriendlyName, SerialNumber\"",
+   "why": "Uses PowerShell from cmd: Gets disk serials."
+  },
+  "bash": {
+   "cmd": "lsblk -o NAME,SERIAL",
+   "why": "Lists block devices with their serial numbers."
+  },
+  "zsh_macos": {
+   "cmd": "system_profiler SPSerialATADataType | grep 'Serial Number'",
+   "why": "Retrieves serial numbers for SATA drives on macOS."
+  }
+ },
+ {
+  "id": "disk-list-all-disks",
+  "phrases": [
+   "list all disks",
+   "show physical drives",
+   "view attached disks",
+   "list storage devices",
+   "what disks are connected"
+  ],
+  "powershell": {
+   "cmd": "Get-PhysicalDisk",
+   "why": "Lists all physical disks connected to the system."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-PhysicalDisk\"",
+   "why": "Uses PowerShell from cmd: Lists physical disks."
+  },
+  "bash": {
+   "cmd": "lsblk -d",
+   "why": "Lists all physical block devices."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil list",
+   "why": "Lists all disks and partitions on macOS."
+  }
+ },
+ {
+  "id": "disk-list-mounted",
+  "phrases": [
+   "what is mounted",
+   "show mounted drives",
+   "list mount points",
+   "view active mounts",
+   "check mounted filesystems"
+  ],
+  "powershell": {
+   "cmd": "Get-PSDrive -PSProvider FileSystem",
+   "why": "Lists all mounted filesystems."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-PSDrive -PSProvider FileSystem\"",
+   "why": "Uses PowerShell from cmd: Lists mounted drives."
+  },
+  "bash": {
+   "cmd": "mount | column -t",
+   "why": "Lists all currently mounted filesystems."
+  },
+  "zsh_macos": {
+   "cmd": "mount | column -t",
+   "why": "Lists all currently mounted filesystems."
+  }
+ },
+ {
+  "id": "disk-list-partitions",
+  "phrases": [
+   "list partitions",
+   "show disk partitions",
+   "view drive partitions",
+   "what partitions are on my disk",
+   "list disk volumes"
+  ],
+  "powershell": {
+   "cmd": "Get-Partition",
+   "why": "Lists all partitions on the system."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Partition\"",
+   "why": "Uses PowerShell from cmd: Lists all partitions."
+  },
+  "bash": {
+   "cmd": "lsblk",
+   "why": "Lists block devices and their partition structure."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil list",
+   "why": "Lists all disks and partitions on macOS."
+  }
+ },
+ {
+  "id": "disk-mount-drive",
+  "phrases": [
+   "mount a drive",
+   "attach disk",
+   "mount partition",
+   "how to mount a disk",
+   "mount external drive"
+  ],
+  "powershell": {
+   "cmd": "Mount-DiskImage -ImagePath <path>",
+   "why": "Mounts an ISO or VHD disk image."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Mount-DiskImage -ImagePath '<path>'\"",
+   "why": "Uses PowerShell from cmd: Mounts a disk image file."
+  },
+  "bash": {
+   "cmd": "sudo mount <device> <mountpoint>",
+   "why": "Mounts a device to a specific directory."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil mount <device>",
+   "why": "Mounts a disk volume on macOS."
+  }
+ },
+ {
+  "id": "disk-rename-drive",
+  "phrases": [
+   "rename drive",
+   "change drive label",
+   "label partition",
+   "name my drive",
+   "set volume name"
+  ],
+  "powershell": {
+   "cmd": "Set-Volume -DriveLetter <letter> -NewFileSystemLabel <name>",
+   "why": "Renames a drive label."
+  },
+  "cmd": {
+   "cmd": "label <letter>: <name>",
+   "why": "Changes the volume label using standard cmd."
+  },
+  "bash": {
+   "cmd": "sudo e2label <device> <name>",
+   "why": "Changes the label for an ext2/3/4 filesystem."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil rename <device> <name>",
+   "why": "Renames a disk volume on macOS."
+  }
+ },
+ {
+  "id": "disk-show-disk-usage-by-folder",
+  "phrases": [
+   "show disk usage by folder",
+   "which folders are big",
+   "analyze disk space",
+   "visualize folder sizes",
+   "find space hogs"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Directory | ForEach-Object { $_ | Add-Member -NotePropertyName Size -NotePropertyValue (Get-ChildItem $_.FullName -Recurse -File | Measure-Object Length -Sum).Sum -PassThru } | Sort-Object Size -Descending | Select-Object Name, Size",
+   "why": "Lists subdirectories sorted by total size recursively."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-ChildItem -Directory | ForEach-Object { $_ | Add-Member -NotePropertyName Size -NotePropertyValue (Get-ChildItem $_.FullName -Recurse -File | Measure-Object Length -Sum).Sum -PassThru } | Sort-Object Size -Descending | Select-Object Name, Size\"",
+   "why": "Uses PowerShell from cmd: Lists subdirectories sorted by total size."
+  },
+  "bash": {
+   "cmd": "du -h --max-depth=1 | sort -h",
+   "why": "Lists folder sizes in the current directory."
+  },
+  "zsh_macos": {
+   "cmd": "du -sh * | sort -h",
+   "why": "Lists folder sizes in the current directory on macOS."
+  }
+ },
+ {
+  "id": "disk-show-mount-options",
+  "phrases": [
+   "show mount options",
+   "view mount flags",
+   "check how drive is mounted",
+   "list mount settings",
+   "view fstab options"
+  ],
+  "powershell": {
+   "cmd": "Get-Volume -DriveLetter <letter> | Select-Object FileSystemType, DriveType",
+   "why": "Shows volume details."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Volume -DriveLetter <letter> | Select-Object FileSystemType, DriveType\"",
+   "why": "Uses PowerShell from cmd: Shows volume info."
+  },
+  "bash": {
+   "cmd": "mount | grep <device>",
+   "why": "Shows mount options for a specific device."
+  },
+  "zsh_macos": {
+   "cmd": "mount | grep <device>",
+   "why": "Shows mount options for a specific device on macOS."
+  }
+ },
+ {
+  "id": "disk-unmount-drive",
+  "phrases": [
+   "unmount drive",
+   "eject disk",
+   "detach partition",
+   "safely remove drive",
+   "unmount volume"
+  ],
+  "powershell": {
+   "cmd": "Dismount-DiskImage -ImagePath <path>",
+   "why": "Dismounts a disk image."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Dismount-DiskImage -ImagePath '<path>'\"",
+   "why": "Uses PowerShell from cmd: Dismounts a disk image."
+  },
+  "bash": {
+   "cmd": "sudo umount <mountpoint>",
+   "why": "Unmounts a filesystem."
+  },
+  "zsh_macos": {
+   "cmd": "diskutil unmount <device>",
+   "why": "Unmounts a disk volume on macOS."
+  }
+ },
+ {
+  "id": "env-add-to-path-perm",
+  "phrases": [
+   "add folder to path permanently",
+   "permanently update path",
+   "add directory to user path persistently",
+   "persist new path entry across sessions"
+  ],
+  "powershell": {
+   "cmd": "$p = [Environment]::GetEnvironmentVariable('Path', 'User'); [Environment]::SetEnvironmentVariable('Path', $p + ';<path>', 'User')",
+   "why": "Appends a directory to the user PATH permanently."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"$p = [Environment]::GetEnvironmentVariable('Path', 'User'); [Environment]::SetEnvironmentVariable('Path', $p + ';<path>', 'User')\"",
+   "why": "Uses PowerShell from cmd: Appends a directory to the user PATH permanently."
+  },
+  "bash": {
+   "cmd": "echo 'export PATH=\"$PATH:<path>\"' >> ~/.bashrc",
+   "why": "Appends a directory to the PATH in .bashrc for persistence."
+  },
+  "zsh_macos": {
+   "cmd": "echo 'export PATH=\"$PATH:<path>\"' >> ~/.zshrc",
+   "why": "Appends a directory to the PATH in .zshrc for persistence."
+  }
+ },
+ {
+  "id": "env-add-to-path-temp",
+  "phrases": [
+   "add folder to path temporarily",
+   "add directory to path for session",
+   "update path for current terminal",
+   "prepend path entry for this session"
+  ],
+  "powershell": {
+   "cmd": "$env:Path += ';<path>'",
+   "why": "Appends a directory to the PATH for the current session."
+  },
+  "cmd": {
+   "cmd": "set PATH=%PATH%;<path>",
+   "why": "Appends a directory to the PATH for the current session."
+  },
+  "bash": {
+   "cmd": "export PATH=\"$PATH:<path>\"",
+   "why": "Appends a directory to the PATH for the current session."
+  },
+  "zsh_macos": {
+   "cmd": "export PATH=\"$PATH:<path>\"",
+   "why": "Appends a directory to the PATH for the current session."
+  }
+ },
+ {
+  "id": "env-check-exists",
+  "phrases": [
+   "check if variable exists",
+   "is env var set",
+   "test whether environment variable is defined",
+   "verify env var presence"
+  ],
+  "powershell": {
+   "cmd": "Test-Path Env:\\<name>",
+   "why": "Returns true if the environment variable exists."
+  },
+  "cmd": {
+   "cmd": "if defined <name> (echo Yes) else (echo No)",
+   "why": "Checks if the environment variable is defined."
+  },
+  "bash": {
+   "cmd": "[ -z \"${<name>+x}\" ] && echo \"Not set\" || echo \"Set\"",
+   "why": "Checks if the environment variable is set using parameter expansion."
+  },
+  "zsh_macos": {
+   "cmd": "[ -z \"${<name>+x}\" ] && echo \"Not set\" || echo \"Set\"",
+   "why": "Checks if the environment variable is set using parameter expansion."
+  }
+ },
+ {
+  "id": "env-find-executable",
+  "phrases": [
+   "where is this command",
+   "find path to executable",
+   "which command is running",
+   "locate binary on system"
+  ],
+  "powershell": {
+   "cmd": "Get-Command <name>",
+   "why": "Returns the location and details of the specified command."
+  },
+  "cmd": {
+   "cmd": "where <name>",
+   "why": "Displays the full path of the executable matching the name."
+  },
+  "bash": {
+   "cmd": "which <name>",
+   "why": "Returns the path of the executable that would be run."
+  },
+  "zsh_macos": {
+   "cmd": "which <name>",
+   "why": "Returns the path of the executable that would be run."
+  }
+ },
+ {
+  "id": "env-get-single",
+  "phrases": [
+   "get value of variable",
+   "show specific env var",
+   "print one environment variable",
+   "read environment variable value"
+  ],
+  "powershell": {
+   "cmd": "$env:<name>",
+   "why": "Prints the value of the specified environment variable."
+  },
+  "cmd": {
+   "cmd": "echo %<name>%",
+   "why": "Prints the value of the specified environment variable."
+  },
+  "bash": {
+   "cmd": "echo $<name>",
+   "why": "Prints the value of the specified environment variable."
+  },
+  "zsh_macos": {
+   "cmd": "echo $<name>",
+   "why": "Prints the value of the specified environment variable."
+  }
+ },
+ {
+  "id": "env-set-perm-user",
+  "phrases": [
+   "set environment variable permanently",
+   "save env var for user",
+   "make variable persistent across sessions",
+   "set persistent user env var"
+  ],
+  "powershell": {
+   "cmd": "[System.Environment]::SetEnvironmentVariable('<name>', '<value>', 'User')",
+   "why": "Sets a persistent user-level environment variable."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"[System.Environment]::SetEnvironmentVariable('<name>', '<value>', 'User')\"",
+   "why": "Uses PowerShell from cmd: Sets a persistent user-level environment variable."
+  },
+  "bash": {
+   "cmd": "echo 'export <name>=<value>' >> ~/.bashrc && source ~/.bashrc",
+   "why": "Appends the variable to .bashrc for persistent user access."
+  },
+  "zsh_macos": {
+   "cmd": "echo 'export <name>=<value>' >> ~/.zshrc && source ~/.zshrc",
+   "why": "Appends the variable to .zshrc for persistent user access."
+  }
+ },
+ {
+  "id": "env-set-temp",
+  "phrases": [
+   "set environment variable temporarily",
+   "create temporary env var",
+   "set variable for current session",
+   "export variable in shell"
+  ],
+  "powershell": {
+   "cmd": "$env:<name> = '<value>'",
+   "why": "Sets an environment variable for the current PowerShell session."
+  },
+  "cmd": {
+   "cmd": "set <name>=<value>",
+   "why": "Sets an environment variable for the current command prompt session."
+  },
+  "bash": {
+   "cmd": "export <name>=<value>",
+   "why": "Sets an environment variable for the current shell session."
+  },
+  "zsh_macos": {
+   "cmd": "export <name>=<value>",
+   "why": "Sets an environment variable for the current shell session."
+  }
+ },
+ {
+  "id": "env-show-all",
+  "phrases": [
+   "list all environment variables",
+   "show all env vars",
+   "print environment variables",
+   "display all variables in shell",
+   "show all env variables",
+   "list environment variables",
+   "get path variable",
+   "view system environment settings"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem Env:",
+   "why": "Lists all environment variables in the current session."
+  },
+  "cmd": {
+   "cmd": "set",
+   "why": "Displays all environment variables in the current command prompt."
+  },
+  "bash": {
+   "cmd": "printenv",
+   "why": "Prints all exported environment variables."
+  },
+  "zsh_macos": {
+   "cmd": "printenv",
+   "why": "Prints all exported environment variables."
+  }
+ },
+ {
+  "id": "env-show-path",
+  "phrases": [
+   "show path variable",
+   "print path entries",
+   "what is in my path",
+   "display system path directories"
+  ],
+  "powershell": {
+   "cmd": "$env:Path -split ';'",
+   "why": "Displays the PATH variable split into readable lines."
+  },
+  "cmd": {
+   "cmd": "echo %PATH%",
+   "why": "Prints the current PATH variable string."
+  },
+  "bash": {
+   "cmd": "echo $PATH | tr ':' '\\n'",
+   "why": "Prints the PATH variable with each directory on a new line."
+  },
+  "zsh_macos": {
+   "cmd": "echo $PATH | tr ':' '\\n'",
+   "why": "Prints the PATH variable with each directory on a new line."
+  }
+ },
+ {
+  "id": "env-unset-temp",
+  "phrases": [
+   "remove env var for session",
+   "delete environment variable temporarily",
+   "unset variable in shell",
+   "clear env var from current session"
+  ],
+  "powershell": {
+   "cmd": "Remove-Item Env:\\<name>",
+   "why": "Removes the environment variable from the current session."
+  },
+  "cmd": {
+   "cmd": "set <name>=",
+   "why": "Clears the environment variable by assigning it an empty value."
+  },
+  "bash": {
+   "cmd": "unset <name>",
+   "why": "Removes the environment variable from the current session."
+  },
+  "zsh_macos": {
+   "cmd": "unset <name>",
+   "why": "Removes the environment variable from the current session."
+  }
+ },
+ {
+  "id": "files-change-permissions",
+  "phrases": [
+   "change file permissions",
+   "make file executable",
+   "chmod on a file",
+   "grant full access to file",
+   "change file access rights",
+   "allow script to run",
+   "chmod plus x",
+   "set execute permission",
+   "add execute bit to file",
+   "grant run permission to script"
+  ],
+  "powershell": {
+   "cmd": "icacls <file> /grant Everyone:F",
+   "why": "Grants full access to the file via Windows ACLs."
+  },
+  "cmd": {
+   "cmd": "icacls <file> /grant Everyone:F",
+   "why": "Grants full access to the file via Windows ACLs."
+  },
+  "bash": {
+   "cmd": "chmod +x <file>",
+   "why": "Makes a file executable."
+  },
+  "zsh_macos": {
+   "cmd": "chmod +x <file>",
+   "why": "Makes a file executable."
+  }
+ },
+ {
+  "id": "files-copy-directory",
+  "phrases": [
+   "copy a folder to another location",
+   "copy directory and its contents",
+   "recursive folder copy",
+   "cp -r equivalent",
+   "duplicate a directory"
+  ],
+  "powershell": {
+   "cmd": "Copy-Item -Recurse <source> <destination>",
+   "why": "Copies a directory and its contents."
+  },
+  "cmd": {
+   "cmd": "xcopy <source> <destination> /E /I",
+   "why": "Copies directories and subdirectories including empty ones."
+  },
+  "bash": {
+   "cmd": "cp -r <source> <destination>",
+   "why": "Recursively copies directories."
+  },
+  "zsh_macos": {
+   "cmd": "cp -r <source> <destination>",
+   "why": "Recursively copies directories."
+  }
+ },
+ {
+  "id": "files-copy-file",
+  "phrases": [
+   "copy a file",
+   "duplicate a file",
+   "cp command",
+   "copy file to another folder"
+  ],
+  "powershell": {
+   "cmd": "Copy-Item <source> <destination>",
+   "why": "Copies a file from source to destination."
+  },
+  "cmd": {
+   "cmd": "copy <source> <destination>",
+   "why": "Standard Windows copy command."
+  },
+  "bash": {
+   "cmd": "cp <source> <destination>",
+   "why": "Copies files or directories."
+  },
+  "zsh_macos": {
+   "cmd": "cp <source> <destination>",
+   "why": "Copies files or directories."
+  }
+ },
+ {
+  "id": "files-count-files",
+  "phrases": [
+   "count files in folder",
+   "how many files are here",
+   "number of files in directory",
+   "count items in folder"
+  ],
+  "powershell": {
+   "cmd": "(Get-ChildItem -File).Count",
+   "why": "Counts only files (not subdirectories) in the current directory."
+  },
+  "cmd": {
+   "cmd": "dir /b /a-d | find /c /v \"\"",
+   "why": "Lists files only and counts the lines."
+  },
+  "bash": {
+   "cmd": "ls -1 | wc -l",
+   "why": "Lists items one per line and counts them."
+  },
+  "zsh_macos": {
+   "cmd": "ls -1 | wc -l",
+   "why": "Lists items one per line and counts them."
+  }
+ },
+ {
+  "id": "files-create-directory",
+  "phrases": [
+   "make a new directory",
+   "create a folder",
+   "mkdir command",
+   "create nested folder"
+  ],
+  "powershell": {
+   "cmd": "New-Item -ItemType Directory -Name <name>",
+   "why": "Creates a new directory."
+  },
+  "cmd": {
+   "cmd": "mkdir <name>",
+   "why": "Standard Windows directory creation command."
+  },
+  "bash": {
+   "cmd": "mkdir -p <name>",
+   "why": "Creates directory and any missing parent directories."
+  },
+  "zsh_macos": {
+   "cmd": "mkdir -p <name>",
+   "why": "Creates directory and any missing parent directories."
+  }
+ },
+ {
+  "id": "files-create-empty",
+  "phrases": [
+   "create new empty file",
+   "make blank file",
+   "touch a file",
+   "create empty text file"
+  ],
+  "powershell": {
+   "cmd": "New-Item <name>",
+   "why": "Creates a new empty file."
+  },
+  "cmd": {
+   "cmd": "type nul > <name>",
+   "why": "Redirects null output to create an empty file."
+  },
+  "bash": {
+   "cmd": "touch <name>",
+   "why": "Updates file timestamp or creates an empty file."
+  },
+  "zsh_macos": {
+   "cmd": "touch <name>",
+   "why": "Updates file timestamp or creates an empty file."
+  }
+ },
+ {
+  "id": "files-delete-directory",
+  "phrases": [
+   "delete a folder and its contents",
+   "remove directory recursively",
+   "force delete folder",
+   "rmdir a folder",
+   "wipe directory tree"
+  ],
+  "powershell": {
+   "cmd": "Remove-Item -Recurse -Force <folder>",
+   "why": "Deletes a directory and all its contents."
+  },
+  "cmd": {
+   "cmd": "rmdir /s /q <folder>",
+   "why": "Removes directory tree silently."
+  },
+  "bash": {
+   "cmd": "rm -rf <folder>",
+   "why": "Recursively removes directory and contents."
+  },
+  "zsh_macos": {
+   "cmd": "rm -rf <folder>",
+   "why": "Recursively removes directory and contents."
+  }
+ },
+ {
+  "id": "files-delete-file",
+  "phrases": [
+   "delete a file",
+   "remove a file",
+   "rm command",
+   "permanently delete file"
+  ],
+  "powershell": {
+   "cmd": "Remove-Item <file>",
+   "why": "Deletes the specified file."
+  },
+  "cmd": {
+   "cmd": "del <file>",
+   "why": "Standard Windows delete command."
+  },
+  "bash": {
+   "cmd": "rm <file>",
+   "why": "Removes the specified file."
+  },
+  "zsh_macos": {
+   "cmd": "rm <file>",
+   "why": "Removes the specified file."
+  }
+ },
+ {
+  "id": "files-empty-directory",
+  "phrases": [
+   "delete all files inside a folder",
+   "clear a directory's contents",
+   "empty a folder without deleting it",
+   "remove everything in a directory",
+   "wipe folder contents"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem <folder> | Remove-Item -Recurse -Force",
+   "why": "Deletes all items inside the specified folder."
+  },
+  "cmd": {
+   "cmd": "del /q <folder>\\* && for /d %x in (<folder>\\*) do rmdir /s /q \"%x\"",
+   "why": "Deletes all files then removes all subdirectories inside the folder."
+  },
+  "bash": {
+   "cmd": "rm -rf <folder>/*",
+   "why": "Removes all contents of the directory."
+  },
+  "zsh_macos": {
+   "cmd": "rm -rf <folder>/*",
+   "why": "Removes all contents of the directory."
+  }
+ },
+ {
+  "id": "files-find-by-date",
+  "phrases": [
+   "find files modified in last 7 days",
+   "search files by modification date",
+   "find recently changed files",
+   "list files modified today",
+   "find old files by date"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse | Where-Object {$_.LastWriteTime -gt (Get-Date).AddDays(-7)}",
+   "why": "Finds files modified in the last 7 days."
+  },
+  "cmd": {
+   "cmd": "forfiles /s /d -7",
+   "why": "Recursively finds files modified in the last 7 days."
+  },
+  "bash": {
+   "cmd": "find . -mtime -7",
+   "why": "Finds files modified in the last 7 days."
+  },
+  "zsh_macos": {
+   "cmd": "find . -mtime -7",
+   "why": "Finds files modified in the last 7 days."
+  }
+ },
+ {
+  "id": "files-find-by-name",
+  "phrases": [
+   "find file by name",
+   "search for a file",
+   "locate file in subdirectories",
+   "find file recursively"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse -Filter <name>",
+   "why": "Recursively searches for files matching the name."
+  },
+  "cmd": {
+   "cmd": "dir /s /b <name>",
+   "why": "Searches recursively and prints bare paths of matching files."
+  },
+  "bash": {
+   "cmd": "find . -name <name>",
+   "why": "Searches for files by name in current directory tree."
+  },
+  "zsh_macos": {
+   "cmd": "find . -name <name>",
+   "why": "Searches for files by name in current directory tree."
+  }
+ },
+ {
+  "id": "files-find-by-size",
+  "phrases": [
+   "find files larger than a size",
+   "search files over 100mb",
+   "find big files on disk",
+   "list files by size",
+   "find large files recursively"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse | Where-Object {$_.Length -gt 100MB}",
+   "why": "Finds files larger than 100MB."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-ChildItem -Recurse | Where-Object {$_.Length -gt 100MB}\"",
+   "why": "Uses PowerShell from cmd: Finds files larger than 100MB."
+  },
+  "bash": {
+   "cmd": "find . -type f -size +100M",
+   "why": "Finds files larger than 100MB."
+  },
+  "zsh_macos": {
+   "cmd": "find . -type f -size +100M",
+   "why": "Finds files larger than 100MB."
+  }
+ },
+ {
+  "id": "files-folder-size",
+  "phrases": [
+   "check folder size",
+   "how big is this folder",
+   "calculate directory size",
+   "disk usage of folder"
+  ],
+  "powershell": {
+   "cmd": "(Get-ChildItem -Recurse | Measure-Object -Property Length -Sum).Sum",
+   "why": "Sums the length of all files in the directory tree."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-ChildItem -Recurse | Measure-Object -Property Length -Sum).Sum\"",
+   "why": "Uses PowerShell from cmd: calculates total byte size of all files in current directory."
+  },
+  "bash": {
+   "cmd": "du -sh .",
+   "why": "Summarizes disk usage for the current directory."
+  },
+  "zsh_macos": {
+   "cmd": "du -sh .",
+   "why": "Summarizes disk usage for the current directory."
+  }
+ },
+ {
+  "id": "files-list-contents",
+  "phrases": [
+   "list files in directory",
+   "show folder contents",
+   "what is in this folder",
+   "ls command",
+   "view directory contents"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem",
+   "why": "Lists all files and folders in the current directory."
+  },
+  "cmd": {
+   "cmd": "dir",
+   "why": "Standard Windows command to list directory contents."
+  },
+  "bash": {
+   "cmd": "ls -F",
+   "why": "Lists files with indicators for directories and executables."
+  },
+  "zsh_macos": {
+   "cmd": "ls -F",
+   "why": "Lists files with indicators for directories and executables."
+  }
+ },
+ {
+  "id": "files-list-hidden",
+  "phrases": [
+   "show hidden files",
+   "list all files including hidden",
+   "view dotfiles",
+   "ls show hidden",
+   "dir show hidden files",
+   "show hidden files in directory",
+   "ls all files",
+   "list directory contents with hidden files"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Force",
+   "why": "Lists all files including hidden ones."
+  },
+  "cmd": {
+   "cmd": "dir /a",
+   "why": "Lists all files including hidden attributes."
+  },
+  "bash": {
+   "cmd": "ls -a",
+   "why": "Lists all files including hidden ones."
+  },
+  "zsh_macos": {
+   "cmd": "ls -a",
+   "why": "Lists all files including hidden ones."
+  }
+ },
+ {
+  "id": "files-list-recursive",
+  "phrases": [
+   "list all files recursively",
+   "show files in all subfolders",
+   "find every file in directory tree",
+   "recursive directory listing",
+   "list files and subdirectories"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse",
+   "why": "Lists all files in the current directory and subdirectories."
+  },
+  "cmd": {
+   "cmd": "dir /s",
+   "why": "Lists all files recursively."
+  },
+  "bash": {
+   "cmd": "find . -type f",
+   "why": "Lists all files recursively."
+  },
+  "zsh_macos": {
+   "cmd": "find . -type f",
+   "why": "Lists all files recursively."
+  }
+ },
+ {
+  "id": "files-move-file",
+  "phrases": [
+   "move a file",
+   "rename a file",
+   "mv command",
+   "change file location"
+  ],
+  "powershell": {
+   "cmd": "Move-Item <source> <destination>",
+   "why": "Moves or renames a file."
+  },
+  "cmd": {
+   "cmd": "move <source> <destination>",
+   "why": "Standard Windows move command."
+  },
+  "bash": {
+   "cmd": "mv <source> <destination>",
+   "why": "Moves or renames files."
+  },
+  "zsh_macos": {
+   "cmd": "mv <source> <destination>",
+   "why": "Moves or renames files."
+  }
+ },
+ {
+  "id": "files-rename-file",
+  "phrases": [
+   "rename a file",
+   "change a filename",
+   "give file a new name",
+   "rename command windows",
+   "mv to rename"
+  ],
+  "powershell": {
+   "cmd": "Rename-Item <oldname> <newname>",
+   "why": "Renames a file."
+  },
+  "cmd": {
+   "cmd": "ren <oldname> <newname>",
+   "why": "Standard Windows rename command."
+  },
+  "bash": {
+   "cmd": "mv <oldname> <newname>",
+   "why": "Renames a file using move."
+  },
+  "zsh_macos": {
+   "cmd": "mv <oldname> <newname>",
+   "why": "Renames a file using move."
+  }
+ },
+ {
+  "id": "files-show-file-type",
+  "phrases": [
+   "check what type a file is",
+   "identify a file format",
+   "file command equivalent",
+   "detect file type",
+   "what kind of file is this",
+   "check if path is file or directory",
+   "identify file type",
+   "determine file format"
+  ],
+  "powershell": {
+   "cmd": "Get-Item <file> | Select-Object Extension",
+   "why": "Shows the file extension as a basic type indicator."
+  },
+  "cmd": {
+   "cmd": "assoc .<extension>",
+   "why": "Shows the registered file association for the given extension."
+  },
+  "bash": {
+   "cmd": "file <file>",
+   "why": "Determines file type by inspecting content."
+  },
+  "zsh_macos": {
+   "cmd": "file <file>",
+   "why": "Determines file type by inspecting content."
+  }
+ },
+ {
+  "id": "git-add-file",
+  "phrases": [
+   "stage a specific file for commit",
+   "add file to git index",
+   "prepare file for next commit",
+   "track new file in git",
+   "git add single file"
+  ],
+  "powershell": {
+   "cmd": "git add <file>",
+   "why": "Stages a specific file for the next commit."
+  },
+  "cmd": {
+   "cmd": "git add <file>",
+   "why": "Stages a specific file for the next commit."
+  },
+  "bash": {
+   "cmd": "git add <file>",
+   "why": "Stages a specific file for the next commit."
+  },
+  "zsh_macos": {
+   "cmd": "git add <file>",
+   "why": "Stages a specific file for the next commit."
+  }
+ },
+ {
+  "id": "git-branch-list",
+  "phrases": [
+   "list local git branches",
+   "show all branches in repo",
+   "what branches exist locally",
+   "display current branch list",
+   "git branch overview"
+  ],
+  "powershell": {
+   "cmd": "git branch",
+   "why": "Lists all local branches in the repository."
+  },
+  "cmd": {
+   "cmd": "git branch",
+   "why": "Lists all local branches in the repository."
+  },
+  "bash": {
+   "cmd": "git branch",
+   "why": "Lists all local branches in the repository."
+  },
+  "zsh_macos": {
+   "cmd": "git branch",
+   "why": "Lists all local branches in the repository."
+  }
+ },
+ {
+  "id": "git-clone",
+  "phrases": [
+   "clone a repository",
+   "download git repo",
+   "copy remote repo locally",
+   "git clone a url",
+   "get project from github"
+  ],
+  "powershell": {
+   "cmd": "git clone <url>",
+   "why": "Downloads a remote repository to the local machine."
+  },
+  "cmd": {
+   "cmd": "git clone <url>",
+   "why": "Downloads a remote repository to the local machine."
+  },
+  "bash": {
+   "cmd": "git clone <url>",
+   "why": "Downloads a remote repository to the local machine."
+  },
+  "zsh_macos": {
+   "cmd": "git clone <url>",
+   "why": "Downloads a remote repository to the local machine."
+  }
+ },
+ {
+  "id": "git-commit-all",
+  "phrases": [
+   "commit all changes",
+   "stage and commit everything",
+   "git commit all modified files",
+   "save all changes with message",
+   "commit working directory"
+  ],
+  "powershell": {
+   "cmd": "git add . && git commit -m \"<message>\"",
+   "why": "Stages all changes and commits them with a message."
+  },
+  "cmd": {
+   "cmd": "git add . && git commit -m \"<message>\"",
+   "why": "Stages all changes and commits them with a message."
+  },
+  "bash": {
+   "cmd": "git add . && git commit -m \"<message>\"",
+   "why": "Stages all changes and commits them with a message."
+  },
+  "zsh_macos": {
+   "cmd": "git add . && git commit -m \"<message>\"",
+   "why": "Stages all changes and commits them with a message."
+  }
+ },
+ {
+  "id": "git-commit-amend",
+  "phrases": [
+   "amend the last git commit",
+   "fix last commit message",
+   "add staged changes to previous commit",
+   "edit most recent commit",
+   "update last commit without new entry"
+  ],
+  "powershell": {
+   "cmd": "git commit --amend",
+   "why": "Updates the last commit with staged changes or a new message."
+  },
+  "cmd": {
+   "cmd": "git commit --amend",
+   "why": "Updates the last commit with staged changes or a new message."
+  },
+  "bash": {
+   "cmd": "git commit --amend",
+   "why": "Updates the last commit with staged changes or a new message."
+  },
+  "zsh_macos": {
+   "cmd": "git commit --amend",
+   "why": "Updates the last commit with staged changes or a new message."
+  }
+ },
+ {
+  "id": "git-diff",
+  "phrases": [
+   "show unstaged file differences",
+   "compare working tree to index",
+   "see what changed before staging",
+   "git diff output",
+   "view line-level changes in repo"
+  ],
+  "powershell": {
+   "cmd": "git diff",
+   "why": "Shows changes between the working directory and the index."
+  },
+  "cmd": {
+   "cmd": "git diff",
+   "why": "Shows changes between the working directory and the index."
+  },
+  "bash": {
+   "cmd": "git diff",
+   "why": "Shows changes between the working directory and the index."
+  },
+  "zsh_macos": {
+   "cmd": "git diff",
+   "why": "Shows changes between the working directory and the index."
+  }
+ },
+ {
+  "id": "git-discard-changes",
+  "phrases": [
+   "discard unstaged changes to a file",
+   "reset file to last commit",
+   "undo local edits in git",
+   "revert a file to head",
+   "git restore working tree file"
+  ],
+  "powershell": {
+   "cmd": "git restore <file>",
+   "why": "Discards local changes to a specific file."
+  },
+  "cmd": {
+   "cmd": "git restore <file>",
+   "why": "Discards local changes to a specific file."
+  },
+  "bash": {
+   "cmd": "git restore <file>",
+   "why": "Discards local changes to a specific file."
+  },
+  "zsh_macos": {
+   "cmd": "git restore <file>",
+   "why": "Discards local changes to a specific file."
+  }
+ },
+ {
+  "id": "git-fetch",
+  "phrases": [
+   "fetch remote changes without merging",
+   "download remote refs in git",
+   "update remote tracking branches",
+   "get latest info from origin",
+   "git fetch all remotes"
+  ],
+  "powershell": {
+   "cmd": "git fetch",
+   "why": "Downloads objects and refs from the remote without merging."
+  },
+  "cmd": {
+   "cmd": "git fetch",
+   "why": "Downloads objects and refs from the remote without merging."
+  },
+  "bash": {
+   "cmd": "git fetch",
+   "why": "Downloads objects and refs from the remote without merging."
+  },
+  "zsh_macos": {
+   "cmd": "git fetch",
+   "why": "Downloads objects and refs from the remote without merging."
+  }
+ },
+ {
+  "id": "git-init",
+  "phrases": [
+   "initialize a git repo",
+   "start tracking folder with git",
+   "create new git repository",
+   "git init in current directory",
+   "set up git in project folder"
+  ],
+  "powershell": {
+   "cmd": "git init",
+   "why": "Initializes a new Git repository in the current directory."
+  },
+  "cmd": {
+   "cmd": "git init",
+   "why": "Initializes a new Git repository in the current directory."
+  },
+  "bash": {
+   "cmd": "git init",
+   "why": "Initializes a new Git repository in the current directory."
+  },
+  "zsh_macos": {
+   "cmd": "git init",
+   "why": "Initializes a new Git repository in the current directory."
+  }
+ },
+ {
+  "id": "git-log",
+  "phrases": [
+   "show commit history",
+   "view git log as graph",
+   "see past commits one line",
+   "list recent commits concisely",
+   "git history with branches"
+  ],
+  "powershell": {
+   "cmd": "git log --oneline --graph",
+   "why": "Displays a concise, graphical view of the commit history."
+  },
+  "cmd": {
+   "cmd": "git log --oneline --graph",
+   "why": "Displays a concise, graphical view of the commit history."
+  },
+  "bash": {
+   "cmd": "git log --oneline --graph",
+   "why": "Displays a concise, graphical view of the commit history."
+  },
+  "zsh_macos": {
+   "cmd": "git log --oneline --graph",
+   "why": "Displays a concise, graphical view of the commit history."
+  }
+ },
+ {
+  "id": "git-new-branch",
+  "phrases": [
+   "create and switch to new branch",
+   "make a new feature branch",
+   "git checkout new branch",
+   "start branch from current head",
+   "create branch and check it out"
+  ],
+  "powershell": {
+   "cmd": "git switch -c <branch-name>",
+   "why": "Creates and switches to a new branch using the modern git switch syntax."
+  },
+  "cmd": {
+   "cmd": "git switch -c <branch-name>",
+   "why": "Creates and switches to a new branch using the modern git switch syntax."
+  },
+  "bash": {
+   "cmd": "git switch -c <branch-name>",
+   "why": "Creates and switches to a new branch using the modern git switch syntax."
+  },
+  "zsh_macos": {
+   "cmd": "git switch -c <branch-name>",
+   "why": "Creates and switches to a new branch using the modern git switch syntax."
+  }
+ },
+ {
+  "id": "git-pull",
+  "phrases": [
+   "pull latest changes",
+   "update branch from remote",
+   "fetch and merge remote commits",
+   "sync with origin",
+   "get new commits from server"
+  ],
+  "powershell": {
+   "cmd": "git pull",
+   "why": "Fetches and merges changes from the tracked remote branch."
+  },
+  "cmd": {
+   "cmd": "git pull",
+   "why": "Fetches and merges changes from the tracked remote branch."
+  },
+  "bash": {
+   "cmd": "git pull",
+   "why": "Fetches and merges changes from the tracked remote branch."
+  },
+  "zsh_macos": {
+   "cmd": "git pull",
+   "why": "Fetches and merges changes from the tracked remote branch."
+  }
+ },
+ {
+  "id": "git-push",
+  "phrases": [
+   "push changes to remote",
+   "upload commits to server",
+   "push current branch",
+   "send local commits upstream",
+   "git push origin head"
+  ],
+  "powershell": {
+   "cmd": "git push origin HEAD",
+   "why": "Pushes the current branch to the remote repository."
+  },
+  "cmd": {
+   "cmd": "git push origin HEAD",
+   "why": "Pushes the current branch to the remote repository."
+  },
+  "bash": {
+   "cmd": "git push origin HEAD",
+   "why": "Pushes the current branch to the remote repository."
+  },
+  "zsh_macos": {
+   "cmd": "git push origin HEAD",
+   "why": "Pushes the current branch to the remote repository."
+  }
+ },
+ {
+  "id": "git-remote-add",
+  "phrases": [
+   "add a remote repository",
+   "link local repo to github",
+   "set origin remote url",
+   "connect git repo to remote",
+   "register new git remote"
+  ],
+  "powershell": {
+   "cmd": "git remote add origin <url>",
+   "why": "Adds a new remote repository named origin."
+  },
+  "cmd": {
+   "cmd": "git remote add origin <url>",
+   "why": "Adds a new remote repository named origin."
+  },
+  "bash": {
+   "cmd": "git remote add origin <url>",
+   "why": "Adds a new remote repository named origin."
+  },
+  "zsh_macos": {
+   "cmd": "git remote add origin <url>",
+   "why": "Adds a new remote repository named origin."
+  }
+ },
+ {
+  "id": "git-show-remotes",
+  "phrases": [
+   "show configured git remotes",
+   "list remote repo urls",
+   "check where git pushes to",
+   "view origin url",
+   "git remote verbose list"
+  ],
+  "powershell": {
+   "cmd": "git remote -v",
+   "why": "Lists all configured remote repositories with their URLs."
+  },
+  "cmd": {
+   "cmd": "git remote -v",
+   "why": "Lists all configured remote repositories with their URLs."
+  },
+  "bash": {
+   "cmd": "git remote -v",
+   "why": "Lists all configured remote repositories with their URLs."
+  },
+  "zsh_macos": {
+   "cmd": "git remote -v",
+   "why": "Lists all configured remote repositories with their URLs."
+  }
+ },
+ {
+  "id": "git-stash",
+  "phrases": [
+   "stash uncommitted changes",
+   "save work temporarily in git",
+   "shelve changes without committing",
+   "hide dirty working directory",
+   "stash current progress before switching branch"
+  ],
+  "powershell": {
+   "cmd": "git stash",
+   "why": "Temporarily shelves changes in the working directory."
+  },
+  "cmd": {
+   "cmd": "git stash",
+   "why": "Temporarily shelves changes in the working directory."
+  },
+  "bash": {
+   "cmd": "git stash",
+   "why": "Temporarily shelves changes in the working directory."
+  },
+  "zsh_macos": {
+   "cmd": "git stash",
+   "why": "Temporarily shelves changes in the working directory."
+  }
+ },
+ {
+  "id": "git-stash-pop",
+  "phrases": [
+   "apply most recent stash",
+   "pop stash back to working tree",
+   "restore stashed changes",
+   "reapply shelved git work",
+   "git stash pop latest"
+  ],
+  "powershell": {
+   "cmd": "git stash pop",
+   "why": "Applies the most recent stash and removes it from the list."
+  },
+  "cmd": {
+   "cmd": "git stash pop",
+   "why": "Applies the most recent stash and removes it from the list."
+  },
+  "bash": {
+   "cmd": "git stash pop",
+   "why": "Applies the most recent stash and removes it from the list."
+  },
+  "zsh_macos": {
+   "cmd": "git stash pop",
+   "why": "Applies the most recent stash and removes it from the list."
+  }
+ },
+ {
+  "id": "git-status",
+  "phrases": [
+   "check git status",
+   "what files are changed",
+   "show current branch status",
+   "see modified files",
+   "git status check"
+  ],
+  "powershell": {
+   "cmd": "git status",
+   "why": "Displays the state of the working directory and staging area."
+  },
+  "cmd": {
+   "cmd": "git status",
+   "why": "Displays the state of the working directory and staging area."
+  },
+  "bash": {
+   "cmd": "git status",
+   "why": "Displays the state of the working directory and staging area."
+  },
+  "zsh_macos": {
+   "cmd": "git status",
+   "why": "Displays the state of the working directory and staging area."
+  }
+ },
+ {
+  "id": "git-switch-branch",
+  "phrases": [
+   "switch to existing branch",
+   "change current branch",
+   "checkout a branch",
+   "go to another branch",
+   "switch branch by name"
+  ],
+  "powershell": {
+   "cmd": "git switch <branch-name>",
+   "why": "Switches the working directory to the specified branch."
+  },
+  "cmd": {
+   "cmd": "git switch <branch-name>",
+   "why": "Switches the working directory to the specified branch."
+  },
+  "bash": {
+   "cmd": "git switch <branch-name>",
+   "why": "Switches the working directory to the specified branch."
+  },
+  "zsh_macos": {
+   "cmd": "git switch <branch-name>",
+   "why": "Switches the working directory to the specified branch."
+  }
+ },
+ {
+  "id": "git-undo-last-commit",
+  "phrases": [
+   "undo last commit keep changes",
+   "soft reset last commit",
+   "remove last commit but keep files staged",
+   "git undo commit preserve work",
+   "revert most recent commit softly"
+  ],
+  "powershell": {
+   "cmd": "git reset --soft HEAD~1",
+   "why": "Undoes the last commit but keeps the changes staged."
+  },
+  "cmd": {
+   "cmd": "git reset --soft HEAD~1",
+   "why": "Undoes the last commit but keeps the changes staged."
+  },
+  "bash": {
+   "cmd": "git reset --soft HEAD~1",
+   "why": "Undoes the last commit but keeps the changes staged."
+  },
+  "zsh_macos": {
+   "cmd": "git reset --soft HEAD~1",
+   "why": "Undoes the last commit but keeps the changes staged."
+  }
+ },
+ {
+  "id": "net-arp-table",
+  "phrases": [
+   "show arp table",
+   "view arp cache",
+   "list mac addresses",
+   "check arp entries"
+  ],
+  "powershell": {
+   "cmd": "Get-NetNeighbor",
+   "why": "Displays the ARP cache entries."
+  },
+  "cmd": {
+   "cmd": "arp -a",
+   "why": "Displays the current ARP cache table."
+  },
+  "bash": {
+   "cmd": "ip neigh show",
+   "why": "Displays the current ARP/neighbour cache table."
+  },
+  "zsh_macos": {
+   "cmd": "arp -a",
+   "why": "Displays the current ARP cache table."
+  }
+ },
+ {
+  "id": "net-bandwidth-test",
+  "phrases": [
+   "test internet speed",
+   "check download speed",
+   "measure network speed",
+   "run speedtest from terminal"
+  ],
+  "powershell": {
+   "cmd": "$f = \"$env:TEMP\\speedtest.py\"; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py' -OutFile $f; python $f",
+   "why": "Downloads the speedtest script to a temp file then runs it with Python."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"$f = \"\"$env:TEMP\\speedtest.py\"\"; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py' -OutFile $f; python $f\"",
+   "why": "Uses PowerShell from cmd: Downloads and runs the speedtest script with Python."
+  },
+  "bash": {
+   "cmd": "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -",
+   "why": "Downloads and runs the speedtest script via Python."
+  },
+  "zsh_macos": {
+   "cmd": "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -",
+   "why": "Downloads and runs the speedtest script via Python."
+  }
+ },
+ {
+  "id": "net-check-website",
+  "phrases": [
+   "is website up",
+   "check if site is reachable",
+   "test web server status",
+   "check http response code"
+  ],
+  "powershell": {
+   "cmd": "Invoke-WebRequest -Uri <url> -Method Head",
+   "why": "Sends a HEAD request to check if a website is reachable."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Invoke-WebRequest -Uri <url> -Method Head\"",
+   "why": "Uses PowerShell from cmd: Checks if a website is reachable."
+  },
+  "bash": {
+   "cmd": "curl -I <url>",
+   "why": "Fetches the HTTP headers to check website status."
+  },
+  "zsh_macos": {
+   "cmd": "curl -I <url>",
+   "why": "Fetches the HTTP headers to check website status."
+  }
+ },
+ {
+  "id": "net-dns-lookup",
+  "phrases": [
+   "find ip for a domain",
+   "dns lookup for a site",
+   "resolve a domain name",
+   "get ip address from hostname",
+   "look up dns records"
+  ],
+  "powershell": {
+   "cmd": "Resolve-DnsName -Name <domain>",
+   "why": "Performs a DNS query to resolve the domain name."
+  },
+  "cmd": {
+   "cmd": "nslookup <domain>",
+   "why": "Queries DNS servers to find the IP address of the domain."
+  },
+  "bash": {
+   "cmd": "dig +short <domain>",
+   "why": "Uses dig to perform a DNS lookup and return only the IP."
+  },
+  "zsh_macos": {
+   "cmd": "dig +short <domain>",
+   "why": "Uses dig to perform a DNS lookup and return only the IP."
+  }
+ },
+ {
+  "id": "net-dns-server",
+  "phrases": [
+   "what is my dns server",
+   "check dns settings",
+   "show configured dns",
+   "view dns servers"
+  ],
+  "powershell": {
+   "cmd": "Get-DnsClientServerAddress",
+   "why": "Displays the DNS server addresses configured on the system."
+  },
+  "cmd": {
+   "cmd": "ipconfig /all | findstr \"DNS Servers\"",
+   "why": "Filters the ipconfig output to show DNS servers."
+  },
+  "bash": {
+   "cmd": "grep nameserver /etc/resolv.conf",
+   "why": "Reads the DNS server configuration from resolv.conf."
+  },
+  "zsh_macos": {
+   "cmd": "scutil --dns | grep nameserver",
+   "why": "Queries the system configuration for DNS servers."
+  }
+ },
+ {
+  "id": "net-download-file",
+  "phrases": [
+   "download a file from a url",
+   "fetch file from the web",
+   "save a file from the internet",
+   "get file via command line",
+   "download url to disk"
+  ],
+  "powershell": {
+   "cmd": "Invoke-WebRequest -Uri <url> -OutFile <filename>",
+   "why": "Downloads a file from the specified URL to the local disk."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Invoke-WebRequest -Uri '<url>' -OutFile '<filename>'\"",
+   "why": "Uses PowerShell from cmd: Downloads a file from the specified URL to disk.",
+   "fixed": true
+  },
+  "bash": {
+   "cmd": "curl -O <url>",
+   "why": "Downloads a file from the URL, saving it with its original name."
+  },
+  "zsh_macos": {
+   "cmd": "curl -O <url>",
+   "why": "Downloads a file from the URL, saving it with its original name."
+  }
+ },
+ {
+  "id": "net-flush-dns",
+  "phrases": [
+   "clear the dns cache",
+   "flush dns resolver cache",
+   "reset dns cache",
+   "force dns refresh",
+   "clear cached dns entries"
+  ],
+  "powershell": {
+   "cmd": "Clear-DnsClientCache",
+   "why": "Clears the local DNS resolver cache."
+  },
+  "cmd": {
+   "cmd": "ipconfig /flushdns",
+   "why": "Flushes the local DNS resolver cache."
+  },
+  "bash": {
+   "cmd": "sudo systemd-resolve --flush-caches",
+   "why": "Flushes the systemd-resolved DNS cache on Linux."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder",
+   "why": "Flushes the DNS cache and restarts the mDNSResponder service on macOS.",
+   "fixed": true
+  }
+ },
+ {
+  "id": "net-gateway",
+  "phrases": [
+   "what is my gateway",
+   "find default gateway",
+   "show router ip",
+   "get gateway address"
+  ],
+  "powershell": {
+   "cmd": "Get-NetRoute -DestinationPrefix '0.0.0.0/0' | Select-Object -ExpandProperty NextHop",
+   "why": "Retrieves the default gateway IP address."
+  },
+  "cmd": {
+   "cmd": "ipconfig | findstr \"Default Gateway\"",
+   "why": "Filters the ipconfig output to show the default gateway."
+  },
+  "bash": {
+   "cmd": "ip route | grep default | awk '{print $3}'",
+   "why": "Extracts the default gateway IP from the routing table."
+  },
+  "zsh_macos": {
+   "cmd": "route -n get default | grep gateway | awk '{print $2}'",
+   "why": "Extracts the default gateway IP from the routing table."
+  }
+ },
+ {
+  "id": "net-hostname",
+  "phrases": [
+   "what is my hostname",
+   "get computer name",
+   "show host name",
+   "check machine name",
+   "what is my computer name",
+   "get hostname",
+   "show machine name",
+   "check host name",
+   "print network hostname"
+  ],
+  "powershell": {
+   "cmd": "$env:COMPUTERNAME",
+   "why": "Returns the system environment variable for the computer name."
+  },
+  "cmd": {
+   "cmd": "hostname",
+   "why": "Displays the system hostname."
+  },
+  "bash": {
+   "cmd": "hostname",
+   "why": "Displays the system hostname."
+  },
+  "zsh_macos": {
+   "cmd": "hostname",
+   "why": "Displays the system hostname."
+  }
+ },
+ {
+  "id": "net-local-ip",
+  "phrases": [
+   "what is my local ip",
+   "show my internal ip address",
+   "get my lan ip address",
+   "check my private network address"
+  ],
+  "powershell": {
+   "cmd": "Get-NetIPAddress -AddressFamily IPv4 | Where-Object InterfaceAlias -NotLike '*Loopback*'",
+   "why": "Lists all IPv4 addresses assigned to local network interfaces."
+  },
+  "cmd": {
+   "cmd": "ipconfig",
+   "why": "Displays the standard Windows IP configuration details."
+  },
+  "bash": {
+   "cmd": "hostname -I",
+   "why": "Prints all IP addresses associated with the host."
+  },
+  "zsh_macos": {
+   "cmd": "ipconfig getifaddr en0",
+   "why": "Retrieves the IP address for the primary Wi-Fi interface."
+  }
+ },
+ {
+  "id": "net-network-interfaces",
+  "phrases": [
+   "list network interfaces",
+   "show network adapters",
+   "check network cards",
+   "list ip interfaces"
+  ],
+  "powershell": {
+   "cmd": "Get-NetAdapter",
+   "why": "Lists all physical and virtual network adapters."
+  },
+  "cmd": {
+   "cmd": "ipconfig /all",
+   "why": "Displays detailed configuration for all network adapters."
+  },
+  "bash": {
+   "cmd": "ip link show",
+   "why": "Lists all network interfaces and their status."
+  },
+  "zsh_macos": {
+   "cmd": "ifconfig",
+   "why": "Displays status and configuration of network interfaces."
+  }
+ },
+ {
+  "id": "net-open-ports",
+  "phrases": [
+   "show open ports",
+   "list listening ports",
+   "check which ports are active",
+   "what ports is this machine listening on",
+   "find services by port",
+   "list open ports",
+   "show listening ports",
+   "what is running on my ports",
+   "check active network connections",
+   "display all listening tcp ports",
+   "see which ports are open",
+   "list ports on all interfaces",
+   "show listening on all ip addresses",
+   "check ports bound to all interfaces",
+   "view all bound listening ports",
+   "display every listening socket",
+   "list ports without dns lookup",
+   "show ports fast no hostname resolution",
+   "list ports numeric addresses only",
+   "view ports without resolving hostnames",
+   "display listening ports as ip numbers"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Listen",
+   "why": "Lists all TCP connections currently in a listening state."
+  },
+  "cmd": {
+   "cmd": "netstat -an | findstr LISTENING",
+   "why": "Displays active listening connections."
+  },
+  "bash": {
+   "cmd": "ss -tuln",
+   "why": "Lists all listening TCP and UDP ports."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i -P -n | grep LISTEN",
+   "why": "Lists all open ports currently listening for connections."
+  }
+ },
+ {
+  "id": "net-ping",
+  "phrases": [
+   "check if host is reachable",
+   "ping a server",
+   "test connection to host",
+   "is a website online",
+   "send icmp packets to host"
+  ],
+  "powershell": {
+   "cmd": "Test-Connection -ComputerName <host> -Count 4",
+   "why": "Sends ICMP echo requests to the specified host."
+  },
+  "cmd": {
+   "cmd": "ping <host>",
+   "why": "Sends ICMP echo requests to the specified host."
+  },
+  "bash": {
+   "cmd": "ping -c 4 <host>",
+   "why": "Sends 4 ICMP echo requests to the specified host."
+  },
+  "zsh_macos": {
+   "cmd": "ping -c 4 <host>",
+   "why": "Sends 4 ICMP echo requests to the specified host."
+  }
+ },
+ {
+  "id": "net-public-ip",
+  "phrases": [
+   "what is my public ip",
+   "show my external ip address",
+   "find my external ip",
+   "check ip seen by internet"
+  ],
+  "powershell": {
+   "cmd": "Invoke-RestMethod -Uri 'https://api.ipify.org'",
+   "why": "Queries a public API to return the external IP address."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Invoke-RestMethod -Uri 'https://api.ipify.org'\"",
+   "why": "Uses PowerShell from cmd: Queries a public API to return the external IP address."
+  },
+  "bash": {
+   "cmd": "curl -s https://api.ipify.org",
+   "why": "Uses curl to fetch the public IP address from a service."
+  },
+  "zsh_macos": {
+   "cmd": "curl -s https://api.ipify.org",
+   "why": "Uses curl to fetch the public IP address from a service."
+  }
+ },
+ {
+  "id": "net-routing-table",
+  "phrases": [
+   "show the routing table",
+   "list network routes",
+   "view ip routing table",
+   "check gateway routes",
+   "display static routes"
+  ],
+  "powershell": {
+   "cmd": "Get-NetRoute",
+   "why": "Displays the current IP routing table."
+  },
+  "cmd": {
+   "cmd": "route print",
+   "why": "Displays the current IP routing table."
+  },
+  "bash": {
+   "cmd": "ip route",
+   "why": "Displays the current IP routing table."
+  },
+  "zsh_macos": {
+   "cmd": "netstat -nr",
+   "why": "Displays the current IP routing table."
+  }
+ },
+ {
+  "id": "net-tcp-connections",
+  "phrases": [
+   "list active connections",
+   "show established connections",
+   "view network connections",
+   "check tcp connections"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection",
+   "why": "Lists all active TCP connections."
+  },
+  "cmd": {
+   "cmd": "netstat -an",
+   "why": "Displays all active network connections and listening ports."
+  },
+  "bash": {
+   "cmd": "ss -t",
+   "why": "Displays all active TCP connections."
+  },
+  "zsh_macos": {
+   "cmd": "netstat -anp tcp",
+   "why": "Displays all active TCP connections."
+  }
+ },
+ {
+  "id": "net-test-port",
+  "phrases": [
+   "is port open",
+   "test connection to port",
+   "check if port is reachable",
+   "verify port connectivity",
+   "is port open on remote",
+   "check remote port connectivity",
+   "test if port is reachable",
+   "verify remote port status",
+   "ping a specific port",
+   "test tcp connection to host"
+  ],
+  "powershell": {
+   "cmd": "Test-NetConnection -ComputerName <host> -Port <port>",
+   "why": "Tests TCP connectivity to a specific port on a host."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Test-NetConnection -ComputerName <host> -Port <port>\"",
+   "why": "Uses PowerShell from cmd: Tests TCP connectivity to a port."
+  },
+  "bash": {
+   "cmd": "nc -zv <host> <port>",
+   "why": "Uses netcat to check if a TCP port is open."
+  },
+  "zsh_macos": {
+   "cmd": "nc -zv <host> <port>",
+   "why": "Uses netcat to check if a TCP port is open."
+  }
+ },
+ {
+  "id": "net-traceroute",
+  "phrases": [
+   "trace path to a server",
+   "find where connection is slow",
+   "traceroute to a host",
+   "show network hops to destination",
+   "diagnose routing path"
+  ],
+  "powershell": {
+   "cmd": "Test-NetConnection -TraceRoute -ComputerName <host>",
+   "why": "Traces the network path to the specified destination."
+  },
+  "cmd": {
+   "cmd": "tracert <host>",
+   "why": "Traces the route to the destination host."
+  },
+  "bash": {
+   "cmd": "traceroute <host>",
+   "why": "Traces the network path to the destination host."
+  },
+  "zsh_macos": {
+   "cmd": "traceroute <host>",
+   "why": "Traces the network path to the destination host."
+  }
+ },
+ {
+  "id": "net-whois",
+  "phrases": [
+   "whois lookup",
+   "get domain registration info",
+   "check domain owner",
+   "whois for domain"
+  ],
+  "powershell": {
+   "cmd": "whois <domain>",
+   "why": "Runs whois lookup using Sysinternals whois.exe (must be on PATH)."
+  },
+  "cmd": {
+   "cmd": "whois <domain>",
+   "why": "Runs whois lookup using Sysinternals whois.exe (must be on PATH)."
+  },
+  "bash": {
+   "cmd": "whois <domain>",
+   "why": "Queries the WHOIS database for domain information."
+  },
+  "zsh_macos": {
+   "cmd": "whois <domain>",
+   "why": "Queries the WHOIS database for domain information."
+  }
+ },
+ {
+  "id": "net-wifi-info",
+  "phrases": [
+   "show wifi connection details",
+   "get wireless interface info",
+   "check wifi signal strength",
+   "view current wifi network",
+   "display ssid and signal"
+  ],
+  "powershell": {
+   "cmd": "netsh wlan show interfaces",
+   "why": "Displays information about the current Wi-Fi connection."
+  },
+  "cmd": {
+   "cmd": "netsh wlan show interfaces",
+   "why": "Displays information about the current Wi-Fi connection."
+  },
+  "bash": {
+   "cmd": "iwconfig",
+   "why": "Displays wireless network interface configuration and signal info."
+  },
+  "zsh_macos": {
+   "cmd": "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I",
+   "why": "Displays detailed information about the current Wi-Fi connection."
+  }
+ },
+ {
+  "id": "perm-change-acl-inheritance",
+  "phrases": [
+   "disable acl inheritance on file",
+   "break permission inheritance",
+   "stop inheriting permissions from parent",
+   "remove inherited rights from file"
+  ],
+  "powershell": {
+   "cmd": "$acl = Get-Acl '<file>'; $acl.SetAccessRuleProtection($true, $true); Set-Acl '<file>' $acl",
+   "why": "Disables inheritance while preserving existing inherited rules as explicit entries."
+  },
+  "cmd": {
+   "cmd": "icacls <file> /inheritance:d",
+   "why": "Disables inheritance while keeping existing inherited ACEs as explicit entries."
+  },
+  "bash": {
+   "cmd": "echo Not applicable",
+   "why": "Linux permissions do not use inheritance in the Windows sense."
+  },
+  "zsh_macos": {
+   "cmd": "echo Not applicable",
+   "why": "macOS POSIX permissions do not use inheritance in the Windows sense."
+  }
+ },
+ {
+  "id": "perm-change-group",
+  "phrases": [
+   "change file group ownership",
+   "set group on file",
+   "chgrp a file",
+   "assign group to file"
+  ],
+  "powershell": {
+   "cmd": "$acl = Get-Acl '<file>'; $acl.SetGroup([System.Security.Principal.NTAccount]'<group>'); Set-Acl '<file>' $acl",
+   "why": "Sets the group owner of the file via ACL."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"$acl = Get-Acl '<file>'; $acl.SetGroup([System.Security.Principal.NTAccount]'<group>'); Set-Acl '<file>' $acl\"",
+   "why": "Uses PowerShell from cmd: Sets the group owner of the file via ACL."
+  },
+  "bash": {
+   "cmd": "sudo chgrp <group> <file>",
+   "why": "Changes the group ownership of the file."
+  },
+  "zsh_macos": {
+   "cmd": "sudo chgrp <group> <file>",
+   "why": "Changes the group ownership of the file."
+  }
+ },
+ {
+  "id": "perm-change-owner",
+  "phrases": [
+   "change file owner",
+   "change ownership of file",
+   "chown file to user",
+   "transfer file ownership",
+   "set new owner on file",
+   "reassign file owner"
+  ],
+  "powershell": {
+   "cmd": "$acl = Get-Acl <file>; $acl.SetOwner([System.Security.Principal.NTAccount]'<user>'); Set-Acl <file> $acl",
+   "why": "Updates the owner of the file using ACL objects."
+  },
+  "cmd": {
+   "cmd": "takeown /f <file>",
+   "why": "Takes ownership of the file for the current user."
+  },
+  "bash": {
+   "cmd": "sudo chown <user>:<group> <file>",
+   "why": "Changes the user and group ownership of the file."
+  },
+  "zsh_macos": {
+   "cmd": "sudo chown <user>:<group> <file>",
+   "why": "Changes the user and group ownership of the file."
+  }
+ },
+ {
+  "id": "perm-change-permissions-octal",
+  "phrases": [
+   "change permissions to 755",
+   "chmod 755 a file",
+   "set file mode to 644",
+   "set rwxr-xr-x on file",
+   "change octal access rights",
+   "set owner write group read permissions"
+  ],
+  "powershell": {
+   "cmd": "icacls <file> /grant \"$env:USERNAME\":(F)",
+   "why": "Grants full control to the current user (closest Windows equivalent)."
+  },
+  "cmd": {
+   "cmd": "icacls <file> /grant \"%USERNAME%\":(F)",
+   "why": "Grants full control to the current user (closest Windows equivalent)."
+  },
+  "bash": {
+   "cmd": "chmod 755 <file>",
+   "why": "Sets permissions to rwxr-xr-x."
+  },
+  "zsh_macos": {
+   "cmd": "chmod 755 <file>",
+   "why": "Sets permissions to rwxr-xr-x."
+  }
+ },
+ {
+  "id": "perm-check-sudo-rights",
+  "phrases": [
+   "check sudo privileges",
+   "can i use sudo",
+   "list sudo rights for user",
+   "see what commands i can run as root"
+  ],
+  "powershell": {
+   "cmd": "whoami /priv",
+   "why": "Displays the privileges assigned to the current user token."
+  },
+  "cmd": {
+   "cmd": "whoami /priv",
+   "why": "Displays the privileges assigned to the current user token."
+  },
+  "bash": {
+   "cmd": "sudo -l",
+   "why": "Lists the sudo privileges for the current user."
+  },
+  "zsh_macos": {
+   "cmd": "sudo -l",
+   "why": "Lists the sudo privileges for the current user."
+  }
+ },
+ {
+  "id": "perm-check-whoami",
+  "phrases": [
+   "who am i",
+   "check current user",
+   "what is my username",
+   "show current user identity",
+   "show current logged in user",
+   "what user am i running as",
+   "display current username",
+   "who is running this session",
+   "current username",
+   "print my user name"
+  ],
+  "powershell": {
+   "cmd": "whoami",
+   "why": "Displays the current user identity."
+  },
+  "cmd": {
+   "cmd": "whoami",
+   "why": "Displays the current user identity."
+  },
+  "bash": {
+   "cmd": "whoami",
+   "why": "Displays the current user identity."
+  },
+  "zsh_macos": {
+   "cmd": "whoami",
+   "why": "Displays the current user identity."
+  }
+ },
+ {
+  "id": "perm-find-files-by-owner",
+  "phrases": [
+   "find files owned by specific user",
+   "search files by owner",
+   "list files belonging to user",
+   "find all files a user owns"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse | Where-Object { (Get-Acl $_.FullName).Owner -eq '<domain>\\<user>' }",
+   "why": "Recursively finds all files owned by the specified user."
+  },
+  "cmd": {
+   "cmd": "dir /q /s",
+   "why": "Lists files recursively with their owner information."
+  },
+  "bash": {
+   "cmd": "find . -user <user>",
+   "why": "Finds all files owned by the specified user."
+  },
+  "zsh_macos": {
+   "cmd": "find . -user <user>",
+   "why": "Finds all files owned by the specified user."
+  }
+ },
+ {
+  "id": "perm-hide-file",
+  "phrases": [
+   "hide a file",
+   "make file hidden",
+   "set hidden attribute on file",
+   "hide a folder",
+   "conceal file from directory listing",
+   "make file invisible"
+  ],
+  "powershell": {
+   "cmd": "Set-ItemProperty <file> -Name Attributes -Value Hidden",
+   "why": "Sets the hidden attribute on the file."
+  },
+  "cmd": {
+   "cmd": "attrib +h <file>",
+   "why": "Sets the hidden attribute on the file."
+  },
+  "bash": {
+   "cmd": "mv <file> .<file>",
+   "why": "Renames the file with a leading dot, making it hidden on Unix."
+  },
+  "zsh_macos": {
+   "cmd": "chflags hidden <file>",
+   "why": "Sets the macOS hidden flag on the file."
+  }
+ },
+ {
+  "id": "perm-make-read-only",
+  "phrases": [
+   "make file read only",
+   "lock file from editing",
+   "prevent writing to file",
+   "set read only attribute",
+   "remove write permission",
+   "protect file from changes"
+  ],
+  "powershell": {
+   "cmd": "Set-ItemProperty <file> -Name IsReadOnly -Value $true",
+   "why": "Sets the read-only attribute on the file."
+  },
+  "cmd": {
+   "cmd": "attrib +r <file>",
+   "why": "Sets the read-only attribute on the file."
+  },
+  "bash": {
+   "cmd": "chmod 444 <file>",
+   "why": "Removes write permissions for user, group, and others."
+  },
+  "zsh_macos": {
+   "cmd": "chmod 444 <file>",
+   "why": "Removes write permissions for user, group, and others."
+  }
+ },
+ {
+  "id": "perm-recursive-change",
+  "phrases": [
+   "change permissions recursively",
+   "apply permissions to folder and contents",
+   "chmod recursive directory",
+   "chown recursive folder",
+   "set access rights on all files in folder",
+   "propagate permissions to subfolders"
+  ],
+  "powershell": {
+   "cmd": "$acl = Get-Acl <folder>; Get-ChildItem -Path <folder> -Recurse | ForEach-Object { Set-Acl $_.FullName $acl }",
+   "why": "Copies the folder's ACL to every file and subfolder recursively."
+  },
+  "cmd": {
+   "cmd": "icacls <folder> /grant <user>:(F) /T",
+   "why": "Applies full control to the folder and all sub-items."
+  },
+  "bash": {
+   "cmd": "chmod -R 755 <folder>",
+   "why": "Recursively sets permissions on a directory."
+  },
+  "zsh_macos": {
+   "cmd": "chmod -R 755 <folder>",
+   "why": "Recursively sets permissions on a directory."
+  }
+ },
+ {
+  "id": "perm-remove-all-permissions",
+  "phrases": [
+   "remove all permissions from file",
+   "deny all access to file",
+   "revoke all permissions",
+   "clear file permissions"
+  ],
+  "powershell": {
+   "cmd": "icacls <file> /inheritancelevel:e /remove:g *S-1-1-0",
+   "why": "Removes all explicitly granted permissions from the file."
+  },
+  "cmd": {
+   "cmd": "icacls <file> /remove:g *S-1-1-0",
+   "why": "Removes all explicitly granted permissions from the file."
+  },
+  "bash": {
+   "cmd": "chmod 000 <file>",
+   "why": "Removes all read, write, and execute permissions."
+  },
+  "zsh_macos": {
+   "cmd": "chmod 000 <file>",
+   "why": "Removes all read, write, and execute permissions."
+  }
+ },
+ {
+  "id": "perm-remove-hidden",
+  "phrases": [
+   "unhide a file",
+   "show hidden file",
+   "remove hidden attribute",
+   "make file visible again",
+   "reveal hidden folder",
+   "undo hide on file"
+  ],
+  "powershell": {
+   "cmd": "Set-ItemProperty <file> -Name Attributes -Value Normal",
+   "why": "Clears the hidden attribute from the file."
+  },
+  "cmd": {
+   "cmd": "attrib -h <file>",
+   "why": "Removes the hidden attribute from the file."
+  },
+  "bash": {
+   "cmd": "mv .<file> <file>",
+   "why": "Renames the file to remove the leading dot, making it visible."
+  },
+  "zsh_macos": {
+   "cmd": "chflags nohidden <file>",
+   "why": "Clears the macOS hidden flag from the file."
+  }
+ },
+ {
+  "id": "perm-remove-read-only",
+  "phrases": [
+   "make file writable",
+   "remove read only attribute",
+   "unlock file for editing",
+   "disable read only flag",
+   "add write permission to file",
+   "allow file to be modified"
+  ],
+  "powershell": {
+   "cmd": "Set-ItemProperty <file> -Name IsReadOnly -Value $false",
+   "why": "Clears the read-only attribute from the file."
+  },
+  "cmd": {
+   "cmd": "attrib -r <file>",
+   "why": "Clears the read-only attribute from the file."
+  },
+  "bash": {
+   "cmd": "chmod +w <file>",
+   "why": "Adds write permission to the file."
+  },
+  "zsh_macos": {
+   "cmd": "chmod +w <file>",
+   "why": "Adds write permission to the file."
+  }
+ },
+ {
+  "id": "perm-set-sticky-bit",
+  "phrases": [
+   "set sticky bit on directory",
+   "add sticky bit",
+   "chmod sticky bit",
+   "prevent others from deleting files in directory"
+  ],
+  "powershell": {
+   "cmd": "Write-Host 'Not applicable in Windows ACLs'",
+   "why": "Windows does not use the Unix sticky bit concept."
+  },
+  "cmd": {
+   "cmd": "echo Not supported",
+   "why": "Windows does not use the Unix sticky bit concept."
+  },
+  "bash": {
+   "cmd": "chmod +t <directory>",
+   "why": "Sets the sticky bit on a directory."
+  },
+  "zsh_macos": {
+   "cmd": "chmod +t <directory>",
+   "why": "Sets the sticky bit on a directory."
+  }
+ },
+ {
+  "id": "perm-set-suid",
+  "phrases": [
+   "set suid bit on file",
+   "add suid bit",
+   "chmod suid",
+   "set user id bit on executable"
+  ],
+  "powershell": {
+   "cmd": "Write-Host 'Not applicable in Windows'",
+   "why": "Windows uses a different security model than SUID."
+  },
+  "cmd": {
+   "cmd": "echo Not supported",
+   "why": "Windows uses a different security model than SUID."
+  },
+  "bash": {
+   "cmd": "chmod u+s <file>",
+   "why": "Sets the SUID bit on the file."
+  },
+  "zsh_macos": {
+   "cmd": "chmod u+s <file>",
+   "why": "Sets the SUID bit on the file."
+  }
+ },
+ {
+  "id": "perm-take-ownership-recursive",
+  "phrases": [
+   "take ownership of folder",
+   "force ownership change on directory",
+   "recursive takeown",
+   "claim folder ownership",
+   "own all files in directory",
+   "become owner of folder tree"
+  ],
+  "powershell": {
+   "cmd": "takeown /f <folder> /r /d y",
+   "why": "Takes ownership of the directory and all sub-items."
+  },
+  "cmd": {
+   "cmd": "takeown /f <folder> /r /d y",
+   "why": "Takes ownership of the directory and all sub-items."
+  },
+  "bash": {
+   "cmd": "sudo chown -R <user> <folder>",
+   "why": "Recursively changes ownership of a directory."
+  },
+  "zsh_macos": {
+   "cmd": "sudo chown -R <user> <folder>",
+   "why": "Recursively changes ownership of a directory."
+  }
+ },
+ {
+  "id": "perm-view-permissions",
+  "phrases": [
+   "check file permissions",
+   "see file mode bits",
+   "list file access rights",
+   "view who can access file",
+   "show acl on file",
+   "display file permission string"
+  ],
+  "powershell": {
+   "cmd": "Get-Acl <file> | Format-List",
+   "why": "Displays the Access Control List for the file."
+  },
+  "cmd": {
+   "cmd": "icacls <file>",
+   "why": "Displays the discretionary access control list for the file."
+  },
+  "bash": {
+   "cmd": "ls -l <file>",
+   "why": "Displays permissions in long format."
+  },
+  "zsh_macos": {
+   "cmd": "ls -l <file>",
+   "why": "Displays permissions in long format."
+  }
+ },
+ {
+  "id": "ports-check-listening-udp",
+  "phrases": [
+   "check udp ports",
+   "list listening udp",
+   "show open udp ports",
+   "find udp services",
+   "display udp listeners",
+   "see active udp endpoints"
+  ],
+  "powershell": {
+   "cmd": "Get-NetUDPEndpoint",
+   "why": "Lists all active UDP endpoints on the system."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-NetUDPEndpoint\"",
+   "why": "Uses PowerShell from cmd: Lists all active UDP endpoints."
+  },
+  "bash": {
+   "cmd": "ss -uln",
+   "why": "Displays all listening UDP ports."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i udp",
+   "why": "Lists all open UDP network files."
+  }
+ },
+ {
+  "id": "ports-check-local-port-open",
+  "phrases": [
+   "is port open locally",
+   "check if port is in use",
+   "is port available",
+   "verify local port",
+   "see if a port is free",
+   "check whether port is bound"
+  ],
+  "powershell": {
+   "cmd": "(Get-NetTCPConnection -LocalPort <port> -ErrorAction SilentlyContinue) -ne $null",
+   "why": "Returns true if the specified local port is currently in use."
+  },
+  "cmd": {
+   "cmd": "netstat -an | findstr :<port>",
+   "why": "Checks if the port appears in the active connections list."
+  },
+  "bash": {
+   "cmd": "ss -tuln | grep :<port>",
+   "why": "Checks if the port is currently listening."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i :<port>",
+   "why": "Checks if the port is currently bound to a process."
+  }
+ },
+ {
+  "id": "ports-check-port-protocol",
+  "phrases": [
+   "what is running on port",
+   "identify service on port",
+   "check which process uses port",
+   "find protocol on port",
+   "what app is listening on port"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -LocalPort <port> | ForEach-Object { Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue }",
+   "why": "Finds the process listening on the specified port."
+  },
+  "cmd": {
+   "cmd": "netstat -ano | findstr \":<port>\"",
+   "why": "Shows connections on the port with the owning PID for further lookup."
+  },
+  "bash": {
+   "cmd": "sudo lsof -i :<port>",
+   "why": "Identifies the process and protocol using the specified port."
+  },
+  "zsh_macos": {
+   "cmd": "sudo lsof -i :<port>",
+   "why": "Identifies the process and protocol using the specified port."
+  }
+ },
+ {
+  "id": "ports-check-port-range",
+  "phrases": [
+   "check range of ports",
+   "scan port range locally",
+   "are ports in range open",
+   "test multiple ports at once",
+   "scan ports 1 to 1024"
+  ],
+  "powershell": {
+   "cmd": "1..1024 | ForEach-Object { if ((Test-NetConnection -ComputerName localhost -Port $_ -WarningAction SilentlyContinue).TcpTestSucceeded) { Write-Host \"Port $_ is open\" } }",
+   "why": "Scans a range of ports on localhost using Test-NetConnection."
+  },
+  "cmd": {
+   "cmd": "for /L %i in (1,1,1024) do @powershell -NoProfile -c \"if ((Test-NetConnection -ComputerName localhost -Port %i -WarningAction SilentlyContinue).TcpTestSucceeded) { Write-Host 'Port %i is open' }\"",
+   "why": "Uses PowerShell from cmd: scans a range of ports on localhost."
+  },
+  "bash": {
+   "cmd": "for port in {1..1024}; do (echo >/dev/tcp/localhost/$port) 2>/dev/null && echo \"Port $port is open\"; done",
+   "why": "Scans a port range using bash built-in TCP redirection."
+  },
+  "zsh_macos": {
+   "cmd": "for port in {1..1024}; do nc -z -w1 localhost $port 2>/dev/null && echo \"Port $port is open\"; done",
+   "why": "Scans a port range using netcat with a 1-second timeout per port."
+  }
+ },
+ {
+  "id": "ports-check-remote-port-timeout",
+  "phrases": [
+   "check remote port with timeout",
+   "test port connection with timeout",
+   "connect to remote port with time limit",
+   "verify remote port is open quickly",
+   "probe remote host port timeout"
+  ],
+  "powershell": {
+   "cmd": "Test-NetConnection -ComputerName <host> -Port <port> -InformationLevel Quiet",
+   "why": "Tests TCP connectivity to a remote host and port, returning true or false."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Test-NetConnection -ComputerName <host> -Port <port> -InformationLevel Quiet\"",
+   "why": "Uses PowerShell from cmd: tests TCP connectivity to a remote host and port."
+  },
+  "bash": {
+   "cmd": "timeout 2 bash -c 'cat < /dev/tcp/<host>/<port>' && echo open || echo closed",
+   "why": "Attempts a TCP connection with a 2-second timeout using bash built-ins."
+  },
+  "zsh_macos": {
+   "cmd": "nc -zv -w 2 <host> <port>",
+   "why": "Uses netcat to probe a remote port with a 2-second connection timeout."
+  }
+ },
+ {
+  "id": "ports-find-listening-by-user",
+  "phrases": [
+   "find ports by user",
+   "what ports is user using",
+   "list ports owned by user",
+   "show listening ports for specific user",
+   "which ports does user have open"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Listen | Where-Object { (Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).UserName -eq '<user>' }",
+   "why": "Filters listening TCP ports by the username of the owning process."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-NetTCPConnection -State Listen | Where-Object { (Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).UserName -eq '<user>' }\"",
+   "why": "Uses PowerShell from cmd: filters listening ports by owning process username."
+  },
+  "bash": {
+   "cmd": "sudo lsof -i -P -n -u <user> | grep LISTEN",
+   "why": "Lists listening ports owned by the specified user via lsof."
+  },
+  "zsh_macos": {
+   "cmd": "sudo lsof -i -P -n -u <user> | grep LISTEN",
+   "why": "Lists listening ports owned by the specified user via lsof."
+  }
+ },
+ {
+  "id": "ports-find-pid-on-port",
+  "phrases": [
+   "find process on port",
+   "what process is using port",
+   "who is using port",
+   "find pid by port",
+   "which app is on port",
+   "identify process by port number"
+  ],
+  "powershell": {
+   "cmd": "Get-Process -Id (Get-NetTCPConnection -LocalPort <port>).OwningProcess",
+   "why": "Retrieves the process object associated with a specific local port."
+  },
+  "cmd": {
+   "cmd": "netstat -ano | findstr :<port>",
+   "why": "Finds the PID associated with a specific port using native netstat."
+  },
+  "bash": {
+   "cmd": "ss -lptn 'sport = :<port>'",
+   "why": "Shows the process ID and name listening on the specified port."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i :<port>",
+   "why": "Identifies the process using the specified port on macOS."
+  }
+ },
+ {
+  "id": "ports-find-process-by-name",
+  "phrases": [
+   "find ports for process",
+   "what ports is app using",
+   "list ports for process name",
+   "find network usage by app name",
+   "which ports does program use"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection | Where-Object { (Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).ProcessName -eq '<name>' }",
+   "why": "Finds all TCP connections owned by a process with the given name."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-NetTCPConnection | Where-Object { (Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).ProcessName -eq '<name>' }\"",
+   "why": "Uses PowerShell from cmd: finds all TCP connections for a named process."
+  },
+  "bash": {
+   "cmd": "sudo ss -tulnp | grep '<name>'",
+   "why": "Lists ports associated with a process matching the given name."
+  },
+  "zsh_macos": {
+   "cmd": "sudo lsof -i -P -n | grep '<name>'",
+   "why": "Lists all network connections for a process matching the given name."
+  }
+ },
+ {
+  "id": "ports-kill-process-on-port",
+  "phrases": [
+   "kill process on port",
+   "stop service on port",
+   "free up a port",
+   "terminate process using port",
+   "force close port",
+   "release a used port"
+  ],
+  "powershell": {
+   "cmd": "Stop-Process -Id (Get-NetTCPConnection -LocalPort <port>).OwningProcess -Force",
+   "why": "Forcefully terminates the process currently bound to the specified port."
+  },
+  "cmd": {
+   "cmd": "for /f \"tokens=5\" %a in ('netstat -aon ^| findstr :<port>') do taskkill /f /pid %a",
+   "why": "Finds the PID on the port and kills it using taskkill."
+  },
+  "bash": {
+   "cmd": "fuser -k <port>/tcp",
+   "why": "Kills the process currently using the specified TCP port."
+  },
+  "zsh_macos": {
+   "cmd": "kill -9 $(lsof -t -i:<port>)",
+   "why": "Finds the PID on the port and sends a kill signal."
+  }
+ },
+ {
+  "id": "ports-list-all-connections",
+  "phrases": [
+   "show all network connections",
+   "list active connections",
+   "view network sockets",
+   "show established connections",
+   "display all open sockets",
+   "see current network activity"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection",
+   "why": "Displays all TCP connections including established and listening."
+  },
+  "cmd": {
+   "cmd": "netstat -an",
+   "why": "Lists all active network connections and listening ports."
+  },
+  "bash": {
+   "cmd": "ss -tun",
+   "why": "Lists all TCP and UDP network connections."
+  },
+  "zsh_macos": {
+   "cmd": "netstat -an",
+   "why": "Displays all active network connections."
+  }
+ },
+ {
+  "id": "ports-list-established-only",
+  "phrases": [
+   "show established connections",
+   "list active sessions",
+   "view connected ports",
+   "show established sockets",
+   "display in-use tcp connections",
+   "see currently connected peers"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Established",
+   "why": "Filters for only established TCP connections."
+  },
+  "cmd": {
+   "cmd": "netstat -an | findstr ESTABLISHED",
+   "why": "Filters netstat output for established connections."
+  },
+  "bash": {
+   "cmd": "ss -t state established",
+   "why": "Displays only established TCP connections."
+  },
+  "zsh_macos": {
+   "cmd": "netstat -an | grep ESTABLISHED",
+   "why": "Filters netstat output for established connections."
+  }
+ },
+ {
+  "id": "ports-list-listening-ipv4",
+  "phrases": [
+   "list ipv4 listening ports",
+   "show only ipv4 ports",
+   "check ipv4 tcp ports",
+   "view ipv4 sockets only",
+   "filter ports to ipv4"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Listen -AddressFamily IPv4",
+   "why": "Filters listening TCP ports to IPv4 only."
+  },
+  "cmd": {
+   "cmd": "netstat -an | findstr /R \"^  TCP \"",
+   "why": "Lists IPv4 TCP entries, excluding IPv6 TCP lines which start with TCP [."
+  },
+  "bash": {
+   "cmd": "ss -4tuln",
+   "why": "Displays only IPv4 listening ports."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i 4 -P -n | grep LISTEN",
+   "why": "Lists IPv4 listening ports only."
+  }
+ },
+ {
+  "id": "ports-list-listening-ipv6",
+  "phrases": [
+   "list ipv6 listening ports",
+   "show only ipv6 ports",
+   "check ipv6 tcp ports",
+   "view ipv6 sockets only",
+   "filter ports to ipv6"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Listen -AddressFamily IPv6",
+   "why": "Filters listening TCP ports to IPv6 only."
+  },
+  "cmd": {
+   "cmd": "netstat -an | findstr \"TCP [\"",
+   "why": "Lists only IPv6 TCP lines, which netstat formats with brackets around the address."
+  },
+  "bash": {
+   "cmd": "ss -6tuln",
+   "why": "Displays only IPv6 listening ports."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i 6 -P -n | grep LISTEN",
+   "why": "Lists IPv6 listening ports only."
+  }
+ },
+ {
+  "id": "ports-list-listening-tcp",
+  "phrases": [
+   "list all listening tcp ports",
+   "show tcp listening sockets",
+   "check what tcp ports are open",
+   "view tcp listen state",
+   "display open tcp listeners"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Listen",
+   "why": "Lists all TCP connections in the Listen state."
+  },
+  "cmd": {
+   "cmd": "netstat -an | findstr LISTENING",
+   "why": "Filters netstat output to show only listening TCP ports."
+  },
+  "bash": {
+   "cmd": "ss -tlnp",
+   "why": "Lists all listening TCP ports with process info."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i tcp -P -n | grep LISTEN",
+   "why": "Lists all listening TCP ports."
+  }
+ },
+ {
+  "id": "ports-list-listening-with-names",
+  "phrases": [
+   "list ports with process names",
+   "show listening ports and apps",
+   "who is listening on what port",
+   "view ports and programs",
+   "map ports to application names",
+   "show port to process mapping"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -State Listen | Select-Object LocalPort, OwningProcess | ForEach-Object { $_ | Add-Member -MemberType NoteProperty -Name ProcessName -Value (Get-Process -Id $_.OwningProcess).ProcessName -PassThru }",
+   "why": "Lists listening ports mapped to their process names."
+  },
+  "cmd": {
+   "cmd": "netstat -abno",
+   "why": "Lists all connections with the executable name (requires admin)."
+  },
+  "bash": {
+   "cmd": "sudo ss -tulnp",
+   "why": "Lists listening ports with the associated process name and PID."
+  },
+  "zsh_macos": {
+   "cmd": "sudo lsof -i -P -n | grep LISTEN",
+   "why": "Lists listening ports with process names (requires sudo)."
+  }
+ },
+ {
+  "id": "ports-wait-for-port",
+  "phrases": [
+   "wait for port to open",
+   "wait until port is ready",
+   "block until port is listening",
+   "check port until available",
+   "poll until port responds",
+   "loop until service is up"
+  ],
+  "powershell": {
+   "cmd": "while (!(Test-NetConnection -ComputerName localhost -Port <port>).TcpTestSucceeded) { Start-Sleep -Seconds 1 }",
+   "why": "Loops until the specified local port becomes reachable."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"while (!(Test-NetConnection -ComputerName localhost -Port <port>).TcpTestSucceeded) { Start-Sleep -Seconds 1 }\"",
+   "why": "Uses PowerShell from cmd: Loops until the local port is open."
+  },
+  "bash": {
+   "cmd": "while ! nc -z localhost <port>; do sleep 1; done",
+   "why": "Waits in a loop until the specified port is open."
+  },
+  "zsh_macos": {
+   "cmd": "while ! nc -z localhost <port>; do sleep 1; done",
+   "why": "Waits in a loop until the specified port is open."
+  }
+ },
+ {
+  "id": "proc-background",
+  "phrases": [
+   "run command in background",
+   "start process in background",
+   "detach process from terminal",
+   "run task without blocking",
+   "launch program silently",
+   "execute command and return to prompt"
+  ],
+  "powershell": {
+   "cmd": "Start-Process <command> -WindowStyle Hidden",
+   "why": "Starts a process in a hidden window."
+  },
+  "cmd": {
+   "cmd": "start /B <command>",
+   "why": "Starts a command in the background without a new window."
+  },
+  "bash": {
+   "cmd": "<command> &",
+   "why": "Runs the command in the background."
+  },
+  "zsh_macos": {
+   "cmd": "<command> &",
+   "why": "Runs the command in the background."
+  }
+ },
+ {
+  "id": "proc-cpu-usage",
+  "phrases": [
+   "check total cpu usage",
+   "get system cpu load",
+   "how much cpu is used",
+   "see overall cpu percentage",
+   "current system cpu utilization",
+   "measure cpu load right now"
+  ],
+  "powershell": {
+   "cmd": "Get-Counter '\\Processor(_Total)\\% Processor Time'",
+   "why": "Retrieves the total CPU usage counter."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Counter '\\Processor(_Total)\\% Processor Time'\"",
+   "why": "Uses PowerShell from cmd: Gets total CPU usage."
+  },
+  "bash": {
+   "cmd": "top -bn1 | grep 'Cpu(s)'",
+   "why": "Shows a snapshot of CPU usage."
+  },
+  "zsh_macos": {
+   "cmd": "top -l 1 | grep 'CPU usage'",
+   "why": "Shows a snapshot of CPU usage."
+  }
+ },
+ {
+  "id": "proc-cwd",
+  "phrases": [
+   "get working directory of a process",
+   "where is a process running from",
+   "find cwd of a pid",
+   "show process executable path",
+   "which directory is process using"
+  ],
+  "powershell": {
+   "cmd": "(Get-Process -Id <pid>).Path",
+   "why": "Shows the full executable path of the specified process."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Process -Id <pid>).Path\"",
+   "why": "Uses PowerShell from cmd: retrieves the executable path of a process by PID."
+  },
+  "bash": {
+   "cmd": "readlink /proc/<pid>/cwd",
+   "why": "Resolves and shows the current working directory of a process."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -p <pid> | grep cwd",
+   "why": "Shows the current working directory of a process via open file descriptors."
+  }
+ },
+ {
+  "id": "proc-env-vars",
+  "phrases": [
+   "show process environment variables",
+   "get env vars for a running process",
+   "list environment of a pid",
+   "inspect process environment",
+   "what environment does a process see"
+  ],
+  "powershell": {
+   "cmd": "powershell -NoProfile -c \"(Get-CimInstance Win32_Process -Filter 'ProcessId=<pid>').GetOwner()\" ",
+   "why": "Note: PowerShell cannot read another process's environment; use bash/zsh tools on Linux/macOS."
+  },
+  "cmd": {
+   "cmd": "set",
+   "why": "Displays all environment variables for the current cmd session."
+  },
+  "bash": {
+   "cmd": "cat /proc/<pid>/environ | tr '\\0' '\\n'",
+   "why": "Displays the environment variables of a process, one per line."
+  },
+  "zsh_macos": {
+   "cmd": "ps eww -p <pid>",
+   "why": "Displays the full environment variables of a process."
+  }
+ },
+ {
+  "id": "proc-find-port",
+  "phrases": [
+   "find process using port",
+   "what is using this port",
+   "check which app is on a port",
+   "find pid by port",
+   "see what is listening on port",
+   "identify process bound to port"
+  ],
+  "powershell": {
+   "cmd": "Get-Process -Id (Get-NetTCPConnection -LocalPort <port>).OwningProcess",
+   "why": "Finds the process associated with a specific port."
+  },
+  "cmd": {
+   "cmd": "netstat -ano | findstr :<port>",
+   "why": "Lists network connections and finds the PID for a port."
+  },
+  "bash": {
+   "cmd": "lsof -i :<port>",
+   "why": "Lists open files and processes using the specified port."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i :<port>",
+   "why": "Lists open files and processes using the specified port."
+  }
+ },
+ {
+  "id": "proc-interactive",
+  "phrases": [
+   "open interactive process monitor",
+   "launch task manager",
+   "live process viewer",
+   "real time cpu and memory monitor",
+   "open top or task manager"
+  ],
+  "powershell": {
+   "cmd": "taskmgr",
+   "why": "Opens the Windows Task Manager GUI."
+  },
+  "cmd": {
+   "cmd": "taskmgr",
+   "why": "Opens the Windows Task Manager GUI."
+  },
+  "bash": {
+   "cmd": "top",
+   "why": "Starts the interactive real-time process monitor."
+  },
+  "zsh_macos": {
+   "cmd": "top",
+   "why": "Starts the interactive real-time process monitor on macOS."
+  }
+ },
+ {
+  "id": "proc-kill-all",
+  "phrases": [
+   "kill all processes by name",
+   "terminate all instances of a program",
+   "stop all running copies of an app",
+   "killall by name",
+   "force close every instance",
+   "kill process by name",
+   "stop a running process",
+   "terminate task forcefully",
+   "end process in terminal",
+   "force quit application"
+  ],
+  "powershell": {
+   "cmd": "Stop-Process -Name <name> -Force",
+   "why": "Stops all instances of a process by name forcefully."
+  },
+  "cmd": {
+   "cmd": "taskkill /IM <name>.exe /F /T",
+   "why": "Forcefully terminates all instances and child processes by name."
+  },
+  "bash": {
+   "cmd": "killall <name>",
+   "why": "Kills all processes matching the given name."
+  },
+  "zsh_macos": {
+   "cmd": "killall <name>",
+   "why": "Kills all processes matching the given name."
+  }
+ },
+ {
+  "id": "proc-kill-name",
+  "phrases": [
+   "kill process by name",
+   "stop program by name",
+   "terminate task by name",
+   "close app by name",
+   "end process matching name",
+   "force quit named process"
+  ],
+  "powershell": {
+   "cmd": "Stop-Process -Name <name>",
+   "why": "Stops a process by its executable name."
+  },
+  "cmd": {
+   "cmd": "taskkill /IM <name>.exe /F",
+   "why": "Forcefully terminates a process by its image name."
+  },
+  "bash": {
+   "cmd": "pkill <name>",
+   "why": "Terminates processes matching the name."
+  },
+  "zsh_macos": {
+   "cmd": "pkill <name>",
+   "why": "Terminates processes matching the name."
+  }
+ },
+ {
+  "id": "proc-kill-pid",
+  "phrases": [
+   "kill process by id",
+   "stop task with pid",
+   "terminate process id",
+   "end process by number",
+   "force quit by pid",
+   "close process using process id"
+  ],
+  "powershell": {
+   "cmd": "Stop-Process -Id <pid>",
+   "why": "Stops a process using its ID."
+  },
+  "cmd": {
+   "cmd": "taskkill /PID <pid> /F",
+   "why": "Forcefully terminates a process by its PID."
+  },
+  "bash": {
+   "cmd": "kill <pid>",
+   "why": "Sends a termination signal to the process ID."
+  },
+  "zsh_macos": {
+   "cmd": "kill <pid>",
+   "why": "Sends a termination signal to the process ID."
+  }
+ },
+ {
+  "id": "proc-list-all",
+  "phrases": [
+   "list all running processes",
+   "show me active tasks",
+   "get process list",
+   "what is running right now",
+   "display all processes",
+   "see every running program",
+   "list running processes",
+   "show active tasks",
+   "view process list",
+   "what processes are currently running",
+   "display all active processes",
+   "show running processes",
+   "list all tasks",
+   "what processes are running",
+   "check active processes",
+   "see what is using cpu"
+  ],
+  "powershell": {
+   "cmd": "Get-Process",
+   "why": "Lists all currently running processes."
+  },
+  "cmd": {
+   "cmd": "tasklist",
+   "why": "Displays a list of all running processes."
+  },
+  "bash": {
+   "cmd": "ps aux",
+   "why": "Shows all running processes with user details."
+  },
+  "zsh_macos": {
+   "cmd": "ps aux",
+   "why": "Shows all running processes with user details."
+  }
+ },
+ {
+  "id": "proc-mem-usage",
+  "phrases": [
+   "check total memory usage",
+   "how much ram is used",
+   "get system memory status",
+   "show free and used ram",
+   "memory utilization summary",
+   "how much ram do i have",
+   "check memory usage",
+   "show total memory",
+   "how much memory is free",
+   "display physical memory size"
+  ],
+  "powershell": {
+   "cmd": "Get-CimInstance Win32_OperatingSystem | Select-Object TotalVisibleMemorySize, FreePhysicalMemory",
+   "why": "Shows total and free physical memory in kilobytes."
+  },
+  "cmd": {
+   "cmd": "systeminfo | findstr \"Memory\"",
+   "why": "Displays system memory information from systeminfo output."
+  },
+  "bash": {
+   "cmd": "free -h",
+   "why": "Displays memory usage in human-readable format."
+  },
+  "zsh_macos": {
+   "cmd": "vm_stat",
+   "why": "Displays virtual memory statistics including free and active pages."
+  }
+ },
+ {
+  "id": "proc-priority",
+  "phrases": [
+   "change process priority",
+   "set process priority to high",
+   "renice a running process",
+   "adjust cpu scheduling priority",
+   "lower or raise process priority"
+  ],
+  "powershell": {
+   "cmd": "Get-Process -Name <name> | ForEach-Object {$_.PriorityClass = 'High'}",
+   "why": "Sets the priority class of a process to High."
+  },
+  "cmd": {
+   "cmd": "start /High <program>",
+   "why": "Starts a program with high priority."
+  },
+  "bash": {
+   "cmd": "renice -n -10 -p <pid>",
+   "why": "Changes the scheduling priority of a running process."
+  },
+  "zsh_macos": {
+   "cmd": "renice -n -10 -p <pid>",
+   "why": "Changes the scheduling priority of a running process."
+  }
+ },
+ {
+  "id": "proc-search-name",
+  "phrases": [
+   "search for process by name",
+   "find process by partial name",
+   "grep for a running process",
+   "check if process is running",
+   "look up task by name",
+   "filter process list by keyword"
+  ],
+  "powershell": {
+   "cmd": "Get-Process | Where-Object {$_.ProcessName -like '*<name>*'}",
+   "why": "Filters processes by a partial name match."
+  },
+  "cmd": {
+   "cmd": "tasklist | findstr <name>",
+   "why": "Searches the task list for a specific string."
+  },
+  "bash": {
+   "cmd": "ps aux | grep <name>",
+   "why": "Searches for a process name in the process list."
+  },
+  "zsh_macos": {
+   "cmd": "ps aux | grep <name>",
+   "why": "Searches for a process name in the process list."
+  }
+ },
+ {
+  "id": "proc-start-time",
+  "phrases": [
+   "when did a process start",
+   "get process start time",
+   "find process creation time",
+   "how long has a process been running",
+   "process launch timestamp"
+  ],
+  "powershell": {
+   "cmd": "(Get-Process -Id <pid>).StartTime",
+   "why": "Shows the start time of the specified process."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Process -Id <pid>).StartTime\"",
+   "why": "Uses PowerShell from cmd: gets the start time of a process by PID."
+  },
+  "bash": {
+   "cmd": "ps -p <pid> -o lstart=",
+   "why": "Shows the human-readable start time of a process."
+  },
+  "zsh_macos": {
+   "cmd": "ps -p <pid> -o lstart=",
+   "why": "Shows the human-readable start time of a process on macOS."
+  }
+ },
+ {
+  "id": "proc-threads",
+  "phrases": [
+   "count threads of a process",
+   "show thread count for pid",
+   "how many threads is a process using",
+   "list threads of a process",
+   "check thread usage"
+  ],
+  "powershell": {
+   "cmd": "(Get-Process -Id <pid>).Threads.Count",
+   "why": "Returns the number of threads for the specified process."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Process -Id <pid>).Threads.Count\"",
+   "why": "Uses PowerShell from cmd: counts threads for a given PID."
+  },
+  "bash": {
+   "cmd": "ps -p <pid> -o nlwp=",
+   "why": "Shows the number of lightweight threads for a process."
+  },
+  "zsh_macos": {
+   "cmd": "ps -M -p <pid>",
+   "why": "Lists all threads for a process on macOS."
+  }
+ },
+ {
+  "id": "proc-top-cpu",
+  "phrases": [
+   "show processes using most cpu",
+   "sort by cpu usage",
+   "find high cpu tasks",
+   "top cpu consumers",
+   "which process is hogging cpu",
+   "highest cpu usage processes"
+  ],
+  "powershell": {
+   "cmd": "Get-Process | Sort-Object CPU -Descending | Select-Object -First 10",
+   "why": "Lists the top 10 processes by CPU usage."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Process | Sort-Object CPU -Descending | Select-Object -First 10\"",
+   "why": "Uses PowerShell from cmd: Sorts processes by CPU usage."
+  },
+  "bash": {
+   "cmd": "ps aux --sort=-%cpu | head -n 11",
+   "why": "Lists the top 10 processes by CPU percentage."
+  },
+  "zsh_macos": {
+   "cmd": "ps aux | sort -rk 3 | head -n 11",
+   "why": "Lists the top 10 processes by CPU percentage."
+  }
+ },
+ {
+  "id": "proc-top-mem",
+  "phrases": [
+   "show processes using most memory",
+   "sort by ram usage",
+   "find high memory tasks",
+   "top memory consumers",
+   "which process uses most ram",
+   "highest memory usage processes"
+  ],
+  "powershell": {
+   "cmd": "Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 10",
+   "why": "Lists the top 10 processes by memory usage."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 10\"",
+   "why": "Uses PowerShell from cmd: Sorts processes by memory usage."
+  },
+  "bash": {
+   "cmd": "ps aux --sort=-%mem | head -n 11",
+   "why": "Lists the top 10 processes by memory percentage."
+  },
+  "zsh_macos": {
+   "cmd": "ps aux | sort -rk 4 | head -n 11",
+   "why": "Lists the top 10 processes by memory percentage."
+  }
+ },
+ {
+  "id": "proc-tree",
+  "phrases": [
+   "show process tree",
+   "view parent child processes",
+   "process hierarchy",
+   "list processes as tree",
+   "see which process spawned another"
+  ],
+  "powershell": {
+   "cmd": "Get-CimInstance Win32_Process | Select-Object ProcessId, ParentProcessId, Name | Sort-Object ParentProcessId",
+   "why": "Lists processes with parent IDs to show hierarchy."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name | Sort-Object ParentProcessId | Format-Table -AutoSize\"",
+   "why": "Uses PowerShell from cmd: lists process hierarchy with parent IDs."
+  },
+  "bash": {
+   "cmd": "pstree",
+   "why": "Displays running processes as a tree structure."
+  },
+  "zsh_macos": {
+   "cmd": "pstree",
+   "why": "Displays running processes as a tree structure."
+  }
+ },
+ {
+  "id": "proc-uptime",
+  "phrases": [
+   "how long has system been up",
+   "check system uptime",
+   "when did system last boot",
+   "get uptime",
+   "see system start time",
+   "how long since last restart",
+   "how long has computer been on",
+   "show time since last boot",
+   "how long has system been running",
+   "display uptime"
+  ],
+  "powershell": {
+   "cmd": "(Get-Date) - (Get-CimInstance Win32_OperatingSystem).LastBootUpTime",
+   "why": "Calculates the time elapsed since the last boot."
+  },
+  "cmd": {
+   "cmd": "net statistics workstation",
+   "why": "Shows statistics including system start time."
+  },
+  "bash": {
+   "cmd": "uptime -p",
+   "why": "Displays the system uptime in a pretty format."
+  },
+  "zsh_macos": {
+   "cmd": "uptime",
+   "why": "Displays the system uptime."
+  }
+ },
+ {
+  "id": "proc-wait",
+  "phrases": [
+   "wait for process to finish",
+   "wait for pid to exit",
+   "pause script until process ends",
+   "block until program completes",
+   "wait for background job"
+  ],
+  "powershell": {
+   "cmd": "Wait-Process -Id <pid>",
+   "why": "Blocks until the specified process exits."
+  },
+  "cmd": {
+   "cmd": "start /wait <command>",
+   "why": "Starts a command and waits for it to finish before continuing."
+  },
+  "bash": {
+   "cmd": "wait <pid>",
+   "why": "Waits for a background process with the given PID to finish."
+  },
+  "zsh_macos": {
+   "cmd": "wait <pid>",
+   "why": "Waits for a background process with the given PID to finish."
+  }
+ },
+ {
+  "id": "search-character-count",
+  "phrases": [
+   "count characters in file",
+   "get char count",
+   "how many characters in file",
+   "measure file length in characters"
+  ],
+  "powershell": {
+   "cmd": "(Get-Content <file> -Raw).Length",
+   "why": "Counts characters in a file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Content '<file>' -Raw).Length\"",
+   "why": "Uses PowerShell from cmd: Counts characters in a file.",
+   "fixed": true
+  },
+  "bash": {
+   "cmd": "wc -m <file>",
+   "why": "Counts characters using the word count utility."
+  },
+  "zsh_macos": {
+   "cmd": "wc -m <file>",
+   "why": "Counts characters using the word count utility."
+  }
+ },
+ {
+  "id": "search-compare-files",
+  "phrases": [
+   "compare two files",
+   "diff two files",
+   "show differences between files",
+   "find changes between files",
+   "file comparison",
+   "check if files differ"
+  ],
+  "powershell": {
+   "cmd": "Compare-Object (Get-Content <file1>) (Get-Content <file2>)",
+   "why": "Compares two files line by line and shows differences."
+  },
+  "cmd": {
+   "cmd": "fc <file1> <file2>",
+   "why": "Native Windows file compare command."
+  },
+  "bash": {
+   "cmd": "diff <file1> <file2>",
+   "why": "Standard utility to compare files line by line."
+  },
+  "zsh_macos": {
+   "cmd": "diff <file1> <file2>",
+   "why": "Standard utility to compare files line by line."
+  }
+ },
+ {
+  "id": "search-count-lines",
+  "phrases": [
+   "count lines in file",
+   "how many lines in file",
+   "get line count",
+   "number of lines in file",
+   "line count of file",
+   "total lines in file"
+  ],
+  "powershell": {
+   "cmd": "(Get-Content <file>).Count",
+   "why": "Counts the number of lines in a file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Content '<file>').Count\"",
+   "why": "Uses PowerShell from cmd: Counts lines in a file."
+  },
+  "bash": {
+   "cmd": "wc -l <file>",
+   "why": "Counts lines using word count utility."
+  },
+  "zsh_macos": {
+   "cmd": "wc -l <file>",
+   "why": "Counts lines using word count utility."
+  }
+ },
+ {
+  "id": "search-count-occurrences",
+  "phrases": [
+   "count occurrences of word",
+   "how many times word appears",
+   "count pattern matches in file",
+   "grep count matches"
+  ],
+  "powershell": {
+   "cmd": "(Select-String -Path <file> -Pattern <pattern> -AllMatches).Matches.Count",
+   "why": "Counts all occurrences of a pattern across the file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Select-String -Path <file> -Pattern '<pattern>' -AllMatches).Matches.Count\"",
+   "why": "Uses PowerShell from cmd: Counts all occurrences of a pattern.",
+   "fixed": true
+  },
+  "bash": {
+   "cmd": "grep -o \"<pattern>\" <file> | wc -l",
+   "why": "Counts occurrences by printing each match then counting lines."
+  },
+  "zsh_macos": {
+   "cmd": "grep -o \"<pattern>\" <file> | wc -l",
+   "why": "Counts occurrences by printing each match then counting lines."
+  }
+ },
+ {
+  "id": "search-extract-column",
+  "phrases": [
+   "extract column from file",
+   "get specific column",
+   "awk print column",
+   "cut field from delimited file"
+  ],
+  "powershell": {
+   "cmd": "Import-Csv <file> -Delimiter ' ' | Select-Object -ExpandProperty <column>",
+   "why": "Extracts a named column from a space-delimited file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Import-Csv <file> -Delimiter ' ' | Select-Object -ExpandProperty <column>\"",
+   "why": "Uses PowerShell from cmd: Extracts a named column from a space-delimited file."
+  },
+  "bash": {
+   "cmd": "awk '{print $<number>}' <file>",
+   "why": "Extracts the Nth whitespace-delimited column."
+  },
+  "zsh_macos": {
+   "cmd": "awk '{print $<number>}' <file>",
+   "why": "Extracts the Nth whitespace-delimited column."
+  }
+ },
+ {
+  "id": "search-find-files-by-name",
+  "phrases": [
+   "find file by name",
+   "search for file in directory",
+   "locate file by filename",
+   "find file recursively"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse -Filter <name>",
+   "why": "Finds files matching a name pattern recursively."
+  },
+  "cmd": {
+   "cmd": "dir /s /b <name>",
+   "why": "Native Windows recursive file search by name."
+  },
+  "bash": {
+   "cmd": "find . -name \"<name>\"",
+   "why": "Finds files by name recursively."
+  },
+  "zsh_macos": {
+   "cmd": "find . -name \"<name>\"",
+   "why": "Finds files by name recursively."
+  }
+ },
+ {
+  "id": "search-follow-log",
+  "phrases": [
+   "follow log file",
+   "tail log file",
+   "watch file updates",
+   "see new lines added to file",
+   "monitor file in real time",
+   "stream file output"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> -Wait",
+   "why": "Streams new lines appended to a file in real time."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Content '<file>' -Wait\"",
+   "why": "Uses PowerShell from cmd: Follows file changes."
+  },
+  "bash": {
+   "cmd": "tail -f <file>",
+   "why": "Follows the end of a file in real-time."
+  },
+  "zsh_macos": {
+   "cmd": "tail -f <file>",
+   "why": "Follows the end of a file in real-time."
+  }
+ },
+ {
+  "id": "search-grep-ignore-case",
+  "phrases": [
+   "case insensitive search",
+   "grep ignore case",
+   "find text regardless of case",
+   "search case insensitive in file"
+  ],
+  "powershell": {
+   "cmd": "Select-String -Path <file> -Pattern <pattern> -CaseSensitive:$false",
+   "why": "Searches ignoring case."
+  },
+  "cmd": {
+   "cmd": "findstr /i /c:\"<pattern>\" <file>",
+   "why": "Native Windows case-insensitive search."
+  },
+  "bash": {
+   "cmd": "grep -i \"<pattern>\" <file>",
+   "why": "Searches ignoring case."
+  },
+  "zsh_macos": {
+   "cmd": "grep -i \"<pattern>\" <file>",
+   "why": "Searches ignoring case."
+  }
+ },
+ {
+  "id": "search-grep-invert",
+  "phrases": [
+   "grep exclude pattern",
+   "find lines not matching",
+   "invert match",
+   "exclude lines matching pattern"
+  ],
+  "powershell": {
+   "cmd": "Select-String -Path <file> -Pattern <pattern> -NotMatch",
+   "why": "Returns lines that do not match the pattern."
+  },
+  "cmd": {
+   "cmd": "findstr /v /c:\"<pattern>\" <file>",
+   "why": "Native Windows invert match."
+  },
+  "bash": {
+   "cmd": "grep -v \"<pattern>\" <file>",
+   "why": "Returns lines that do not match."
+  },
+  "zsh_macos": {
+   "cmd": "grep -v \"<pattern>\" <file>",
+   "why": "Returns lines that do not match."
+  }
+ },
+ {
+  "id": "search-grep-line-numbers",
+  "phrases": [
+   "grep with line numbers",
+   "find text and show line",
+   "search and show line number",
+   "grep line number"
+  ],
+  "powershell": {
+   "cmd": "Select-String -Path <file> -Pattern <pattern> | Select-Object LineNumber, Line",
+   "why": "Shows line numbers for matches."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Select-String -Path <file> -Pattern <pattern> | Select-Object LineNumber, Line\"",
+   "why": "Uses PowerShell from cmd: Shows line numbers for matches."
+  },
+  "bash": {
+   "cmd": "grep -n \"<pattern>\" <file>",
+   "why": "Displays line numbers with matches."
+  },
+  "zsh_macos": {
+   "cmd": "grep -n \"<pattern>\" <file>",
+   "why": "Displays line numbers with matches."
+  }
+ },
+ {
+  "id": "search-grep-recursive",
+  "phrases": [
+   "search files in folder",
+   "recursive grep",
+   "find text in directory",
+   "search all files for string"
+  ],
+  "powershell": {
+   "cmd": "Get-ChildItem -Recurse -File | Select-String <pattern>",
+   "why": "Searches for a pattern in all files recursively."
+  },
+  "cmd": {
+   "cmd": "findstr /s /c:\"<pattern>\" *",
+   "why": "Native Windows recursive search."
+  },
+  "bash": {
+   "cmd": "grep -r \"<pattern>\" .",
+   "why": "Searches recursively in current directory."
+  },
+  "zsh_macos": {
+   "cmd": "grep -r \"<pattern>\" .",
+   "why": "Searches recursively in current directory."
+  }
+ },
+ {
+  "id": "search-grep-text",
+  "phrases": [
+   "find text in file",
+   "search for string in file",
+   "grep for pattern",
+   "find lines matching text",
+   "search file for keyword",
+   "locate pattern in file"
+  ],
+  "powershell": {
+   "cmd": "Select-String -Path <file> -Pattern <pattern>",
+   "why": "Searches for a pattern within a file."
+  },
+  "cmd": {
+   "cmd": "findstr /c:\"<pattern>\" <file>",
+   "why": "Native Windows command to search for strings."
+  },
+  "bash": {
+   "cmd": "grep \"<pattern>\" <file>",
+   "why": "Standard utility for searching text patterns."
+  },
+  "zsh_macos": {
+   "cmd": "grep \"<pattern>\" <file>",
+   "why": "Standard utility for searching text patterns."
+  }
+ },
+ {
+  "id": "search-head-file",
+  "phrases": [
+   "show first lines of file",
+   "read top of file",
+   "preview file start",
+   "head of file",
+   "print beginning of file",
+   "display first 10 lines"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> -TotalCount 10",
+   "why": "Reads the first 10 lines of a file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Content '<file>' -TotalCount 10\"",
+   "why": "Uses PowerShell from cmd: Reads first 10 lines."
+  },
+  "bash": {
+   "cmd": "head -n 10 <file>",
+   "why": "Displays the first 10 lines."
+  },
+  "zsh_macos": {
+   "cmd": "head -n 10 <file>",
+   "why": "Displays the first 10 lines."
+  }
+ },
+ {
+  "id": "search-remove-blank-lines",
+  "phrases": [
+   "remove empty lines",
+   "delete blank lines",
+   "clean file of empty lines",
+   "filter blank lines from output"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> | Where-Object { $_ -ne '' }",
+   "why": "Filters out empty lines."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Content '<file>' | Where-Object { $_ -ne '' }\"",
+   "why": "Uses PowerShell from cmd: Filters out empty lines.",
+   "fixed": true
+  },
+  "bash": {
+   "cmd": "grep -v '^$' <file>",
+   "why": "Filters out lines that are empty."
+  },
+  "zsh_macos": {
+   "cmd": "grep -v '^$' <file>",
+   "why": "Filters out lines that are empty."
+  }
+ },
+ {
+  "id": "search-replace-text",
+  "phrases": [
+   "replace text in file",
+   "find and replace string in file",
+   "substitute text in file",
+   "sed replace in file",
+   "change word in file",
+   "in-place string replacement"
+  ],
+  "powershell": {
+   "cmd": "(Get-Content <file>) -replace '<old>','<new>' | Set-Content <file>",
+   "why": "Replaces all occurrences of a string and saves the file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Content '<file>') -replace '<old>','<new>' | Set-Content '<file>'\"",
+   "why": "Uses PowerShell from cmd: Performs find and replace."
+  },
+  "bash": {
+   "cmd": "sed -i 's/<old>/<new>/g' <file>",
+   "why": "Uses stream editor to replace text in-place."
+  },
+  "zsh_macos": {
+   "cmd": "sed -i '' 's/<old>/<new>/g' <file>",
+   "why": "Uses stream editor with empty extension for in-place edit on macOS."
+  }
+ },
+ {
+  "id": "search-sort-by-numeric",
+  "phrases": [
+   "sort numerically",
+   "sort numbers in file",
+   "numeric sort lines",
+   "sort file by numeric value"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> | Sort-Object { [int]$_ }",
+   "why": "Sorts lines numerically by casting each line to int."
+  },
+  "cmd": {
+   "cmd": "sort /n <file>",
+   "why": "Native Windows numeric sort."
+  },
+  "bash": {
+   "cmd": "sort -n <file>",
+   "why": "Sorts lines numerically."
+  },
+  "zsh_macos": {
+   "cmd": "sort -n <file>",
+   "why": "Sorts lines numerically."
+  }
+ },
+ {
+  "id": "search-sort-lines",
+  "phrases": [
+   "sort file lines",
+   "alphabetize file contents",
+   "sort text file",
+   "order lines in file",
+   "sort lines alphabetically",
+   "arrange file lines"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> | Sort-Object",
+   "why": "Sorts lines in a file alphabetically."
+  },
+  "cmd": {
+   "cmd": "sort <file>",
+   "why": "Native Windows sort command."
+  },
+  "bash": {
+   "cmd": "sort <file>",
+   "why": "Sorts lines alphabetically."
+  },
+  "zsh_macos": {
+   "cmd": "sort <file>",
+   "why": "Sorts lines alphabetically."
+  }
+ },
+ {
+  "id": "search-tail-file",
+  "phrases": [
+   "show last lines of file",
+   "read end of file",
+   "preview file end",
+   "tail of file",
+   "print last 10 lines",
+   "display bottom of file"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> -Tail 10",
+   "why": "Reads the last 10 lines of a file."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Content '<file>' -Tail 10\"",
+   "why": "Uses PowerShell from cmd: Reads last 10 lines."
+  },
+  "bash": {
+   "cmd": "tail -n 10 <file>",
+   "why": "Displays the last 10 lines."
+  },
+  "zsh_macos": {
+   "cmd": "tail -n 10 <file>",
+   "why": "Displays the last 10 lines."
+  }
+ },
+ {
+  "id": "search-unique-lines",
+  "phrases": [
+   "get unique lines in file",
+   "remove duplicate lines",
+   "find unique entries in file",
+   "filter duplicate lines",
+   "deduplicate file lines",
+   "show distinct lines"
+  ],
+  "powershell": {
+   "cmd": "Get-Content <file> | Select-Object -Unique",
+   "why": "Filters input to show only unique lines."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Content '<file>' | Select-Object -Unique\"",
+   "why": "Uses PowerShell from cmd: Filters unique lines."
+  },
+  "bash": {
+   "cmd": "sort <file> | uniq",
+   "why": "Sorts then filters consecutive duplicate lines."
+  },
+  "zsh_macos": {
+   "cmd": "sort <file> | uniq",
+   "why": "Sorts then filters consecutive duplicate lines."
+  }
+ },
+ {
+  "id": "search-word-count",
+  "phrases": [
+   "count words in file",
+   "how many words in file",
+   "word count of file",
+   "get word count",
+   "total words in file",
+   "count all words"
+  ],
+  "powershell": {
+   "cmd": "(Get-Content <file> | Measure-Object -Word).Words",
+   "why": "Counts words in a file using Measure-Object."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"(Get-Content '<file>' | Measure-Object -Word).Words\"",
+   "why": "Uses PowerShell from cmd: Counts words."
+  },
+  "bash": {
+   "cmd": "wc -w <file>",
+   "why": "Counts words using word count utility."
+  },
+  "zsh_macos": {
+   "cmd": "wc -w <file>",
+   "why": "Counts words using word count utility."
+  }
+ },
+ {
+  "id": "svc-add-cron",
+  "phrases": [
+   "add a scheduled task",
+   "create a cron job",
+   "schedule a command to run daily",
+   "set up a recurring task",
+   "run command automatically at noon"
+  ],
+  "powershell": {
+   "cmd": "Register-ScheduledTask -Action (New-ScheduledTaskAction -Execute '<cmd>') -Trigger (New-ScheduledTaskTrigger -Daily -At 12pm) -TaskName '<name>'",
+   "why": "Creates a new daily scheduled task."
+  },
+  "cmd": {
+   "cmd": "schtasks /create /tn <name> /tr <cmd> /sc daily /st 12:00",
+   "why": "Creates a daily scheduled task in Windows."
+  },
+  "bash": {
+   "cmd": "(crontab -l 2>/dev/null; echo \"0 12 * * * <cmd>\") | crontab -",
+   "why": "Adds a daily cron job at noon without overwriting existing entries."
+  },
+  "zsh_macos": {
+   "cmd": "(crontab -l 2>/dev/null; echo \"0 12 * * * <cmd>\") | crontab -",
+   "why": "Adds a daily cron job at noon without overwriting existing entries."
+  }
+ },
+ {
+  "id": "svc-check-port",
+  "phrases": [
+   "check which process is using a port",
+   "what is using port number",
+   "find process listening on port",
+   "is a port open",
+   "show port usage"
+  ],
+  "powershell": {
+   "cmd": "Get-NetTCPConnection -LocalPort <port>",
+   "why": "Shows the process using a specific port."
+  },
+  "cmd": {
+   "cmd": "netstat -ano | findstr :<port>",
+   "why": "Finds the PID using a specific port in Windows."
+  },
+  "bash": {
+   "cmd": "sudo ss -lptn 'sport = :<port>'",
+   "why": "Shows the process listening on a specific port."
+  },
+  "zsh_macos": {
+   "cmd": "lsof -i :<port>",
+   "why": "Lists the process using a specific port on macOS."
+  }
+ },
+ {
+  "id": "svc-disable-service",
+  "phrases": [
+   "disable a service",
+   "stop service from autostarting",
+   "disable a startup service",
+   "turn off autostart",
+   "prevent service from starting at boot",
+   "remove service from startup"
+  ],
+  "powershell": {
+   "cmd": "Set-Service -Name <name> -StartupType Disabled",
+   "why": "Disables the service from starting automatically."
+  },
+  "cmd": {
+   "cmd": "sc config <name> start= disabled",
+   "why": "Configures the named service as disabled natively."
+  },
+  "bash": {
+   "cmd": "sudo systemctl disable <name>",
+   "why": "Disables a systemd service from starting at boot."
+  },
+  "zsh_macos": {
+   "cmd": "sudo launchctl disable system/<name>",
+   "why": "Marks a launchd service as disabled so it won't start at boot."
+  }
+ },
+ {
+  "id": "svc-enable-service",
+  "phrases": [
+   "enable service at boot",
+   "set service to start automatically",
+   "enable a service",
+   "autostart a service",
+   "make service start on boot",
+   "configure service for autostart"
+  ],
+  "powershell": {
+   "cmd": "Set-Service -Name <name> -StartupType Automatic",
+   "why": "Sets the service to start automatically at boot."
+  },
+  "cmd": {
+   "cmd": "sc config <name> start= auto",
+   "why": "Configures the named service to start automatically natively."
+  },
+  "bash": {
+   "cmd": "sudo systemctl enable <name>",
+   "why": "Enables a systemd service to start at boot."
+  },
+  "zsh_macos": {
+   "cmd": "sudo launchctl enable system/<name>",
+   "why": "Marks a launchd service as enabled so it starts at boot."
+  }
+ },
+ {
+  "id": "svc-list-cron",
+  "phrases": [
+   "list scheduled tasks",
+   "show cron jobs",
+   "view crontab",
+   "list scheduled jobs",
+   "see all cron entries",
+   "display scheduled task list"
+  ],
+  "powershell": {
+   "cmd": "Get-ScheduledTask",
+   "why": "Lists all scheduled tasks."
+  },
+  "cmd": {
+   "cmd": "schtasks /query",
+   "why": "Lists all scheduled tasks in Windows."
+  },
+  "bash": {
+   "cmd": "crontab -l",
+   "why": "Lists the current user's cron jobs."
+  },
+  "zsh_macos": {
+   "cmd": "crontab -l",
+   "why": "Lists the current user's cron jobs on macOS."
+  }
+ },
+ {
+  "id": "svc-list-drivers",
+  "phrases": [
+   "list installed drivers",
+   "show device drivers",
+   "view loaded kernel modules",
+   "get driver list",
+   "check what drivers are installed"
+  ],
+  "powershell": {
+   "cmd": "Get-PnpDevice | Where-Object {$_.Status -eq 'OK'}",
+   "why": "Lists all active PnP devices and their drivers."
+  },
+  "cmd": {
+   "cmd": "driverquery",
+   "why": "Lists all installed device drivers."
+  },
+  "bash": {
+   "cmd": "lsmod",
+   "why": "Lists currently loaded kernel modules."
+  },
+  "zsh_macos": {
+   "cmd": "kextstat",
+   "why": "Lists loaded kernel extensions on macOS."
+  }
+ },
+ {
+  "id": "svc-list-services",
+  "phrases": [
+   "list all services",
+   "show running services",
+   "get service list",
+   "view system services",
+   "display all background services",
+   "see what services are installed"
+  ],
+  "powershell": {
+   "cmd": "Get-Service",
+   "why": "Lists all services on the system."
+  },
+  "cmd": {
+   "cmd": "sc query type= all state= all",
+   "why": "Lists all services of every type and state natively."
+  },
+  "bash": {
+   "cmd": "systemctl list-units --type=service",
+   "why": "Lists all active systemd services."
+  },
+  "zsh_macos": {
+   "cmd": "launchctl list",
+   "why": "Lists all loaded launch agents and daemons."
+  }
+ },
+ {
+  "id": "svc-list-users",
+  "phrases": [
+   "list logged in users",
+   "who is currently logged in",
+   "show active user sessions",
+   "display users on this machine",
+   "check remote desktop sessions"
+  ],
+  "powershell": {
+   "cmd": "qwinsta",
+   "why": "Lists active user sessions on the machine."
+  },
+  "cmd": {
+   "cmd": "query user",
+   "why": "Lists users currently logged into the system."
+  },
+  "bash": {
+   "cmd": "who",
+   "why": "Shows who is logged into the system."
+  },
+  "zsh_macos": {
+   "cmd": "who",
+   "why": "Shows who is logged into the system."
+  }
+ },
+ {
+  "id": "svc-reboot-now",
+  "phrases": [
+   "reboot computer",
+   "restart system",
+   "restart pc",
+   "reboot now",
+   "immediately restart machine",
+   "force system reboot"
+  ],
+  "powershell": {
+   "cmd": "Restart-Computer -Force",
+   "why": "Restarts the local computer immediately without prompting."
+  },
+  "cmd": {
+   "cmd": "shutdown /r /t 0",
+   "why": "Restarts the Windows machine immediately."
+  },
+  "bash": {
+   "cmd": "sudo reboot",
+   "why": "Reboots the Linux system."
+  },
+  "zsh_macos": {
+   "cmd": "sudo reboot",
+   "why": "Reboots the macOS system."
+  }
+ },
+ {
+  "id": "svc-remove-cron",
+  "phrases": [
+   "remove a scheduled task",
+   "delete a cron job",
+   "cancel a recurring task",
+   "unregister scheduled task",
+   "delete task by name"
+  ],
+  "powershell": {
+   "cmd": "Unregister-ScheduledTask -TaskName '<name>' -Confirm:$false",
+   "why": "Deletes a scheduled task without prompting for confirmation."
+  },
+  "cmd": {
+   "cmd": "schtasks /delete /tn <name> /f",
+   "why": "Deletes a scheduled task in Windows without prompting."
+  },
+  "bash": {
+   "cmd": "crontab -l | grep -v '<cmd>' | crontab -",
+   "why": "Removes a specific cron job non-interactively by filtering it out."
+  },
+  "zsh_macos": {
+   "cmd": "crontab -l | grep -v '<cmd>' | crontab -",
+   "why": "Removes a specific cron job non-interactively by filtering it out."
+  }
+ },
+ {
+  "id": "svc-restart-service",
+  "phrases": [
+   "restart a service",
+   "reboot a service",
+   "cycle a service",
+   "restart a background service",
+   "force service to restart",
+   "restart named service"
+  ],
+  "powershell": {
+   "cmd": "Restart-Service -Name <name>",
+   "why": "Restarts the specified service."
+  },
+  "cmd": {
+   "cmd": "net stop <name> && net start <name>",
+   "why": "Stops then starts the named service natively."
+  },
+  "bash": {
+   "cmd": "sudo systemctl restart <name>",
+   "why": "Restarts a systemd service."
+  },
+  "zsh_macos": {
+   "cmd": "sudo launchctl kickstart -k system/<name>",
+   "why": "Restarts a launchd service by killing and relaunching it."
+  }
+ },
+ {
+  "id": "svc-service-status",
+  "phrases": [
+   "check service status",
+   "is a service running",
+   "get service state",
+   "view service status",
+   "see if a service is active",
+   "check if a service is stopped"
+  ],
+  "powershell": {
+   "cmd": "Get-Service -Name <name>",
+   "why": "Displays the status of a specific service."
+  },
+  "cmd": {
+   "cmd": "sc query <name>",
+   "why": "Queries the current state of the named service natively."
+  },
+  "bash": {
+   "cmd": "systemctl status <name>",
+   "why": "Shows the current status of a systemd service."
+  },
+  "zsh_macos": {
+   "cmd": "launchctl print system/<name>",
+   "why": "Prints detailed status of a launchd service."
+  }
+ },
+ {
+  "id": "svc-shutdown-now",
+  "phrases": [
+   "shutdown computer",
+   "turn off pc",
+   "power off system",
+   "shut down now",
+   "immediately power off",
+   "shut down the machine"
+  ],
+  "powershell": {
+   "cmd": "Stop-Computer -Force",
+   "why": "Shuts down the local computer immediately without prompting."
+  },
+  "cmd": {
+   "cmd": "shutdown /s /t 0",
+   "why": "Shuts down the Windows machine immediately."
+  },
+  "bash": {
+   "cmd": "sudo shutdown -h now",
+   "why": "Shuts down the Linux system immediately."
+  },
+  "zsh_macos": {
+   "cmd": "sudo shutdown -h now",
+   "why": "Shuts down the macOS system immediately."
+  }
+ },
+ {
+  "id": "svc-start-service",
+  "phrases": [
+   "start a service",
+   "run a service",
+   "launch a service",
+   "turn on a service",
+   "start a background service",
+   "start a named service"
+  ],
+  "powershell": {
+   "cmd": "Start-Service -Name <name>",
+   "why": "Starts the specified service."
+  },
+  "cmd": {
+   "cmd": "net start <name>",
+   "why": "Starts the named service natively."
+  },
+  "bash": {
+   "cmd": "sudo systemctl start <name>",
+   "why": "Starts a systemd service."
+  },
+  "zsh_macos": {
+   "cmd": "sudo launchctl bootstrap system /Library/LaunchDaemons/<name>.plist",
+   "why": "Loads and starts a launchd service from its plist."
+  }
+ },
+ {
+  "id": "svc-stop-service",
+  "phrases": [
+   "stop a service",
+   "halt a service",
+   "turn off a service",
+   "kill a running service",
+   "stop a background service",
+   "shut down a named service"
+  ],
+  "powershell": {
+   "cmd": "Stop-Service -Name <name>",
+   "why": "Stops the specified service."
+  },
+  "cmd": {
+   "cmd": "net stop <name>",
+   "why": "Stops the named service natively."
+  },
+  "bash": {
+   "cmd": "sudo systemctl stop <name>",
+   "why": "Stops a systemd service."
+  },
+  "zsh_macos": {
+   "cmd": "sudo launchctl bootout system/<name>",
+   "why": "Unloads and stops a launchd service."
+  }
+ },
+ {
+  "id": "svc-system-uptime",
+  "phrases": [
+   "check system uptime",
+   "how long has the pc been on",
+   "get system uptime",
+   "show system boot time",
+   "how long since last restart"
+  ],
+  "powershell": {
+   "cmd": "(Get-Date) - (Get-CimInstance Win32_OperatingSystem).LastBootUpTime",
+   "why": "Calculates system uptime by subtracting last boot time from now."
+  },
+  "cmd": {
+   "cmd": "net statistics workstation",
+   "why": "Shows workstation statistics including the system start time."
+  },
+  "bash": {
+   "cmd": "uptime",
+   "why": "Shows how long the system has been running."
+  },
+  "zsh_macos": {
+   "cmd": "uptime",
+   "why": "Shows how long the system has been running."
+  }
+ },
+ {
+  "id": "svc-view-logs",
+  "phrases": [
+   "view service logs",
+   "show system event logs",
+   "check logs for a service",
+   "read recent system log entries",
+   "tail service output"
+  ],
+  "powershell": {
+   "cmd": "Get-EventLog -LogName System -Newest 20",
+   "why": "Shows the last 20 system event logs."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-EventLog -LogName System -Newest 20\"",
+   "why": "Uses PowerShell from cmd: Shows the last 20 system event logs."
+  },
+  "bash": {
+   "cmd": "journalctl -u <name> -n 50",
+   "why": "Shows the last 50 lines of logs for a systemd service."
+  },
+  "zsh_macos": {
+   "cmd": "log show --predicate 'process == \"<name>\"' --last 1h",
+   "why": "Shows logs for a specific process from the last hour."
+  }
+ },
+ {
+  "id": "sys-battery-status",
+  "phrases": [
+   "check battery level",
+   "how much battery left",
+   "is battery charging",
+   "show battery percentage",
+   "display power supply status"
+  ],
+  "powershell": {
+   "cmd": "Get-CimInstance -ClassName Win32_Battery | Select-Object EstimatedChargeRemaining, BatteryStatus",
+   "why": "Retrieves battery percentage and status."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-CimInstance -ClassName Win32_Battery | Select-Object EstimatedChargeRemaining, BatteryStatus\"",
+   "why": "Uses PowerShell from cmd: Retrieves battery percentage and status."
+  },
+  "bash": {
+   "cmd": "cat /sys/class/power_supply/BAT0/capacity",
+   "why": "Reads the battery capacity percentage from the system file."
+  },
+  "zsh_macos": {
+   "cmd": "pmset -g batt",
+   "why": "Displays battery status and power management info."
+  }
+ },
+ {
+  "id": "sys-clear-screen",
+  "phrases": [
+   "clear terminal",
+   "wipe screen",
+   "reset console output",
+   "clear command history display",
+   "blank the terminal"
+  ],
+  "powershell": {
+   "cmd": "Clear-Host",
+   "why": "Clears the console buffer."
+  },
+  "cmd": {
+   "cmd": "cls",
+   "why": "Clears the command prompt window."
+  },
+  "bash": {
+   "cmd": "clear",
+   "why": "Clears the terminal screen."
+  },
+  "zsh_macos": {
+   "cmd": "clear",
+   "why": "Clears the terminal screen."
+  }
+ },
+ {
+  "id": "sys-command-history",
+  "phrases": [
+   "show command history",
+   "what did i type before",
+   "list past commands",
+   "view previously run commands",
+   "recall terminal history"
+  ],
+  "powershell": {
+   "cmd": "Get-History",
+   "why": "Lists commands executed in the current session."
+  },
+  "cmd": {
+   "cmd": "doskey /history",
+   "why": "Displays the command history buffer."
+  },
+  "bash": {
+   "cmd": "history",
+   "why": "Lists previously executed commands."
+  },
+  "zsh_macos": {
+   "cmd": "history",
+   "why": "Lists previously executed commands."
+  }
+ },
+ {
+  "id": "sys-cpu-info",
+  "phrases": [
+   "what cpu do i have",
+   "check processor info",
+   "show cpu model",
+   "get processor details",
+   "display cpu core count"
+  ],
+  "powershell": {
+   "cmd": "Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores",
+   "why": "Retrieves processor name and core count."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores\"",
+   "why": "Uses PowerShell from cmd: Retrieves processor name and core count."
+  },
+  "bash": {
+   "cmd": "lscpu",
+   "why": "Displays detailed CPU architecture information."
+  },
+  "zsh_macos": {
+   "cmd": "sysctl -n machdep.cpu.brand_string",
+   "why": "Prints the CPU model name."
+  }
+ },
+ {
+  "id": "sys-date-time",
+  "phrases": [
+   "what time is it",
+   "show current date",
+   "get system clock",
+   "check today's date and time",
+   "print timestamp"
+  ],
+  "powershell": {
+   "cmd": "Get-Date",
+   "why": "Displays the current system date and time."
+  },
+  "cmd": {
+   "cmd": "date /t && time /t",
+   "why": "Displays the current date and time."
+  },
+  "bash": {
+   "cmd": "date",
+   "why": "Displays the system date and time."
+  },
+  "zsh_macos": {
+   "cmd": "date",
+   "why": "Displays the system date and time."
+  }
+ },
+ {
+  "id": "sys-kernel-version",
+  "phrases": [
+   "what kernel am i running",
+   "check kernel version",
+   "show kernel info",
+   "get kernel release",
+   "print os kernel number"
+  ],
+  "powershell": {
+   "cmd": "[System.Environment]::OSVersion.Version",
+   "why": "Retrieves the Windows kernel version."
+  },
+  "cmd": {
+   "cmd": "ver",
+   "why": "Displays the Windows version (kernel equivalent)."
+  },
+  "bash": {
+   "cmd": "uname -r",
+   "why": "Prints the kernel release version."
+  },
+  "zsh_macos": {
+   "cmd": "uname -r",
+   "why": "Prints the kernel release version."
+  }
+ },
+ {
+  "id": "sys-list-programs",
+  "phrases": [
+   "what software is installed",
+   "list installed programs",
+   "show all installed apps",
+   "get installed packages",
+   "view installed applications"
+  ],
+  "powershell": {
+   "cmd": "Get-Package | Select-Object Name, Version",
+   "why": "Lists installed software packages with version info."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Package | Select-Object Name, Version\"",
+   "why": "Uses PowerShell from cmd: Lists installed software packages."
+  },
+  "bash": {
+   "cmd": "dpkg --get-selections",
+   "why": "Lists installed packages on Debian-based systems."
+  },
+  "zsh_macos": {
+   "cmd": "brew list",
+   "why": "Lists packages installed via Homebrew."
+  }
+ },
+ {
+  "id": "sys-network-interfaces",
+  "phrases": [
+   "show network adapters",
+   "get my ip address",
+   "list network interfaces",
+   "check network configuration",
+   "what is my ip"
+  ],
+  "powershell": {
+   "cmd": "Get-NetIPAddress",
+   "why": "Lists all network interface IP addresses."
+  },
+  "cmd": {
+   "cmd": "ipconfig",
+   "why": "Displays network configuration for all adapters."
+  },
+  "bash": {
+   "cmd": "ip addr",
+   "why": "Displays network interface configuration."
+  },
+  "zsh_macos": {
+   "cmd": "ifconfig",
+   "why": "Displays network interface configuration."
+  }
+ },
+ {
+  "id": "sys-os-version",
+  "phrases": [
+   "what os am i running",
+   "check windows version",
+   "show linux distribution",
+   "get os info",
+   "display operating system details"
+  ],
+  "powershell": {
+   "cmd": "Get-ComputerInfo | Select-Object OsName, OsVersion",
+   "why": "Retrieves detailed operating system information."
+  },
+  "cmd": {
+   "cmd": "ver",
+   "why": "Displays the Windows version."
+  },
+  "bash": {
+   "cmd": "cat /etc/os-release",
+   "why": "Displays Linux distribution identification data."
+  },
+  "zsh_macos": {
+   "cmd": "sw_vers",
+   "why": "Prints macOS operating system version information."
+  }
+ },
+ {
+  "id": "sys-system-load",
+  "phrases": [
+   "check system load",
+   "show cpu usage",
+   "is my computer under load",
+   "check system performance",
+   "how busy is the cpu"
+  ],
+  "powershell": {
+   "cmd": "Get-Counter '\\Processor(_Total)\\% Processor Time'",
+   "why": "Retrieves total CPU usage percentage via performance counter."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-Counter '\\Processor(_Total)\\% Processor Time'\"",
+   "why": "Uses PowerShell from cmd: Retrieves total CPU usage percentage."
+  },
+  "bash": {
+   "cmd": "top -bn1 | grep 'load average'",
+   "why": "Displays system load averages from a single top snapshot."
+  },
+  "zsh_macos": {
+   "cmd": "top -l 1 | grep 'Load Avg'",
+   "why": "Displays system load averages from a single top snapshot."
+  }
+ },
+ {
+  "id": "sys-system-logs",
+  "phrases": [
+   "show system logs",
+   "view event logs",
+   "check error logs",
+   "read system messages",
+   "display recent log entries"
+  ],
+  "powershell": {
+   "cmd": "Get-EventLog -LogName System -Newest 20",
+   "why": "Retrieves the 20 most recent system event log entries."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-EventLog -LogName System -Newest 20\"",
+   "why": "Uses PowerShell from cmd: Retrieves the 20 most recent system event log entries."
+  },
+  "bash": {
+   "cmd": "journalctl -n 20",
+   "why": "Displays the last 20 lines of system logs."
+  },
+  "zsh_macos": {
+   "cmd": "log show --last 10m",
+   "why": "Displays system logs from the last 10 minutes."
+  }
+ },
+ {
+  "id": "sys-system-serial",
+  "phrases": [
+   "what is my serial number",
+   "get hardware serial number",
+   "check system serial number",
+   "show device serial",
+   "find bios serial number"
+  ],
+  "powershell": {
+   "cmd": "Get-CimInstance Win32_BIOS | Select-Object SerialNumber",
+   "why": "Retrieves the system serial number from BIOS via CIM."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Get-CimInstance Win32_BIOS | Select-Object SerialNumber\"",
+   "why": "Uses PowerShell from cmd: Retrieves the BIOS serial number."
+  },
+  "bash": {
+   "cmd": "cat /sys/class/dmi/id/product_serial",
+   "why": "Reads the hardware serial number from DMI data."
+  },
+  "zsh_macos": {
+   "cmd": "system_profiler SPHardwareDataType | grep 'Serial Number'",
+   "why": "Retrieves the hardware serial number from system profiler."
+  }
+ },
+ {
+  "id": "sys-system-time-zone",
+  "phrases": [
+   "what is my timezone",
+   "check current time zone",
+   "show system timezone setting",
+   "get timezone info",
+   "display clock timezone"
+  ],
+  "powershell": {
+   "cmd": "Get-TimeZone",
+   "why": "Displays the current system time zone."
+  },
+  "cmd": {
+   "cmd": "tzutil /g",
+   "why": "Displays the current configured time zone."
+  },
+  "bash": {
+   "cmd": "timedatectl",
+   "why": "Displays system time and time zone settings."
+  },
+  "zsh_macos": {
+   "cmd": "systemsetup -gettimezone",
+   "why": "Displays the system time zone setting."
+  }
+ },
+ {
+  "id": "users-add-to-group",
+  "phrases": [
+   "add user to a group",
+   "add member to local group",
+   "put user in group",
+   "assign user to group",
+   "grant group membership"
+  ],
+  "powershell": {
+   "cmd": "Add-LocalGroupMember -Group <group> -Member <name>",
+   "why": "Adds a user to a local group."
+  },
+  "cmd": {
+   "cmd": "net localgroup <group> <name> /add",
+   "why": "Adds a user to a local group."
+  },
+  "bash": {
+   "cmd": "sudo usermod -aG <group> <name>",
+   "why": "Appends a user to a supplementary group."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dseditgroup -o edit -a <name> -t user <group>",
+   "why": "Adds a user to a group via dseditgroup."
+  }
+ },
+ {
+  "id": "users-add-user",
+  "phrases": [
+   "create new local user",
+   "add a user account",
+   "make a new user",
+   "create user account on this machine",
+   "add new login"
+  ],
+  "powershell": {
+   "cmd": "New-LocalUser -Name <name>",
+   "why": "Creates a new local user account."
+  },
+  "cmd": {
+   "cmd": "net user <name> /add",
+   "why": "Creates a new local user account."
+  },
+  "bash": {
+   "cmd": "sudo useradd <name>",
+   "why": "Creates a new user account on Linux."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dscl . -create /Users/<name>",
+   "why": "Creates a new user account via Directory Service."
+  }
+ },
+ {
+  "id": "users-change-password",
+  "phrases": [
+   "change user password",
+   "reset password for user",
+   "update a users password",
+   "set new password",
+   "change login password"
+  ],
+  "powershell": {
+   "cmd": "$pass = Read-Host -AsSecureString; Set-LocalUser -Name <name> -Password $pass",
+   "why": "Prompts for and sets a new secure password for a local user."
+  },
+  "cmd": {
+   "cmd": "net user <name> *",
+   "why": "Prompts interactively to set a new password for a local user."
+  },
+  "bash": {
+   "cmd": "sudo passwd <name>",
+   "why": "Prompts to change the password for a user."
+  },
+  "zsh_macos": {
+   "cmd": "sudo passwd <name>",
+   "why": "Prompts to change the password for a user."
+  }
+ },
+ {
+  "id": "users-change-shell",
+  "phrases": [
+   "change default shell for user",
+   "set login shell",
+   "change user shell",
+   "switch shell for a user",
+   "assign a different shell"
+  ],
+  "powershell": {
+   "cmd": "Write-Host 'Not applicable: Windows does not use login shells.'",
+   "why": "Windows does not use the concept of a default login shell."
+  },
+  "cmd": {
+   "cmd": "echo Not applicable: Windows does not use login shells.",
+   "why": "Windows does not use the concept of a default login shell."
+  },
+  "bash": {
+   "cmd": "sudo chsh -s /bin/bash <name>",
+   "why": "Changes the default login shell for a user."
+  },
+  "zsh_macos": {
+   "cmd": "sudo chsh -s /bin/zsh <name>",
+   "why": "Changes the default login shell for a user."
+  }
+ },
+ {
+  "id": "users-check-admin",
+  "phrases": [
+   "am i an admin",
+   "check if i have admin rights",
+   "check if running as administrator",
+   "am i root",
+   "verify elevated privileges"
+  ],
+  "powershell": {
+   "cmd": "([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)",
+   "why": "Checks if the current process is running as Administrator."
+  },
+  "cmd": {
+   "cmd": "net session >nul 2>&1 && echo admin || echo not admin",
+   "why": "Succeeds only if the current user has admin privileges; net session requires elevation."
+  },
+  "bash": {
+   "cmd": "[ \"$EUID\" -eq 0 ] && echo \"root\" || echo \"not root\"",
+   "why": "Checks if the effective user ID is 0 (root)."
+  },
+  "zsh_macos": {
+   "cmd": "[ \"$EUID\" -eq 0 ] && echo \"root\" || echo \"not root\"",
+   "why": "Checks if the effective user ID is 0 (root)."
+  }
+ },
+ {
+  "id": "users-create-group",
+  "phrases": [
+   "create new local group",
+   "make a new group",
+   "add a group",
+   "create user group",
+   "new group command"
+  ],
+  "powershell": {
+   "cmd": "New-LocalGroup -Name <group>",
+   "why": "Creates a new local group."
+  },
+  "cmd": {
+   "cmd": "net localgroup <group> /add",
+   "why": "Creates a new local group."
+  },
+  "bash": {
+   "cmd": "sudo groupadd <group>",
+   "why": "Creates a new group on Linux."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dscl . -create /Groups/<group>",
+   "why": "Creates a new group via Directory Service."
+  }
+ },
+ {
+  "id": "users-delete-group",
+  "phrases": [
+   "delete a local group",
+   "remove a group",
+   "remove user group",
+   "delete user group",
+   "drop a group"
+  ],
+  "powershell": {
+   "cmd": "Remove-LocalGroup -Name <group>",
+   "why": "Deletes a local group."
+  },
+  "cmd": {
+   "cmd": "net localgroup <group> /delete",
+   "why": "Deletes a local group."
+  },
+  "bash": {
+   "cmd": "sudo groupdel <group>",
+   "why": "Deletes a group on Linux."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dscl . -delete /Groups/<group>",
+   "why": "Deletes a group via Directory Service."
+  }
+ },
+ {
+  "id": "users-delete-user",
+  "phrases": [
+   "remove a user",
+   "delete user account",
+   "delete local user",
+   "remove user from system",
+   "permanently delete a user"
+  ],
+  "powershell": {
+   "cmd": "Remove-LocalUser -Name <name>",
+   "why": "Deletes a local user account."
+  },
+  "cmd": {
+   "cmd": "net user <name> /delete",
+   "why": "Deletes a local user account."
+  },
+  "bash": {
+   "cmd": "sudo userdel <name>",
+   "why": "Deletes a user account on Linux."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dscl . -delete /Users/<name>",
+   "why": "Deletes a user account via Directory Service."
+  }
+ },
+ {
+  "id": "users-list-all",
+  "phrases": [
+   "list all users",
+   "show user accounts",
+   "get all local users",
+   "list local user accounts",
+   "display all users on machine"
+  ],
+  "powershell": {
+   "cmd": "Get-LocalUser",
+   "why": "Lists all local user accounts."
+  },
+  "cmd": {
+   "cmd": "net user",
+   "why": "Lists all user accounts on the local machine."
+  },
+  "bash": {
+   "cmd": "cut -d: -f1 /etc/passwd",
+   "why": "Extracts usernames from the system password file."
+  },
+  "zsh_macos": {
+   "cmd": "dscl . -list /Users",
+   "why": "Lists all users via the Directory Service command line."
+  }
+ },
+ {
+  "id": "users-list-group-members",
+  "phrases": [
+   "list members of a group",
+   "who is in this group",
+   "show users in a group",
+   "list group members",
+   "display all members of group"
+  ],
+  "powershell": {
+   "cmd": "Get-LocalGroupMember -Group <group>",
+   "why": "Lists members of a local group."
+  },
+  "cmd": {
+   "cmd": "net localgroup <group>",
+   "why": "Lists members of a local group."
+  },
+  "bash": {
+   "cmd": "getent group <group>",
+   "why": "Retrieves group information and members."
+  },
+  "zsh_macos": {
+   "cmd": "dscl . -read /Groups/<group> GroupMembership",
+   "why": "Reads the group membership list via Directory Service."
+  }
+ },
+ {
+  "id": "users-list-groups",
+  "phrases": [
+   "list my groups",
+   "what groups am i in",
+   "show current user groups",
+   "check my group membership",
+   "which groups do i belong to"
+  ],
+  "powershell": {
+   "cmd": "whoami /groups",
+   "why": "Displays group memberships for the current user."
+  },
+  "cmd": {
+   "cmd": "whoami /groups",
+   "why": "Displays group memberships for the current user."
+  },
+  "bash": {
+   "cmd": "groups",
+   "why": "Prints the groups the current user belongs to."
+  },
+  "zsh_macos": {
+   "cmd": "groups",
+   "why": "Prints the groups the current user belongs to."
+  }
+ },
+ {
+  "id": "users-list-logged-in-history",
+  "phrases": [
+   "show login history",
+   "list last logins",
+   "user login history",
+   "who has logged in",
+   "see recent logons"
+  ],
+  "powershell": {
+   "cmd": "Get-WinEvent -FilterHashtable @{LogName='Security';Id=4624} | Select-Object TimeCreated,Message",
+   "why": "Retrieves successful login events from the Security event log."
+  },
+  "cmd": {
+   "cmd": "wevtutil qe Security /q:\"*[System[(EventID=4624)]]\" /f:text",
+   "why": "Queries the Security event log for successful login events."
+  },
+  "bash": {
+   "cmd": "last",
+   "why": "Shows a list of last logged-in users."
+  },
+  "zsh_macos": {
+   "cmd": "last",
+   "why": "Shows a list of last logged-in users."
+  }
+ },
+ {
+  "id": "users-lock-user",
+  "phrases": [
+   "disable a user account",
+   "lock a user account",
+   "deactivate a user",
+   "prevent user from logging in",
+   "suspend user account"
+  ],
+  "powershell": {
+   "cmd": "Disable-LocalUser -Name <name>",
+   "why": "Disables a local user account."
+  },
+  "cmd": {
+   "cmd": "net user <name> /active:no",
+   "why": "Disables a local user account."
+  },
+  "bash": {
+   "cmd": "sudo passwd -l <name>",
+   "why": "Locks the password for a user account."
+  },
+  "zsh_macos": {
+   "cmd": "sudo pwpolicy -u <name> disableUser",
+   "why": "Disables a user account via password policy tool."
+  }
+ },
+ {
+  "id": "users-remove-from-group",
+  "phrases": [
+   "remove user from a group",
+   "take user out of group",
+   "remove a group member",
+   "delete user from group",
+   "kick user out of group"
+  ],
+  "powershell": {
+   "cmd": "Remove-LocalGroupMember -Group <group> -Member <name>",
+   "why": "Removes a user from a local group."
+  },
+  "cmd": {
+   "cmd": "net localgroup <group> <name> /delete",
+   "why": "Removes a user from a local group."
+  },
+  "bash": {
+   "cmd": "sudo gpasswd -d <name> <group>",
+   "why": "Removes a user from a group."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dseditgroup -o edit -d <name> -t user <group>",
+   "why": "Removes a user from a group via dseditgroup."
+  }
+ },
+ {
+  "id": "users-rename-user",
+  "phrases": [
+   "rename a user account",
+   "change a username",
+   "rename an account",
+   "change user login name",
+   "give user a new name"
+  ],
+  "powershell": {
+   "cmd": "Rename-LocalUser -Name <oldname> -NewName <newname>",
+   "why": "Renames a local user account."
+  },
+  "cmd": {
+   "cmd": "powershell -NoProfile -c \"Rename-LocalUser -Name '<oldname>' -NewName '<newname>'\"",
+   "why": "Uses PowerShell from cmd: no native cmd command renames a local user."
+  },
+  "bash": {
+   "cmd": "sudo usermod -l <newname> <oldname>",
+   "why": "Renames a user account on Linux."
+  },
+  "zsh_macos": {
+   "cmd": "sudo dscl . -change /Users/<oldname> RecordName <oldname> <newname>",
+   "why": "Renames a user account via Directory Service."
+  }
+ },
+ {
+  "id": "users-run-as-admin",
+  "phrases": [
+   "run a command as admin",
+   "run as administrator",
+   "elevate a command",
+   "run with elevated privileges",
+   "execute with admin rights"
+  ],
+  "powershell": {
+   "cmd": "Start-Process powershell -Verb RunAs",
+   "why": "Starts a new PowerShell session with elevated privileges."
+  },
+  "cmd": {
+   "cmd": "runas /user:Administrator cmd",
+   "why": "Runs a command prompt as the Administrator user."
+  },
+  "bash": {
+   "cmd": "sudo <command>",
+   "why": "Runs a command with superuser privileges."
+  },
+  "zsh_macos": {
+   "cmd": "sudo <command>",
+   "why": "Runs a command with superuser privileges."
+  }
+ },
+ {
+  "id": "users-unlock-user",
+  "phrases": [
+   "enable a user account",
+   "unlock a user account",
+   "reactivate a user",
+   "allow user to log in again",
+   "unsuspend user account"
+  ],
+  "powershell": {
+   "cmd": "Enable-LocalUser -Name <name>",
+   "why": "Enables a local user account."
+  },
+  "cmd": {
+   "cmd": "net user <name> /active:yes",
+   "why": "Enables a local user account."
+  },
+  "bash": {
+   "cmd": "sudo passwd -u <name>",
+   "why": "Unlocks the password for a user account."
+  },
+  "zsh_macos": {
+   "cmd": "sudo pwpolicy -u <name> enableUser",
+   "why": "Enables a user account via password policy tool."
+  }
+ },
+ {
+  "id": "users-user-info",
+  "phrases": [
+   "get user info",
+   "show user details",
+   "user profile info",
+   "get details about a user",
+   "look up a user account"
+  ],
+  "powershell": {
+   "cmd": "Get-LocalUser -Name <name>",
+   "why": "Displays detailed information about a local user."
+  },
+  "cmd": {
+   "cmd": "net user <name>",
+   "why": "Displays detailed information about a local user."
+  },
+  "bash": {
+   "cmd": "id <name>",
+   "why": "Prints user and group IDs for the specified user."
+  },
+  "zsh_macos": {
+   "cmd": "id <name>",
+   "why": "Prints user and group IDs for the specified user."
+  }
+ },
+ {
+  "id": "users-who-is-logged-in",
+  "phrases": [
+   "who is logged in",
+   "show active user sessions",
+   "list current sessions",
+   "who is on the system right now",
+   "see logged in users"
+  ],
+  "powershell": {
+   "cmd": "query user",
+   "why": "Displays information about user sessions."
+  },
+  "cmd": {
+   "cmd": "query user",
+   "why": "Displays information about user sessions."
+  },
+  "bash": {
+   "cmd": "w",
+   "why": "Shows who is logged in and what they are doing."
+  },
+  "zsh_macos": {
+   "cmd": "w",
+   "why": "Shows who is logged in and what they are doing."
+  }
+ }
+]

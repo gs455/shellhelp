@@ -2,6 +2,9 @@
 
 Type a plain-English task ("search my whole PC for files with invoice in the name") and get the command for **PowerShell, cmd, Linux (bash) and macOS (zsh)**, each with a copy button and a one-line explanation. Answers come from a cheap LLM via [OpenRouter](https://openrouter.ai), asked for strict JSON.
 
+## Verified library (hybrid)
+`library.json` holds ~230 common tasks (files, search, disk, processes, network, ports, permissions, archives, env vars, users, services, git, system info), each with phrasings and `{cmd,why}` for all four shells. Entries were drafted by `google/gemini-3.1-flash-lite` and reviewed/fixed by `anthropic/claude-sonnet-4.6`; bash commands were spot-tested. `match.js` (and its ESM copy `match.mjs` for Cloudflare) does token-overlap matching before calling OpenRouter. It is conservative: ambiguous matches, or queries with concrete values (numbers, quoted text, `file.ext`) on placeholder entries, go to the AI. Library hits return `_meta.source: "library"` and show `✓ verified library` in the UI; AI answers carry `_meta.source: "ai"`.
+
 ## Structure
 | Path | Purpose |
 |---|---|

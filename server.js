@@ -2,6 +2,7 @@ const http=require('http'),fs=require('fs');
 const KEY=process.env.OPENROUTER_API_KEY, MODEL=process.env.MODEL||'google/gemini-3.1-flash-lite';
 const PORT=process.env.PORT||8787, MAXLEN=500, PER_MIN=10, PER_DAY=100, GLOBAL_DAY=2000;
 const html=fs.readFileSync(__dirname+'/index.html');
+const {build,match}=require('./match.js'),LIB=build(JSON.parse(fs.readFileSync(__dirname+'/library.json')));
 let day=new Date().toDateString(), global=0; const ips=new Map();
 function limit(ip){const d=new Date().toDateString();if(d!==day){day=d;global=0;ips.clear();}
  if(global>=GLOBAL_DAY)return'Daily site limit reached, try tomorrow.';
@@ -20,5 +21,6 @@ http.createServer((req,res)=>{
    let q;try{q=String(JSON.parse(b).q||'').trim();}catch{return send(400,{error:'Bad request'});}
    if(!q)return send(400,{error:'Empty question'});if(q.length>MAXLEN)return send(400,{error:'Max 500 characters'});
    const ip=(req.headers['cf-connecting-ip']||req.socket.remoteAddress);const e=limit(ip);if(e)return send(429,{error:e});
-   try{const {result,usage,model}=await ask(q);result._meta={model,prompt:usage&&usage.prompt_tokens,completion:usage&&usage.completion_tokens,total:usage&&usage.total_tokens,cost:usage&&usage.cost};console.log(new Date().toISOString(),'ok',usage&&usage.total_tokens,usage&&usage.cost);send(200,result);}catch(err){console.log('err',err.message);send(502,{error:'Model error, try again.'});}});return;}
+   const hit=match(LIB,q);if(hit){const {id,powershell,cmd,bash,zsh_macos}=hit.entry;console.log(new Date().toISOString(),'lib',id,hit.score.toFixed(2));return send(200,{powershell,cmd,bash,zsh_macos,_meta:{source:'library',id,model:'verified library',total:0,cost:0}});}
+   try{const {result,usage,model}=await ask(q);result._meta={source:'ai',model,prompt:usage&&usage.prompt_tokens,completion:usage&&usage.completion_tokens,total:usage&&usage.total_tokens,cost:usage&&usage.cost};console.log(new Date().toISOString(),'ok',usage&&usage.total_tokens,usage&&usage.cost);send(200,result);}catch(err){console.log('err',err.message);send(502,{error:'Model error, try again.'});}});return;}
  res.writeHead(404);res.end();}).listen(PORT,()=>console.log('listening',PORT,MODEL));
