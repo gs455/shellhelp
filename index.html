@@ -1,51 +1,439 @@
-<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>shellhelp</title>
-<style>body{background:#fff;color:#222;font:13px/1.35 Verdana,sans-serif;margin:0;padding:10px}.w{max-width:900px;margin:0 auto;position:relative}
-.logo{text-align:center;margin:4px 0 2px}.logo h1{display:inline;font:bold 44px Georgia,'Times New Roman',serif;letter-spacing:-1px}.logo h1 span{color:#5b9bea}
-.logo a{color:#333;vertical-align:middle;margin-left:6px}.tag{text-align:center;font:12px monospace;color:#444;margin:0 0 10px}
-.g{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.b{border:3px solid #000;min-height:120px;padding:6px;display:flex;flex-direction:column;gap:4px}
-.b code{font:12px Consolas,monospace;color:#0a5;white-space:pre-wrap;word-break:break-all;flex:1}.b .x{color:#555;font-size:11px}
-.b button{align-self:flex-start;font:10px monospace;border:1px solid #aaa;background:#f4f4f4;cursor:pointer;padding:1px 6px}
-.lb{text-align:center;font-weight:bold;font-size:15px;margin-top:3px}
-form{display:flex;margin:12px 0 4px;border:1px solid #ccc;border-radius:3px}form label{background:#eee;padding:5px 8px;font:11px monospace;border-right:1px solid #ccc}
-form input{flex:1;border:0;padding:5px;font:13px monospace;outline:0}form button{border:0;border-left:1px solid #ccc;background:#f4f4f4;font:11px monospace;padding:0 12px;cursor:pointer}
-#m{color:#b33;font:12px monospace;min-height:14px}details{font:12px monospace;margin:4px 0}details .b{min-height:0;max-width:60%}
-h2{font:bold 20px Georgia,serif;margin:10px 0 4px}ul{margin:0;padding-left:18px;font:12px monospace}li{margin:3px 0}li a{color:#222;cursor:pointer}li a:hover{color:#5b9bea}
-#xp{margin:14px 0 6px;font:12px/1.4 Verdana,sans-serif;border-top:1px solid #ddd;padding-top:6px}#xp summary{font:bold 15px Georgia,serif;cursor:pointer}#xp h3{font:bold 13px Georgia,serif;margin:8px 0 2px}#xp p{margin:2px 0}#xp ul{font:12px Verdana,sans-serif}#xp code{font:12px Consolas,monospace;background:#f4f4f4;padding:0 2px}
-@media(max-width:700px){.g{grid-template-columns:1fr 1fr}}.pf{display:block;font-size:11px;color:#b45309;margin-bottom:2px}.vl{color:#0a5}body.dk .vl{color:#4ade80}#tt{position:absolute;top:4px;right:10px;font:11px monospace;border:1px solid #aaa;background:none;color:inherit;cursor:pointer;padding:2px 8px}
-body.dk{background:#121212;color:#ddd}body.dk .b{border-color:#ccc}body.dk .b code{color:#4ade80}body.dk .b .x,body.dk .tag{color:#aaa}body.dk .logo a,body.dk li a{color:#ddd}
-body.dk .b button,body.dk form button,body.dk form label{background:#222;color:#ddd;border-color:#555}body.dk form{border-color:#555}body.dk form input{background:#1a1a1a;color:#eee}
-body.dk #xp{border-color:#333}body.dk #xp code{background:#222}body.dk #m{color:#f87171}</style></head><body><div class=w><button id=tt>☾ dark</button>
-<div class=logo><h1><span>shell</span>help</h1><a href="https://github.com/gs455/shellhelp" title="GitHub"><svg width=16 height=16 viewBox="0 0 16 16" fill=currentColor><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div>
-<p class=tag>describe a task in plain english to get the command for each shell</p>
-<div class=g id=g></div>
-<form id=f><label>task</label><input id=q maxlength=500 autofocus placeholder="e.g. find files with 'invoice' in the name"><button>EXPLAIN</button></form>
-<div id=m></div>
-<h2>examples</h2><ul id=ex></ul>
-<details id=xp><summary>what's the difference? shells vs terminals</summary>
-<h3>terminal vs shell</h3><p>The <b>terminal</b> is the window that shows text and takes keystrokes (Windows Terminal, macOS Terminal, iTerm2, GNOME Terminal). The <b>shell</b> is the program inside it that reads your command, interprets it and runs it. One terminal can host any shell.</p>
-<h3>the shells</h3><ul>
-<li><b>PowerShell</b>: the modern Windows shell. Pipes pass .NET <i>objects</i>, not text (<code>Get-Process | Sort-Object CPU</code>). Windows PowerShell 5.1 ships with Windows; PowerShell 7 (<code>pwsh</code>) is cross-platform on Windows, macOS and Linux.</li>
-<li><b>cmd</b>: the legacy Windows Command Prompt, descended from MS-DOS. Text-based, uses <code>.bat</code>/<code>.cmd</code> batch scripts, limited but still everywhere.</li>
-<li><b>bash</b>: the default on most Linux distributions. POSIX-style, text pipelines, GNU tools (<code>find</code>, <code>grep</code>, <code>sed</code>).</li>
-<li><b>zsh</b>: the macOS default since Catalina. Mostly bash-compatible syntax, but macOS ships BSD tools whose flags differ from GNU (e.g. <code>sed -i ''</code>, <code>stat</code>, <code>date</code>).</li>
-<li><b>fish</b>: friendly, with autosuggestions and highlighting out of the box. Not POSIX-compatible, so bash syntax like <code>$(...)</code> or <code>VAR=x</code> often differs.</li></ul>
-<p><b>Note:</b> WSL runs a real Linux distribution on Windows, so its bash behaves like Linux. Git Bash is bash ported to Windows (MSYS2) with a smaller set of Unix tools and Windows paths underneath.</p>
-<h3>how a command runs</h3><ul>
-<li>The shell <b>parses</b> the line into words, operators and redirections.</li>
-<li>It <b>expands</b> variables, wildcards (<code>*.txt</code>), quotes and substitutions.</li>
-<li>It runs a <b>builtin</b> (like <code>cd</code>) itself or launches an external <b>program</b> found on PATH.</li>
-<li><b>Pipes</b> (<code>|</code>) feed one command's output into the next: text in bash/zsh/fish/cmd, objects in PowerShell.</li></ul>
-<h3>why the same task differs</h3><ul>
-<li>Different syntax for variables, quoting, loops and wildcards.</li>
-<li>Different built-in tools: <code>dir</code> vs <code>ls</code> vs <code>Get-ChildItem</code>; GNU vs BSD flags.</li>
-<li>Different paths and conventions: <code>C:\</code> and <code>\</code> on Windows, <code>/</code> on Unix.</li></ul></details>
-</div>
-<script>const st=d=>{document.body.classList.toggle('dk',d);tt.textContent=d?'☀ light':'☾ dark';localStorage.th=d?'d':'l'};st(localStorage.th?localStorage.th=='d':matchMedia('(prefers-color-scheme:dark)').matches);tt.onclick=()=>st(!document.body.classList.contains('dk'));
-const S=[['powershell','powershell'],['cmd','cmd'],['bash','linux bash'],['zsh_macos','macOS zsh']];
-const E=["find files with 'invoice' in the name","find files containing 'api_key'","show disk space","list running processes","kill whatever is on port 8080","find the 10 largest files in a folder","show my IP address","rename all .txt files to .md"];
-const esc=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const box=(x,k)=>`${k=='cmd'&&/^\s*(powershell|pwsh)\b/i.test(x&&x.cmd||'')?'<span class=pf>⚠ runs PowerShell from cmd (no native cmd way)</span>':''}<code>${esc(x&&x.cmd)}</code>${x&&x.cmd?`<button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied'">copy</button>`:''}<span class=x>${esc(x&&x.why)}</span>`;
-const draw=(d={})=>{g.innerHTML=S.map(([k,n])=>`<div><div class=b>${box(d[k],k)}</div><div class=lb>${n}</div></div>`).join('')};draw();
-ex.innerHTML=E.map(e=>`<li><a>${esc(e)}</a></li>`).join('');ex.onclick=e=>{if(e.target.tagName=='A'){q.value=e.target.textContent;f.requestSubmit()}};
-f.onsubmit=async e=>{e.preventDefault();if(!q.value.trim())return;m.textContent='thinking…';draw();const t0=performance.now();try{const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q.value})});const d=await r.json();
-if(!r.ok){m.textContent=d.error;return}m.textContent='';draw(d);const x=d._meta,sec=((performance.now()-t0)/1000).toFixed(2);if(x&&x.source=='library')m.innerHTML=`<span class=vl>✓ verified library</span> · ${sec} second search`;else if(x)m.textContent=`${x.model} · ${x.prompt} in + ${x.completion} out = ${x.total} tokens · $${x.cost!=null?Number(x.cost).toFixed(6):'?'} · ${sec} second search`}catch{m.textContent='network error'}};</script></body></html>
+<!doctype html>
+<html
+  ><head
+    ><meta charset="utf-8" /><meta
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    /><title>shellhelp</title>
+    <style>
+      body {
+        background: #fff;
+        color: #222;
+        font:
+          13px/1.35 Verdana,
+          sans-serif;
+        margin: 0;
+        padding: 10px;
+      }
+      .w {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .logo {
+        text-align: center;
+        margin: 4px 0 2px;
+      }
+      .logo h1 {
+        display: inline;
+        font:
+          bold 44px Georgia,
+          "Times New Roman",
+          serif;
+        letter-spacing: -1px;
+      }
+      .logo h1 span {
+        color: #5b9bea;
+      }
+      .logo a {
+        color: #333;
+        vertical-align: middle;
+        margin-left: 6px;
+      }
+      .tag {
+        text-align: center;
+        font: 12px monospace;
+        color: #444;
+        margin: 0 0 10px;
+      }
+      .g {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .b {
+        border: 3px solid #000;
+        min-height: 120px;
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .b code {
+        font:
+          12px Consolas,
+          monospace;
+        color: #0a5;
+        white-space: pre-wrap;
+        word-break: break-all;
+        flex: 1;
+      }
+      .b .x {
+        color: #555;
+        font-size: 11px;
+      }
+      .b button {
+        align-self: flex-start;
+        font: 10px monospace;
+        border: 1px solid #aaa;
+        background: #f4f4f4;
+        cursor: pointer;
+        padding: 1px 6px;
+      }
+      .lb {
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 3px;
+      }
+      form {
+        display: flex;
+        margin: 12px 0 4px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      form label {
+        background: #eee;
+        padding: 5px 8px;
+        font: 11px monospace;
+        border-right: 1px solid #ccc;
+      }
+      form input {
+        flex: 1;
+        border: 0;
+        padding: 5px;
+        font: 13px monospace;
+        outline: 0;
+      }
+      form button {
+        border: 0;
+        border-left: 1px solid #ccc;
+        background: #f4f4f4;
+        font: 11px monospace;
+        padding: 0 12px;
+        cursor: pointer;
+      }
+      #m {
+        color: #b33;
+        font: 12px monospace;
+        min-height: 14px;
+      }
+      details {
+        font: 12px monospace;
+        margin: 4px 0;
+      }
+      details .b {
+        min-height: 0;
+        max-width: 60%;
+      }
+      h2 {
+        font:
+          bold 20px Georgia,
+          serif;
+        margin: 10px 0 4px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        font: 12px monospace;
+      }
+      li {
+        margin: 3px 0;
+      }
+      li a {
+        color: #222;
+        cursor: pointer;
+      }
+      li a:hover {
+        color: #5b9bea;
+      }
+      #xp {
+        margin: 14px 0 6px;
+        font:
+          12px/1.4 Verdana,
+          sans-serif;
+        border-top: 1px solid #ddd;
+        padding-top: 6px;
+      }
+      #xp summary {
+        font:
+          bold 15px Georgia,
+          serif;
+        cursor: pointer;
+      }
+      #xp h3 {
+        font:
+          bold 13px Georgia,
+          serif;
+        margin: 8px 0 2px;
+      }
+      #xp p {
+        margin: 2px 0;
+      }
+      #xp ul {
+        font:
+          12px Verdana,
+          sans-serif;
+      }
+      #xp code {
+        font:
+          12px Consolas,
+          monospace;
+        background: #f4f4f4;
+        padding: 0 2px;
+      }
+      @media (max-width: 700px) {
+        .g {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .pf {
+        display: block;
+        font-size: 11px;
+        color: #b45309;
+        margin-bottom: 2px;
+      }
+      .vl {
+        color: #0a5;
+      }
+      body.dk .vl {
+        color: #4ade80;
+      }
+      #tt {
+        position: absolute;
+        top: 4px;
+        right: 10px;
+        font: 11px monospace;
+        border: 1px solid #aaa;
+        background: none;
+        color: inherit;
+        cursor: pointer;
+        padding: 2px 8px;
+      }
+      body.dk {
+        background: #121212;
+        color: #ddd;
+      }
+      body.dk .b {
+        border-color: #ccc;
+      }
+      body.dk .b code {
+        color: #4ade80;
+      }
+      body.dk .b .x,
+      body.dk .tag {
+        color: #aaa;
+      }
+      body.dk .logo a,
+      body.dk li a {
+        color: #ddd;
+      }
+      body.dk .b button,
+      body.dk form button,
+      body.dk form label {
+        background: #222;
+        color: #ddd;
+        border-color: #555;
+      }
+      body.dk form {
+        border-color: #555;
+      }
+      body.dk form input {
+        background: #1a1a1a;
+        color: #eee;
+      }
+      body.dk #xp {
+        border-color: #333;
+      }
+      body.dk #xp code {
+        background: #222;
+      }
+      body.dk #m {
+        color: #f87171;
+      }
+    </style></head
+  ><body
+    ><div class="w"
+      ><button id="tt">☾ dark</button>
+      <div class="logo"
+        ><h1><span>shell</span>help</h1
+        ><a href="https://github.com/gs455/shellhelp" title="GitHub"
+          ><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            /></svg></a
+      ></div>
+      <p class="tag"
+        >describe a task in plain english to get the command for each shell</p
+      >
+      <div class="g" id="g"></div>
+      <form id="f"
+        ><label>task</label
+        ><input
+          id="q"
+          maxlength="500"
+          autofocus
+          placeholder="e.g. find files with 'invoice' in the name"
+        /><button>EXPLAIN</button></form
+      >
+      <div id="m"></div>
+      <h2>examples</h2><ul id="ex"></ul>
+      <details id="xp"
+        ><summary>what's the difference? shells vs terminals</summary>
+        <h3>terminal vs shell</h3
+        ><p
+          >The <b>terminal</b> is the window that shows text and takes
+          keystrokes (Windows Terminal, macOS Terminal, iTerm2, GNOME Terminal).
+          The <b>shell</b> is the program inside it that reads your command,
+          interprets it and runs it. One terminal can host any shell.</p
+        >
+        <h3>the shells</h3
+        ><ul>
+          <li
+            ><b>PowerShell</b>: the modern Windows shell. Pipes pass .NET
+            <i>objects</i>, not text (<code>Get-Process | Sort-Object CPU</code
+            >). Windows PowerShell 5.1 ships with Windows; PowerShell 7
+            (<code>pwsh</code>) is cross-platform on Windows, macOS and
+            Linux.</li
+          >
+          <li
+            ><b>cmd</b>: the legacy Windows Command Prompt, descended from
+            MS-DOS. Text-based, uses <code>.bat</code>/<code>.cmd</code> batch
+            scripts, limited but still everywhere.</li
+          >
+          <li
+            ><b>bash</b>: the default on most Linux distributions. POSIX-style,
+            text pipelines, GNU tools (<code>find</code>, <code>grep</code>,
+            <code>sed</code>).</li
+          >
+          <li
+            ><b>zsh</b>: the macOS default since Catalina. Mostly
+            bash-compatible syntax, but macOS ships BSD tools whose flags differ
+            from GNU (e.g. <code>sed -i ''</code>, <code>stat</code>,
+            <code>date</code>).</li
+          >
+          <li
+            ><b>fish</b>: friendly, with autosuggestions and highlighting out of
+            the box. Not POSIX-compatible, so bash syntax like
+            <code>$(...)</code> or <code>VAR=x</code> often differs.</li
+          ></ul
+        >
+        <p
+          ><b>Note:</b> WSL runs a real Linux distribution on Windows, so its
+          bash behaves like Linux. Git Bash is bash ported to Windows (MSYS2)
+          with a smaller set of Unix tools and Windows paths underneath.</p
+        >
+        <h3>how a command runs</h3
+        ><ul>
+          <li
+            >The shell <b>parses</b> the line into words, operators and
+            redirections.</li
+          >
+          <li
+            >It <b>expands</b> variables, wildcards (<code>*.txt</code>), quotes
+            and substitutions.</li
+          >
+          <li
+            >It runs a <b>builtin</b> (like <code>cd</code>) itself or launches
+            an external <b>program</b> found on PATH.</li
+          >
+          <li
+            ><b>Pipes</b> (<code>|</code>) feed one command's output into the
+            next: text in bash/zsh/fish/cmd, objects in PowerShell.</li
+          ></ul
+        >
+        <h3>why the same task differs</h3
+        ><ul>
+          <li>Different syntax for variables, quoting, loops and wildcards.</li>
+          <li
+            >Different built-in tools: <code>dir</code> vs <code>ls</code> vs
+            <code>Get-ChildItem</code>; GNU vs BSD flags.</li
+          >
+          <li
+            >Different paths and conventions: <code>C:\</code> and
+            <code>\</code> on Windows, <code>/</code> on Unix.</li
+          ></ul
+        ></details
+      >
+    </div>
+    <script>
+      const st = (d) => {
+        document.body.classList.toggle("dk", d);
+        tt.textContent = d ? "☀ light" : "☾ dark";
+        localStorage.th = d ? "d" : "l";
+      };
+      st(
+        localStorage.th
+          ? localStorage.th == "d"
+          : matchMedia("(prefers-color-scheme:dark)").matches,
+      );
+      tt.onclick = () => st(!document.body.classList.contains("dk"));
+      const S = [
+        ["powershell", "powershell"],
+        ["cmd", "cmd"],
+        ["bash", "linux bash"],
+        ["zsh_macos", "macOS zsh"],
+      ];
+      const E = [
+        "find files with 'invoice' in the name",
+        "find files containing 'api_key'",
+        "show disk space",
+        "list running processes",
+        "kill whatever is on port 8080",
+        "find the 10 largest files in a folder",
+        "show my IP address",
+        "rename all .txt files to .md",
+      ];
+      const esc = (s) =>
+        String(s || "").replace(
+          /[&<>]/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c],
+        );
+      const box = (x, k) =>
+        `${k == "cmd" && /^\s*(powershell|pwsh)\b/i.test((x && x.cmd) || "") ? "<span class=pf>⚠ runs PowerShell from cmd (no native cmd way)</span>" : ""}<code>${esc(x && x.cmd)}</code>${x && x.cmd ? `<button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='copied'">copy</button>` : ""}<span class=x>${esc(x && x.why)}</span>`;
+      const draw = (d = {}) => {
+        g.innerHTML = S.map(
+          ([k, n]) =>
+            `<div><div class=b>${box(d[k], k)}</div><div class=lb>${n}</div></div>`,
+        ).join("");
+      };
+      draw();
+      ex.innerHTML = E.map((e) => `<li><a>${esc(e)}</a></li>`).join("");
+      ex.onclick = (e) => {
+        if (e.target.tagName == "A") {
+          q.value = e.target.textContent;
+          f.requestSubmit();
+        }
+      };
+      f.onsubmit = async (e) => {
+        e.preventDefault();
+        if (!q.value.trim()) return;
+        m.textContent = "thinking…";
+        draw();
+        const t0 = performance.now();
+        try {
+          const r = await fetch("/api/ask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ q: q.value }),
+          });
+          const d = await r.json();
+          if (!r.ok) {
+            m.textContent = d.error;
+            return;
+          }
+          m.textContent = "";
+          draw(d);
+          const x = d._meta,
+            sec = ((performance.now() - t0) / 1000).toFixed(2);
+          if (x && x.source == "library")
+            m.innerHTML = `<span class=vl>✓ verified library</span> · ${sec} second search`;
+          else if (x)
+            m.textContent = `${x.model} · ${x.prompt} in + ${x.completion} out = ${x.total} tokens · $${x.cost != null ? Number(x.cost).toFixed(6) : "?"} · ${sec} second search`;
+        } catch {
+          m.textContent = "network error";
+        }
+      };
+    </script></body
+  ></html
+>
