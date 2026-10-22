@@ -13,3 +13,7 @@ All code in this repo is written for a human reader — the owner reads it.
 ## Repo rules
 
 - Never commit passwords, API keys, or tokens.
+
+## UI
+
+Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
